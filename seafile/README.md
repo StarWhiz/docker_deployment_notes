@@ -37,3 +37,21 @@ Example Below:
 ```
 SERVICE_URL https://subdomain.example.com
 ```
+
+# Optional: Setting Up WebDav
+
+## Caddyfile
+```
+webdav.example.com {
+	reverse_proxy seafile:8080
+}
+```
+Here I assigned a new subdomain webdav and point it to port 8080 which is the defualt on seafdav.conf
+
+## seafdav.conf
+```
+nano /home/~/docker/seafile/seafile-data/seafile/conf/seafdav.conf
+```
+Set ```enabled=true```
+Set ```share_name = /```
+
