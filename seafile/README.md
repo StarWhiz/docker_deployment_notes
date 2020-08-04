@@ -55,3 +55,4 @@ nano /home/~/docker/seafile/seafile-data/seafile/conf/seafdav.conf
 Set ```enabled=true```
 Set ```share_name = /```
 
+Remember to do a docker-compose restart and a caddy exec restart after modifying seafile conf files!
