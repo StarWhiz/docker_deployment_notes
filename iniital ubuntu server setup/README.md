@@ -8,7 +8,7 @@ sudo apt update
 sudo apt upgrade
 
 #### Initial server setup
-https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04
+Source: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04
 
 ```
 adduser sammy
@@ -47,7 +47,7 @@ echo "${USERNAME} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ```
 
 #### Installing Docker
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+Source: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
 
 ```
 sudo apt update
@@ -68,7 +68,7 @@ id -nG
 should return: sammy sudo docker
 
 #### Installing Docker-Compose
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
+Source: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
 
 
 ```
