@@ -15,6 +15,14 @@ docker exec -t -i CONTAINERNAME /bin/bash
 ```
 Command to enter a container's shell
 
+# Commonly added to docker-compose.yml files
+```
+networks:
+  default:
+    external:
+      name: caddy_net
+```
+
 # Application Specific Deployments
 
 #### Seafile
