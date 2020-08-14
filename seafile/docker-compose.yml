@@ -2,7 +2,7 @@ version: '2.0'
 services:
   seafile-db:
     image: mariadb:10.1
-    container_name: seafile-mysql
+    container_name: seafile-db
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}  # Requested, set the root's password of MySQL service.
       - MYSQL_LOG_CONSOLE=true

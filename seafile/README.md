@@ -43,7 +43,7 @@ SERVICE_URL https://subdomain.example.com
 ## Caddyfile
 ```
 webdav.example.com {
-	reverse_proxy seafile:8080
+	reverse_proxy seafile:80
 }
 ```
 Here I assigned a new subdomain webdav and point it to port 8080 which is the defualt on seafdav.conf
