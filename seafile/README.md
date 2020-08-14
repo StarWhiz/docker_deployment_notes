@@ -18,7 +18,11 @@ subdomain.example.com {
 # Things to Modify
 
 ## .env
-set your environment variables
+set your environment variables. example below
+https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/.env
+
+## docker-compose.yml
+https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/docker-compose.yml
 
 ## seahub_settings.py
 nano /home/~/docker/seafile/seafile-data/seafile/conf/seahub_settings.py
