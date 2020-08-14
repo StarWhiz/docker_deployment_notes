@@ -18,7 +18,7 @@ subdomain.example.com {
 # Things to Modify
 
 ## .env
-set your environment variables. example below
+set your environment variables
 https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/.env
 
 ## docker-compose.yml
