@@ -24,6 +24,9 @@ https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/.env
 ## docker-compose.yml
 https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/docker-compose.yml
 
+## docker-compose up -d
+After you have the .env and docker-compose files set up in this directory. Do a ```docker-compose up -d``` to start the containers. After they start modify seahub_settings.py and ccnet.conf as shown below.
+
 ## seahub_settings.py
 nano /home/~/docker/seafile/seafile-data/seafile/conf/seahub_settings.py
 
