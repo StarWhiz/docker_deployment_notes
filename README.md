@@ -30,3 +30,6 @@ https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile
 
 #### Wordpress
 https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress
+
+#### Rocket.chat
+https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat 
