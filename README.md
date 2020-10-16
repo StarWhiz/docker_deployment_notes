@@ -33,3 +33,9 @@ https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress
 
 #### Rocket.chat
 https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat 
+
+#### Zoneminder
+https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder
+
+#### ShinobiCCTV
+https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi
