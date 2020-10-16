@@ -78,11 +78,12 @@ services:
 #           - 8080:8080
         restart: unless-stopped
 
+$PLUGIN_LIST
+
 networks:
   default:
     external:
       name: caddy_net
-$PLUGIN_LIST
 EOM
 cat docker-compose.yml
 docker-compose up -d
