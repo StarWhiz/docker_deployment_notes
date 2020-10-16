@@ -20,9 +20,62 @@ subdomain.example.com {
 ## .env
 set your environment variables
 https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/.env
+```
+# General
+MY_DOMAIN=example.com
+DOCKER_MY_NETWORK=caddy_net
+
+# Seafile Specific
+MYSQL_ROOT_PASSWORD=examplepassword
+SEAFILE_ADMIN_EMAIL=youremail # Specifies Seafile admin user. This is also your username
+SEAFILE_ADMIN_PASSWORD=examplepass # Specifies Seafile admin password.
+SEAFILE_HOSTNAME=subdomain.example.com
+```
 
 ## docker-compose.yml
 https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/docker-compose.yml
+```
+version: '2.0'
+services:
+  seafile-db:
+    image: mariadb:10.1
+    container_name: seafile-db
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}  # Requested, set the root's password of MySQL service.
+      - MYSQL_LOG_CONSOLE=true
+    volumes:
+      - ~/docker/seafile/seafile-mysql/db:/var/lib/mysql  # Requested, specifies the path to MySQL data persistent store.
+
+  memcached:
+    image: memcached:1.5.6
+    container_name: seafile-memcached
+    restart: unless-stopped
+    entrypoint: memcached -m 256
+
+  seafile:
+    image: seafileltd/seafile-mc:latest
+    container_name: seafile
+    restart: unless-stopped
+    volumes:
+      - ~/docker/seafile/seafile-data:/shared   # Requested, specifies the path to Seafile data persistent store.
+    environment:
+      - DB_HOST=seafile-db
+      - DB_ROOT_PASSWD=${MYSQL_ROOT_PASSWORD}  # Requested, the value shuold be root's password of MySQL service.
+      - TIME_ZONE=Etc/UTC  # Optional, default is UTC. Should be uncomment and set to your local time zone.
+      - SEAFILE_ADMIN_EMAIL=${SEAFILE_ADMIN_EMAIL} # Specifies Seafile admin user, default is 'me@example.com'.
+      - SEAFILE_ADMIN_PASSWORD=${SEAFILE_ADMIN_PASSWORD} # Specifies Seafile admin password, default is 'asecret'.
+      - SEAFILE_SERVER_LETSENCRYPT=false  # Whether to use https or not.
+      - SEAFILE_SERVER_HOSTNAME=${SEAFILE_HOSTNAME} # Specifies your host name if https is enabled.
+    depends_on:
+      - seafile-db
+      - memcached
+
+networks:
+  default:
+    external:
+      name: caddy_net
+```
 
 ## docker-compose up -d
 After you have the .env and docker-compose files set up in this directory. Do a ```docker-compose up -d``` to start the containers. After they start modify seahub_settings.py and ccnet.conf as shown below.
