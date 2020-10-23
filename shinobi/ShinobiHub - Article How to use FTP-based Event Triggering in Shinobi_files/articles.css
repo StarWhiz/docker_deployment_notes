@@ -1,0 +1,78 @@
+/* Article Search Page */
+.page__container .article-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.page__container .article-list li {
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-top: 30px;
+    border: 1px solid #a6d1ec;
+    border-left: 5px solid #32325d;
+}
+
+.page__container .article-list li h2 {
+    margin: 0
+}
+
+.page__container .article-categories ul {
+    margin: 0 0 0 20px;
+    padding: 0;
+    list-style: square
+}
+
+.page__container .article-list .new-story li{
+    border-color: #29b94f
+}
+
+.page__container .article-list .new-story *{
+    color: #29b94f
+}
+.article-list h2{
+    font-weight: 100;
+}
+.article-button-row > *{
+    vertical-align: top;
+}
+
+.banner-list-search {
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    color: #444;
+    font-size: 20pt;
+    border-radius: 30px;
+    display: block;
+    font-family: "Work Sans", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif, sans-serif;
+    margin-bottom: 30px;
+    font-weight: 300
+}
+
+.add-new-floater {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 101;
+}
+
+/* Article New, Edit, View */
+[data-name="page__heading"] *,
+[data-name="page__opening"] *,
+[data-name="page__byline"] *,
+.page__header .date {
+    color: #fff;
+}
+
+pre {
+    background: #eee;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.edit-buttons-float {
+    position: fixed;
+    top: 80px;
+    left: 15px;
+    z-index: 100;
+}

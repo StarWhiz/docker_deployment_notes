@@ -150,10 +150,24 @@ Here I added the following lines to conf.json to enable FTP.
 # Camera specific notes
 You may need to port forward RTSP or RTMP ports for your cameras.
 
-# Reolink Specific
-rtmp://[USERNAME]:[PASSWORD]@CAMERAIPADDRESS:PORT/bcs/channel0_main.bcs?token=sdasdase&channel=0&stream=0&user=[USERNAME]&password=[PASSWORD]
+# Reolink Specific (RLC-410-5MP) Gotchas
+
+### RTMP Main Stream (High Bit Rate 1024Kbps ~ 8192Kbps)
+rtmp://[USERNAME]:[PASSWORD]@CAMERAIPADDRESS:PORT/bcs/channel0_main.bcs?token=sdasdasc&channel=0&stream=0&user=[USERNAME]&password=[PASSWORD]
 Token value entered doesn't matter just need to put something. Only lines before /bcs and after user= need to be changed.
 
-rtsp://[USERNAME]:[PASSWORD]@CAMERAIPADDRESS:PORT
+### RTMP Sub Stream (Lower Bit Rate 64Kbps ~ 512Kbps)
+rtmp://[USERNAME]:[PASSWORD]@CAMERAIPADDRESS:PORT/bcs/channel0_sub.bcs?token=sdasdasc&channel=0&stream=0&user=[USERNAME]&password=[PASSWORD]
+
+You can use the main stream for recording while using the sub stream for streaming both at the same time in shinobi.
+Reference: https://hub.shinobi.video/articles/view/w8azEAI2peYeNul
+
+### RMTP FTP Motion Detection
+
+You can also designate motion detection to the cameras instead of shinobi to reduce load.
+Reference: https://hub.shinobi.video/articles/view/LyCI3yQsUTouSAJ
+
+ONE BIG GOTCHA... Do not use firmware v3.0.0.65_2007100 because FTP does not work on that firmware. Use firmware v2.0.0.647_20031401 (RLC-410-5MP_647_20031401.zip in this repo) which does work.
+
 
 

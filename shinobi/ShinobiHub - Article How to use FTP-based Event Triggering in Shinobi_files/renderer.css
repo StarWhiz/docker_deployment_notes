@@ -1,0 +1,69 @@
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    color: #fff;
+    background-color: #222744;
+}
+a {cursor: pointer;}
+.epic-text {
+    margin: 15px 0 0 0;
+    text-align: center;
+    color: #777;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3pt;
+    font-size: 8pt;
+}
+
+/*  */
+.card-edge {
+    position: relative;
+    line-height: 0;
+}
+/* PLAYER */
+#videoCard .infoBar {
+    position:absolute;
+    width:100%;
+    z-index:12;
+    background: rgba(0,0,0,0.5);
+    line-height: normal;
+}
+#videoCard:hover .infoBar {
+    opacity: 1!important;
+}
+#videoCard .infoBar a{
+    color: #fff;
+}
+#overlayPlayButton {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
+    cursor:pointer;
+    z-index: 11;
+}
+
+/*  */
+.search-highlight {
+    background-color: #ded824;
+    color: #000;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 36px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}

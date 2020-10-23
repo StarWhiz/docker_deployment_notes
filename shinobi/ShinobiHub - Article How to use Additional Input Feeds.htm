@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Moinul Alam, Powered by Shinobi Systems">
+  <title>ShinobiHub - Article : How to use Additional Input Feeds</title>
+  <!-- Favicon -->
+  <link href="https://hub.shinobi.video/libs/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Icons -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/nucleo.css" rel="stylesheet">
+  <!-- Font -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/open-sans.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/nucleo.css" rel="stylesheet">
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/font-awesome.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/argon.css" rel="stylesheet">
+  <!-- Renderer -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/renderer.css" rel="stylesheet">
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/clientArea_002.css" rel="stylesheet">
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/clientArea.css" rel="stylesheet">
+  <script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/jquery_002.js"></script>
+<meta name="description" content="You can add audio to MJPEG based streams or use a sub-stream for viewing in the dashboard.&nbsp;With Input Feeds you can run multiple streams in one process."><script>var article = {"id":"w8azEAI2peYeNul","uploaderId":"cxN5hVFiLa1xS7i","status":1,"draft":0,"heading":"<h1 class=\"page__heading\">\n    How to use Additional Input Feeds\n</h1>","opening":"<p class=\"page__opening\">\n    You can add audio to MJPEG based streams or use a sub-stream for viewing in the dashboard.&nbsp;With Input Feeds you can run multiple streams in one process.\n</p>","content":"<h2 id=\"learn\">\n    What are Input Feeds?\n</h2>\n<p>\n    Input Maps are additional connection inputs for the monitor. With it you can add audio to MJPEG or use a different stream for another output, like Recording, Stream, or Detector.\n</p>\n<p>\n    Currently there are many references to <b>Input Map</b>. This will be changed to <b>Input Feed</b> within the next few updates.\n</p>\n<h2>\n    One Thing to Always Remember\n</h2>\n<p>\n    First Connection is labelled as <b>0</b>,&nbsp;Second is <b>1</b>, Third is <b>2</b> and so on. This will be further explained below.\n</p>\n<h2>\n    How to add an Input Feed\n</h2>\n<p>\n    1. Open your Monitor Settings for the desired monitor or Add a New one.\n</p>\n<p>\n    2. Click Options and then click <b>Add Input Feed</b>. You should now be graced with another section named&nbsp;<b>Input Map : 1</b>.\n</p>\n<p>\n    3. Like before in the Connection section, Add the connection details for your additional stream. You must take note of the following fields when doing so\n</p>\n<ul>\n    <li>\n        <b>Input Type :</b> The type of stream data it is.\n    </li>\n    <li>\n        <b>Full URL Path :</b> The connection address.\n    </li>\n    <li>\n        <b>Monitor Capture Rate :</b> It is only required for MJPEG based streams.\n    </li>\n    <li>\n        <b>RTSP Transport :</b> Leave it at Auto if you don't know. Try TCP if Auto does not work. This option is only for H.264 and H.265 based streams.\n    </li>\n</ul>\n<p>\n    4. Feed Designation. You may now notice <b>Input Feed</b> boxes appearing inside certain sections. This is to choose which feed is used for the output. If nothing is selected the default is <b>Input Map 0</b>.\n</p>\n<p>\n    You can review the following table to know your options. Options are not limited to this table.\n</p>\n<table>\n    <thead>\n        <tr>\n            <th>\n                Input Feed Selection\n            </th>\n            <th>\n                Value\n            </th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>\n                First Connection, All streams in first feed\n            </td>\n            <td>\n                0\n            </td>\n        </tr>\n        <tr>\n            <td>\n                First Connection, First stream in feed\n            </td>\n            <td>\n                0:0\n            </td>\n        </tr>\n        <tr>\n            <td>\n                First Connection, Video streams only\n            </td>\n            <td>\n                0:v\n            </td>\n        </tr>\n        <tr>\n            <td>\n                First Connection, Video stream only from first feed\n            </td>\n            <td>\n                0:v:0\n            </td>\n        </tr>\n        <tr>\n            <td>\n                First Connection, Audio streams only\n            </td>\n            <td>\n                0:a\n            </td>\n        </tr>\n        <tr>\n            <td>\n                First Connection, Audio stream only from first feed\n            </td>\n            <td>\n                0:a:0\n            </td>\n        </tr>\n    </tbody>\n</table>\n<p>\n    By replacing the first zero in the options you can select a different map. So instead of using <b>0:0</b> to get the first stream of the first feed we can do <b>1:0</b> to get the first feed of <b>Input Map 1.</b>\n</p>\n<p>\n    This may change in the future to make it easier but for now it is manual. The first connection is labelled as <b>Input Map 0</b>.\n</p>\n<h2>\n    How to add Audio to an MJPEG Stream\n</h2>\n<p>\n    <i>This part of the tutorial assumes you have an MJPEG camera already up and running. Also be aware that audio recording is illegal in some parts of the world. Check with your local law enforcement if you are unsure.</i>\n</p>\n<p>\n    1. Open your Monitor Settings for the desired monitor or Add a New one.\n</p>\n<ul>\n    <li>\n        For Information about adding a new MJPEG monitor please review this article first : <a href=\"https://shinobi.video/articles/2018-09-19-how-to-add-an-mjpeg-camera\">How to Add an MJPEG Camera</a>.\n    </li>\n</ul>\n<p class=\"text-left\">\n    2. Click Options and then click <b>Add Input Feed</b>. You should now be graced with another section named <b>Input Map : 1.</b>\n</p>\n<p>\n    3. Select <b>Raw</b> as the <b>Input Type</b> for the new feed. Add the connection URL for your audio stream in the&nbsp;<b>Full URL Path</b> field.\n</p>\n<p>\n    4. Adding to your Dashboard Stream. If you don't need audio in your dashboard stream then skip this and move to Step 5. Add two inputs by click the plus icon. Fill them as follows.\n</p>\n<ul>\n    <li>\n        0:0\n    </li>\n    <li>\n        1:0\n    </li>\n</ul>\n<p>\n    Now select your <b>Audio Encoder</b>. If you don't know you should select <b>aac</b>.\n</p>\n<p>\n    This can only be done with specific <b>Stream Types</b> like<b> Poseidon, FLV, HEVC, or HLS</b>.\n</p>\n<p>\n    5. Adding to your Recordings.&nbsp;Add two inputs by click the plus icon. Fill them as follows.\n</p>\n<ul>\n    <li>\n        0:0\n    </li>\n    <li>\n        1:0\n    </li>\n</ul>\n<p>\n    Now select your <b>Audio Encoder</b>. If you don't know you should select <b>aac</b>.\n</p>\n<p>\n    6. Happy Listening!\n</p>\n<h2>\n    How to Record on a High Resolution and Stream on a Low Resolution (H.264)\n</h2>\n<p>\n    <i>This part of the tutorial assumes you have a camera setup streaming and recording already with your <b>High Resolution</b>.</i>\n</p>\n<p>\n    <i>This method pulls two streams from a single camera. Many camera's are designed with this purpose in mind but others simply meet minimum expectations. In short : some camera's can crash if too many streams are opened directly from the camera.</i>\n</p>\n<p>\n    1.&nbsp;Open your Monitor Settings for the desired monitor.\n</p>\n<p>\n    2. Click Options and then click <b>Add Input Feed</b>. You should now be graced with another section named <b>Input Map : 1.</b>\n</p>\n<p>\n    3. Add the Connection details for the <b>Low Resolution</b> stream.\n</p>\n<ul>\n    <li>\n        Set the <b>Input Type</b> as&nbsp;<b>H.264 / H.265 / H.265+.</b>\n    </li>\n    <li>\n        Fill&nbsp;<b>Full URL Path</b> with your stream's connection address.\n    </li>\n    <li>\n        Optionally you can set <b>RTSP Transport</b> to <b>TCP</b>.\n    </li>\n</ul>\n<p>\n    4. Scroll to your <b>Stream</b> section and click the <b>Add</b> (Plus Icon) button in the<b> Input Feed</b> section within the <b>Stream</b> section. Fill the newly generated field with <b>1</b>. This will point at your second stream.\n</p>\n<p>\n    By default all outputs will use the <b>First Connection</b> (<b>Input Map : 0</b>).\n</p>\n<p>\n    4. Now <b>Save</b> the configuration.\n</p>","dateAdded":"2018-09-23T16:42:18.000Z","dateUpdated":"2018-09-23T16:42:18.000Z","byline":"Moe Alam"}</script><link rel="stylesheet" type="text/css" href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/articles_002.css"><link rel="stylesheet" type="text/css" href="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/articles.css"></head>
+
+
+
+
+
+<body>
+    
+        <header class="header-global">
+  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--not-bottom headroom--pinned headroom--top">
+    <div class="container">
+      <a class="navbar-brand mr-lg-5" href="https://hub.shinobi.video/">
+        <img src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/white.png">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbar_global">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+                <img src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/blue.png">
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+              <i class="fa fa-bars"></i>
+              <span class="nav-link-inner--text">Menu</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-xl">
+              <div class="dropdown-menu-inner">
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/">
+                        <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                            <i class="fa fa-home"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-primary mb-md-1">Home</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Hub for Shinobi Configuration Files.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/login">
+                        <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                            <i class="fa fa-key"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-success mb-md-1">Login</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Login to manage your Shinobi configurations online.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/register">
+                        <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                            <i class="fa fa-pencil-square-o"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-info mb-md-1">Register</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Register to post your Shinobi configurations online.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/suggestions">
+                        <div class="icon icon-shape bg-gradient-default rounded-circle text-white">
+                            <i class="fa fa-lightbulb-o"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-default mb-md-1">Suggestions</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Shinobi Articles are now open to community posting! What will you share?</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/articles">
+                        <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                            <i class="fa fa-newspaper-o"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-warning mb-md-1">Articles</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Shinobi Articles are now open to community posting! What will you share?</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/explore">
+                        <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                            <i class="fa fa-compass"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-primary mb-md-1">Explore</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Search configuration files posted by other community members.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/explore/brands">
+                        <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                            <i class="fa fa-search"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-info mb-md-1">Brands</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Search Brands to quickly find models.</p>
+                          </div>
+                      </a>
+                
+              </div>
+            </div>
+          </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/login">
+                  <i class="fa fa-key"></i>
+                  <span class="nav-link-inner--text">Login</span>
+                </a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/explore">
+                  <i class="fa fa-compass"></i>
+                  <span class="nav-link-inner--text">Explore</span>
+                </a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/articles">
+                  <i class="fa fa-newspaper-o"></i>
+                  <span class="nav-link-inner--text">Articles</span>
+                </a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/suggestions">
+                  <i class="fa fa-lightbulb-o"></i>
+                  <span class="nav-link-inner--text">Suggestions</span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    <main>
+      <section class="section section-lg section-shaped pb-100">
+          <div class="container mt-5">
+              <header class="page__header">
+                  <div class="page__container">
+                      <div data-editable="" data-name="page__heading">
+                          <h1 class="page__heading">
+    How to use Additional Input Feeds
+</h1>
+                      </div>
+                      <div data-editable="" data-name="page__opening">
+                          <p class="page__opening">
+    You can add audio to MJPEG based streams or use a sub-stream for 
+viewing in the dashboard.&nbsp;With Input Feeds you can run multiple 
+streams in one process.
+</p>
+                      </div>
+                      <div data-editable="" data-name="page__byline" class="page__byline">
+                          <p>
+                              <small><b>By :</b> Moe Alam</small>
+                          </p>
+                      </div>
+                      <div class="date">
+                          <div><small><b>Date Added :</b> Sun Sep 23 2018 16:42:18 GMT+0000 (Coordinated Universal Time)</small></div>
+                          <div><small><b>Last Updated :</b> Sun Sep 23 2018 16:42:18 GMT+0000 (Coordinated Universal Time)</small></div>
+                      </div>
+                  </div>
+              </header>
+        </div>
+        <div class="shape shape-style-4 shape-dark">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+          </svg>
+        </div>
+      </section>
+      <section class="section bg-white">
+        <div class="container">
+
+            <main class="page__main">
+                            <div class="page__container">
+
+                <section class="page__content formatted" data-editable="" data-name="page__content">
+                    <h2 id="learn">
+    What are Input Feeds?
+</h2>
+<p>
+    Input Maps are additional connection inputs for the monitor. With it
+ you can add audio to MJPEG or use a different stream for another 
+output, like Recording, Stream, or Detector.
+</p>
+<p>
+    Currently there are many references to <b>Input Map</b>. This will be changed to <b>Input Feed</b> within the next few updates.
+</p>
+<h2>
+    One Thing to Always Remember
+</h2>
+<p>
+    First Connection is labelled as <b>0</b>,&nbsp;Second is <b>1</b>, Third is <b>2</b> and so on. This will be further explained below.
+</p>
+<h2>
+    How to add an Input Feed
+</h2>
+<p>
+    1. Open your Monitor Settings for the desired monitor or Add a New one.
+</p>
+<p>
+    2. Click Options and then click <b>Add Input Feed</b>. You should now be graced with another section named&nbsp;<b>Input Map : 1</b>.
+</p>
+<p>
+    3. Like before in the Connection section, Add the connection details
+ for your additional stream. You must take note of the following fields 
+when doing so
+</p>
+<ul>
+    <li>
+        <b>Input Type :</b> The type of stream data it is.
+    </li>
+    <li>
+        <b>Full URL Path :</b> The connection address.
+    </li>
+    <li>
+        <b>Monitor Capture Rate :</b> It is only required for MJPEG based streams.
+    </li>
+    <li>
+        <b>RTSP Transport :</b> Leave it at Auto if you don't know. Try TCP if Auto does not work. This option is only for H.264 and H.265 based streams.
+    </li>
+</ul>
+<p>
+    4. Feed Designation. You may now notice <b>Input Feed</b> boxes 
+appearing inside certain sections. This is to choose which feed is used 
+for the output. If nothing is selected the default is <b>Input Map 0</b>.
+</p>
+<p>
+    You can review the following table to know your options. Options are not limited to this table.
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Input Feed Selection
+            </th>
+            <th>
+                Value
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                First Connection, All streams in first feed
+            </td>
+            <td>
+                0
+            </td>
+        </tr>
+        <tr>
+            <td>
+                First Connection, First stream in feed
+            </td>
+            <td>
+                0:0
+            </td>
+        </tr>
+        <tr>
+            <td>
+                First Connection, Video streams only
+            </td>
+            <td>
+                0:v
+            </td>
+        </tr>
+        <tr>
+            <td>
+                First Connection, Video stream only from first feed
+            </td>
+            <td>
+                0:v:0
+            </td>
+        </tr>
+        <tr>
+            <td>
+                First Connection, Audio streams only
+            </td>
+            <td>
+                0:a
+            </td>
+        </tr>
+        <tr>
+            <td>
+                First Connection, Audio stream only from first feed
+            </td>
+            <td>
+                0:a:0
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    By replacing the first zero in the options you can select a different map. So instead of using <b>0:0</b> to get the first stream of the first feed we can do <b>1:0</b> to get the first feed of <b>Input Map 1.</b>
+</p>
+<p>
+    This may change in the future to make it easier but for now it is manual. The first connection is labelled as <b>Input Map 0</b>.
+</p>
+<h2>
+    How to add Audio to an MJPEG Stream
+</h2>
+<p>
+    <i>This part of the tutorial assumes you have an MJPEG camera 
+already up and running. Also be aware that audio recording is illegal in
+ some parts of the world. Check with your local law enforcement if you 
+are unsure.</i>
+</p>
+<p>
+    1. Open your Monitor Settings for the desired monitor or Add a New one.
+</p>
+<ul>
+    <li>
+        For Information about adding a new MJPEG monitor please review this article first : <a href="https://shinobi.video/articles/2018-09-19-how-to-add-an-mjpeg-camera">How to Add an MJPEG Camera</a>.
+    </li>
+</ul>
+<p class="text-left">
+    2. Click Options and then click <b>Add Input Feed</b>. You should now be graced with another section named <b>Input Map : 1.</b>
+</p>
+<p>
+    3. Select <b>Raw</b> as the <b>Input Type</b> for the new feed. Add the connection URL for your audio stream in the&nbsp;<b>Full URL Path</b> field.
+</p>
+<p>
+    4. Adding to your Dashboard Stream. If you don't need audio in your 
+dashboard stream then skip this and move to Step 5. Add two inputs by 
+click the plus icon. Fill them as follows.
+</p>
+<ul>
+    <li>
+        0:0
+    </li>
+    <li>
+        1:0
+    </li>
+</ul>
+<p>
+    Now select your <b>Audio Encoder</b>. If you don't know you should select <b>aac</b>.
+</p>
+<p>
+    This can only be done with specific <b>Stream Types</b> like<b> Poseidon, FLV, HEVC, or HLS</b>.
+</p>
+<p>
+    5. Adding to your Recordings.&nbsp;Add two inputs by click the plus icon. Fill them as follows.
+</p>
+<ul>
+    <li>
+        0:0
+    </li>
+    <li>
+        1:0
+    </li>
+</ul>
+<p>
+    Now select your <b>Audio Encoder</b>. If you don't know you should select <b>aac</b>.
+</p>
+<p>
+    6. Happy Listening!
+</p>
+<h2>
+    How to Record on a High Resolution and Stream on a Low Resolution (H.264)
+</h2>
+<p>
+    <i>This part of the tutorial assumes you have a camera setup streaming and recording already with your <b>High Resolution</b>.</i>
+</p>
+<p>
+    <i>This method pulls two streams from a single camera. Many camera's
+ are designed with this purpose in mind but others simply meet minimum 
+expectations. In short : some camera's can crash if too many streams are
+ opened directly from the camera.</i>
+</p>
+<p>
+    1.&nbsp;Open your Monitor Settings for the desired monitor.
+</p>
+<p>
+    2. Click Options and then click <b>Add Input Feed</b>. You should now be graced with another section named <b>Input Map : 1.</b>
+</p>
+<p>
+    3. Add the Connection details for the <b>Low Resolution</b> stream.
+</p>
+<ul>
+    <li>
+        Set the <b>Input Type</b> as&nbsp;<b>H.264 / H.265 / H.265+.</b>
+    </li>
+    <li>
+        Fill&nbsp;<b>Full URL Path</b> with your stream's connection address.
+    </li>
+    <li>
+        Optionally you can set <b>RTSP Transport</b> to <b>TCP</b>.
+    </li>
+</ul>
+<p>
+    4. Scroll to your <b>Stream</b> section and click the <b>Add</b> (Plus Icon) button in the<b> Input Feed</b> section within the <b>Stream</b> section. Fill the newly generated field with <b>1</b>. This will point at your second stream.
+</p>
+<p>
+    By default all outputs will use the <b>First Connection</b> (<b>Input Map : 0</b>).
+</p>
+<p>
+    4. Now <b>Save</b> the configuration.
+</p>
+                </section>
+
+                </div>
+            </main>
+        </div>
+      </section>
+    </main>
+<footer class="footer bg-white">
+  <div class="container">
+    <!-- <div class="row row-grid align-items-center mb-5">
+      <div class="col-lg-6">
+        <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
+        <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+      </div>
+      <div class="col-lg-6 text-lg-center btn-wrapper">
+        <button target="_blank" href="https://twitter.com/ShinobiCCTV" rel="nofollow" class="btn btn-default btn-sm">
+            Twitter
+        </button>
+      </div>
+    </div> -->
+    <hr>
+    <div class="row align-items-center justify-content-md-between">
+      <div class="col-md-6">
+        <div class="copyright">
+          © 2020 <a href="" target="_blank">Shinobi Systems</a>.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <ul class="nav nav-footer justify-content-end">
+          <li class="nav-item">
+            <a href="https://shinobi.video/" class="nav-link" target="_blank">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://licenses.shinobi.video/" class="nav-link" target="_blank">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://shinobi.video/" class="nav-link" target="_blank">Shinobi Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://shinobi.video/docs" class="nav-link" target="_blank">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://hub.shinobi.video/articles" class="nav-link" target="_blank">Articles</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--Confirmation Window-->
+<div class="modal fade" id="confirm_window" tabindex="-1" role="dialog" aria-labelledby="confirm_windowLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirm_windowLabel"><i class="fa fa-exclamation-circle"></i> &nbsp; <span>Confirm</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/clientArea_003.js"></script>
+
+<!-- Core -->
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/jquery-ui.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/jquery.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/popper.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/bootstrap.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/headroom.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/moment.js"></script>
+<!-- Argon JS -->
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/argon.js"></script>
+<!-- Renderer -->
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/socket.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/clientArea_004.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/clientArea.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20Additional%20Input%20Feeds_files/clientArea_002.js"></script>
+
+
+
+
+<script>
+  var replaceNthMatch = function (original, pattern, n, replace) {
+    var parts, tempParts;
+
+    if (pattern.constructor === RegExp) {
+
+      // If there's no match, bail
+      if (original.search(pattern) === -1) {
+        return original;
+      }
+
+      // Every other item should be a matched capture group;
+      // between will be non-matching portions of the substring
+      parts = original.split(pattern);
+
+      // If there was a capture group, index 1 will be
+      // an item that matches the RegExp
+      if (parts[1].search(pattern) !== 0) {
+        throw {name: "ArgumentError", message: "RegExp must have a capture group"};
+      }
+    } else if (pattern.constructor === String) {
+      parts = original.split(pattern);
+      // Need every other item to be the matched string
+      tempParts = [];
+
+      for (var i=0; i < parts.length; i++) {
+        tempParts.push(parts[i]);
+
+        // Insert between, but don't tack one onto the end
+        if (i < parts.length - 1) {
+          tempParts.push(pattern);
+        }
+      }
+      parts = tempParts;
+    }  else {
+      throw {name: "ArgumentError", message: "Must provide either a RegExp or String"};
+    }
+
+    // Parens are unnecessary, but explicit. :)
+    indexOfNthMatch = (n * 2) - 1;
+
+  if (parts[indexOfNthMatch] === undefined) {
+    // There IS no Nth match
+    return original;
+  }
+
+  if (typeof(replace) === "function") {
+    // Call it. After this, we don't need it anymore.
+    replace = replace(parts[indexOfNthMatch]);
+  }
+
+  // Update our parts array with the new value
+  parts[indexOfNthMatch] = replace;
+
+  // Put it back together and return
+  return parts.join('');
+
+  }
+$('#page-search').keyup(function () {
+    e={e:$('.card .section-block'),val:$(this).val()};
+    e.e.find('.search-highlight').contents().unwrap();
+
+    if(e.val===''||e.val.length<2){
+        e.e.show();
+        return;
+    }
+    e.e.hide();
+    $.each(e.val.split(' '),function(g,val){
+        if(val.trim()==''){return}
+        e.e.filter(function () {
+            return new RegExp(val, 'i').test($(this).text());
+        }).show();
+        $.each(e.e,function(n,v){
+            var html=$(this).html();
+            var rex = new RegExp('(?![^<]+>)('+val+')','gi');
+            var matches = html.match(rex);
+            if(matches){
+            $.each(matches,function(m,b){
+                html=replaceNthMatch(html,rex,m+1,'<span class="search-highlight">'+matches[m]+'</span>')
+            })
+        }
+            $(this).html(html)
+
+        })
+    })
+})
+</script>
+
+
+</body></html>

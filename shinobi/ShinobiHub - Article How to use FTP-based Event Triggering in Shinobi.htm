@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Moinul Alam, Powered by Shinobi Systems">
+  <title>ShinobiHub - Article : How to use FTP-based Event Triggering in Shinobi</title>
+  <!-- Favicon -->
+  <link href="https://hub.shinobi.video/libs/img/brand/favicon.png" rel="icon" type="image/png">
+  <!-- Icons -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/nucleo.css" rel="stylesheet">
+  <!-- Font -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/open-sans.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/nucleo.css" rel="stylesheet">
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/font-awesome.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link type="text/css" href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/argon.css" rel="stylesheet">
+  <!-- Renderer -->
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/renderer.css" rel="stylesheet">
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/clientArea_002.css" rel="stylesheet">
+  <link href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/clientArea.css" rel="stylesheet">
+  <script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/jquery.js"></script>
+<meta name="description" content="With Drop-In Events you can take stress off your NVR and get more accurate Motion Detection. This is the FTP way."><script>var article = {"id":"LyCI3yQsUTouSAJ","uploaderId":"cxN5hVFiLa1xS7i","status":1,"draft":0,"heading":"<h1 class=\"page__heading\">\n    How to use FTP-based Event Triggering in Shinobi\n</h1>","opening":"<p class=\"page__opening\">\n    With Drop-In Events you can take stress off your NVR and get more accurate Motion Detection. This is the FTP way.\n</p>","content":"<p id=\"learn\">\n    For this article we will assume your Shinobi installation is found in the default directory, <b>/home/Shinobi</b>.\n</p>\n<h2>\n    What is FTP?\n</h2>\n<p>\n    FTP stands for File Transfer Protocol and it is a way of transferring files between computers.\n</p>\n<h2>\n    How does it apply to Triggering an Event?\n</h2>\n<p>\n    Many IP cameras come with a built-in Motion Detector and FTP client. When motion is detected the camera can upload a snapshot or short clip to your specified FTP server.\n</p>\n<p>\n    Shinobi can now create an FTP server for this purpose. When Shinobi receives a new file it will see it as a reason to trigger an event, just like how it would trigger if Shinobi's built-in motion detector had caught motion.\n</p>\n<p>\n    When a <b>JPEG</b> file is placed into the directory it will treat it as a snapshot and copy it to the streams directory to be used for notifications and as the most recent view-able image through the <a href=\"https://shinobi.video/docs/api#content-monitor-triggers\" target=\"_blank\"><b>/jpeg/</b> API method</a>.\n</p>\n<p>\n    Placing any other type of file will simply invoke a trigger, just without a snapshot being provisioned.\n</p>\n<h2>\n    Why do this?\n</h2>\n<ul>\n    <li>\n        The Shinobi server isn't doing the Motion Detection processing anymore, the camera takes the load instead.\n    </li>\n    <li>\n        The camera is better capable of detecting something sooner because its accessing the stream at the hardware level.\n    </li>\n    <li>\n        The camera may have other hardware to make the Motion Detection even more precise than if you were to simply check for pixel changes in a video stream.\n    </li>\n    <li>\n        The Motion Detection within your camera may be something you are already familiar with. You can skip learning how to use Shinobi's Motion Detection and still make use of all the Triggering options.\n    </li>\n</ul>\n<h2>\n    Enabling the Drop-In Event server and FTP server\n</h2>\n<p>\n    1. Add the following options to your <b>conf.json</b>.\n</p>\n<pre>  \"dropInEventServer\":true,\n  \"ftpServer\":true,</pre>\n<p>\n    Run these commands to do so.\n</p>\n<pre>cd /home/Shinobi\nnode tools/modifyConfiguration.js addToConfig='{\"dropInEventServer\":true, \"ftpServer\":true}'</pre>\n<p>\n    2. Now restart Shinobi\n</p>\n<pre>pm2 restart camera</pre>\n<h2>\n    Available Options\n</h2>\n<table>\n    <thead>\n        <tr>\n            <th>\n                Option\n            </th>\n            <th>\n                Description\n            </th>\n            <th>\n                Example Value\n            </th>\n        </tr>\n    </thead>\n    <tbody>\n        <tr>\n            <td>\n                dropInEventServer\n            </td>\n            <td>\n                Enabled a directory watcher to trigger events. When a file is added to the specified folder. Default is <b>null</b>.\n            </td>\n            <td>\n                true\n            </td>\n        </tr>\n        <tr>\n            <td>\n                dropInEventsDir\n            </td>\n            <td>\n                Specified directory for file drop-ins that trigger events. Default is a folder labelled&nbsp;<b>dropInEvents</b> inside the&nbsp;<b>streamsDir</b>.\n            </td>\n            <td>\n                /dev/shm/stream/dropInEvents\n            </td>\n        </tr>\n        <tr>\n            <td>\n                dropInEventDeleteFileAfterTrigger\n            </td>\n            <td>\n                The file dropped in to create the trigger will be deleted after 5 minutes. Default is <b>true</b>.\n            </td>\n            <td>\n                false\n            </td>\n        </tr>\n        <tr>\n            <td>\n                ftpServer\n            </td>\n            <td>\n                Toggle for the FTP server. Default is <b>false</b>.\n            </td>\n            <td>\n                true\n            </td>\n        </tr>\n        <tr>\n            <td>\n                ftpServerPort\n            </td>\n            <td>\n                Specify a specific port for the FTP server to run on. Default is <b>21</b>.\n            </td>\n            <td>\n                1337\n            </td>\n        </tr>\n        <tr>\n            <td>\n                ftpServerUrl\n            </td>\n            <td>\n                With this you can specify a more secure connection method or bind to a specific IP available on the machine. The default binds to all IPv4 Addresses, IPv6 is not available at this time. Default is <b>ftp://0.0.0.0:{{PORT}}</b>.\n            </td>\n            <td>\n                ftps://0.0.0.0:{{PORT}}\n            </td>\n        </tr>\n        <tr>\n            <td>\n                \n            </td>\n            <td>\n                \n            </td>\n            <td>\n                \n            </td>\n        </tr>\n    </tbody>\n</table>\n<h2>\n    Configure Monitor Settings for FTP Triggering\n</h2>\n<p>\n    1. Open the Monitor Settings and switch to <b>Advanced</b> view to reveal the <b>Global Detector Settings</b>.\n</p>\n<p>\n    2. Within the <b>Global Detector Settings</b> set the following fields.\n</p>\n<ul>\n    <li>\n        <b>Send Frames</b> : No\n    </li>\n</ul>\n<p>\n    3. For Recording when a file is dropped in set the following options.\n</p>\n<ul>\n    <li class=\"text-left\">\n        <b>Identity &gt; Mode</b> : Watch-Only\n    </li>\n    <li>\n        <b>Global Detector Settings &gt; How To Record</b> : Traditional\n    </li>\n    <li>\n        <b>Global Detector Settings &gt; Reset Timeout on Next Event</b> : Yes\n    </li>\n</ul>\n<h2>\n    Setting up the FTP Client in a Camera\n</h2>\n<p>\n    <i>For this tutorial we will use a <b>Reolink C1 Pro</b></i>\n</p>\n<p>\n    1. Open the Device Settings by clicking the gear icon in the top right.\n</p>\n<p class=\"text-left\">\n    2. Click <b>Network</b> then <b>Advanced</b> on the left and finally <b>FTP</b> at the top.\n</p>\n<p>\n    <img src=\"https://cdn.shinobi.video/images/tut/reolink-ftp.png\" style=\"max-width:100%;border:1px solid #ddd;border-radius:5px\">\n</p>\n<p>\n    3. Set the following fields to setup the Shinobi Event Trigger.\n</p>\n<ul>\n    <li>\n        <b>FTP Server :</b> The IP Address of the machine running Shinobi. <i>IPv4 Address is required.</i>\n    </li>\n    <li>\n        <b>FTP Port</b> : The Port in which the FTP Server is running, default is <b>21</b>.\n    </li>\n    <li>\n        <b>Username :</b> The Username you use to login to the Shinobi dashboard. This can also be an <b>API key</b>. Structure must simulate an Email address, <b>[API KEY]@Shinobi</b>\n    </li>\n    <li>\n        <b>Password :</b> The Password you use to login to the Shinobi dashboard. If an API key is used for the Username the Password must be the <b>Group Key</b>.\n    </li>\n    <li>\n        <b>Upload Directory :</b> Set it as the <b>Monitor ID</b> that will be triggered. Syntax would be <b>/[MONITOR_ID]</b>.\n    </li>\n    <li>\n        <b>Upload Picture Only :</b> Enable this to upload only a single file for the trigger. This also guarantees the fastest trigger possible from the camera. <i>This option may not exist in other brands.</i>\n    </li>\n</ul>\n<p>\n    4. Press <b>Test</b> and it will trigger an event in Shinobi.\n</p>\n<p>\n    5. Save the changes.\n</p>\n<h2>\n    Enjoy!\n</h2>","dateAdded":"2019-02-23T10:09:21.000Z","dateUpdated":"2019-02-23T10:09:21.000Z","byline":"Moe Alam"}</script><link rel="stylesheet" type="text/css" href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/articles_002.css"><link rel="stylesheet" type="text/css" href="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/articles.css"></head>
+
+
+
+
+
+<body>
+    
+        <header class="header-global">
+  <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--not-bottom">
+    <div class="container">
+      <a class="navbar-brand mr-lg-5" href="https://hub.shinobi.video/">
+        <img src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/white.png">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse" id="navbar_global">
+        <div class="navbar-collapse-header">
+          <div class="row">
+            <div class="col-6 collapse-brand">
+                <img src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/blue.png">
+            </div>
+            <div class="col-6 collapse-close">
+              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" data-toggle="dropdown" role="button">
+              <i class="fa fa-bars"></i>
+              <span class="nav-link-inner--text">Menu</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-xl">
+              <div class="dropdown-menu-inner">
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/">
+                        <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                            <i class="fa fa-home"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-primary mb-md-1">Home</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Hub for Shinobi Configuration Files.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/login">
+                        <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                            <i class="fa fa-key"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-success mb-md-1">Login</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Login to manage your Shinobi configurations online.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/register">
+                        <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                            <i class="fa fa-pencil-square-o"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-info mb-md-1">Register</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Register to post your Shinobi configurations online.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/suggestions">
+                        <div class="icon icon-shape bg-gradient-default rounded-circle text-white">
+                            <i class="fa fa-lightbulb-o"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-default mb-md-1">Suggestions</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Shinobi Articles are now open to community posting! What will you share?</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/articles">
+                        <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
+                            <i class="fa fa-newspaper-o"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-warning mb-md-1">Articles</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Shinobi Articles are now open to community posting! What will you share?</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/explore">
+                        <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
+                            <i class="fa fa-compass"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-primary mb-md-1">Explore</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Search configuration files posted by other community members.</p>
+                          </div>
+                      </a>
+                
+                    <a class=" media d-flex align-items-center" href="https://hub.shinobi.video/explore/brands">
+                        <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                            <i class="fa fa-search"></i>
+                          </div>
+                          <div class="media-body ml-3">
+                            <h5 class="heading text-info mb-md-1">Brands</h5>
+                            <p class="description d-none d-md-inline-block mb-0">Search Brands to quickly find models.</p>
+                          </div>
+                      </a>
+                
+              </div>
+            </div>
+          </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/login">
+                  <i class="fa fa-key"></i>
+                  <span class="nav-link-inner--text">Login</span>
+                </a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/explore">
+                  <i class="fa fa-compass"></i>
+                  <span class="nav-link-inner--text">Explore</span>
+                </a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/articles">
+                  <i class="fa fa-newspaper-o"></i>
+                  <span class="nav-link-inner--text">Articles</span>
+                </a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link " href="https://hub.shinobi.video/suggestions">
+                  <i class="fa fa-lightbulb-o"></i>
+                  <span class="nav-link-inner--text">Suggestions</span>
+                </a>
+              </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+    
+    <main>
+      <section class="section section-lg section-shaped pb-100">
+          <div class="container mt-5">
+              <header class="page__header">
+                  <div class="page__container">
+                      <div data-editable="" data-name="page__heading">
+                          <h1 class="page__heading">
+    How to use FTP-based Event Triggering in Shinobi
+</h1>
+                      </div>
+                      <div data-editable="" data-name="page__opening">
+                          <p class="page__opening">
+    With Drop-In Events you can take stress off your NVR and get more accurate Motion Detection. This is the FTP way.
+</p>
+                      </div>
+                      <div data-editable="" data-name="page__byline" class="page__byline">
+                          <p>
+                              <small><b>By :</b> Moe Alam</small>
+                          </p>
+                      </div>
+                      <div class="date">
+                          <div><small><b>Date Added :</b> Sat Feb 23 2019 10:09:21 GMT+0000 (Coordinated Universal Time)</small></div>
+                          <div><small><b>Last Updated :</b> Sat Feb 23 2019 10:09:21 GMT+0000 (Coordinated Universal Time)</small></div>
+                      </div>
+                  </div>
+              </header>
+        </div>
+        <div class="shape shape-style-4 shape-dark">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+          </svg>
+        </div>
+      </section>
+      <section class="section bg-white">
+        <div class="container">
+
+            <main class="page__main">
+                            <div class="page__container">
+
+                <section class="page__content formatted" data-editable="" data-name="page__content">
+                    <p id="learn">
+    For this article we will assume your Shinobi installation is found in the default directory, <b>/home/Shinobi</b>.
+</p>
+<h2>
+    What is FTP?
+</h2>
+<p>
+    FTP stands for File Transfer Protocol and it is a way of transferring files between computers.
+</p>
+<h2>
+    How does it apply to Triggering an Event?
+</h2>
+<p>
+    Many IP cameras come with a built-in Motion Detector and FTP client.
+ When motion is detected the camera can upload a snapshot or short clip 
+to your specified FTP server.
+</p>
+<p>
+    Shinobi can now create an FTP server for this purpose. When Shinobi 
+receives a new file it will see it as a reason to trigger an event, just
+ like how it would trigger if Shinobi's built-in motion detector had 
+caught motion.
+</p>
+<p>
+    When a <b>JPEG</b> file is placed into the directory it will treat 
+it as a snapshot and copy it to the streams directory to be used for 
+notifications and as the most recent view-able image through the <a href="https://shinobi.video/docs/api#content-monitor-triggers" target="_blank"><b>/jpeg/</b> API method</a>.
+</p>
+<p>
+    Placing any other type of file will simply invoke a trigger, just without a snapshot being provisioned.
+</p>
+<h2>
+    Why do this?
+</h2>
+<ul>
+    <li>
+        The Shinobi server isn't doing the Motion Detection processing anymore, the camera takes the load instead.
+    </li>
+    <li>
+        The camera is better capable of detecting something sooner because its accessing the stream at the hardware level.
+    </li>
+    <li>
+        The camera may have other hardware to make the Motion Detection 
+even more precise than if you were to simply check for pixel changes in a
+ video stream.
+    </li>
+    <li>
+        The Motion Detection within your camera may be something you are
+ already familiar with. You can skip learning how to use Shinobi's 
+Motion Detection and still make use of all the Triggering options.
+    </li>
+</ul>
+<h2>
+    Enabling the Drop-In Event server and FTP server
+</h2>
+<p>
+    1. Add the following options to your <b>conf.json</b>.
+</p>
+<pre>  "dropInEventServer":true,
+  "ftpServer":true,</pre>
+<p>
+    Run these commands to do so.
+</p>
+<pre>cd /home/Shinobi
+node tools/modifyConfiguration.js addToConfig='{"dropInEventServer":true, "ftpServer":true}'</pre>
+<p>
+    2. Now restart Shinobi
+</p>
+<pre>pm2 restart camera</pre>
+<h2>
+    Available Options
+</h2>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Option
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Example Value
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                dropInEventServer
+            </td>
+            <td>
+                Enabled a directory watcher to trigger events. When a file is added to the specified folder. Default is <b>null</b>.
+            </td>
+            <td>
+                true
+            </td>
+        </tr>
+        <tr>
+            <td>
+                dropInEventsDir
+            </td>
+            <td>
+                Specified directory for file drop-ins that trigger events. Default is a folder labelled&nbsp;<b>dropInEvents</b> inside the&nbsp;<b>streamsDir</b>.
+            </td>
+            <td>
+                /dev/shm/stream/dropInEvents
+            </td>
+        </tr>
+        <tr>
+            <td>
+                dropInEventDeleteFileAfterTrigger
+            </td>
+            <td>
+                The file dropped in to create the trigger will be deleted after 5 minutes. Default is <b>true</b>.
+            </td>
+            <td>
+                false
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ftpServer
+            </td>
+            <td>
+                Toggle for the FTP server. Default is <b>false</b>.
+            </td>
+            <td>
+                true
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ftpServerPort
+            </td>
+            <td>
+                Specify a specific port for the FTP server to run on. Default is <b>21</b>.
+            </td>
+            <td>
+                1337
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ftpServerUrl
+            </td>
+            <td>
+                With this you can specify a more secure connection 
+method or bind to a specific IP available on the machine. The default 
+binds to all IPv4 Addresses, IPv6 is not available at this time. Default
+ is <b>ftp://0.0.0.0:{{PORT}}</b>.
+            </td>
+            <td>
+                ftps://0.0.0.0:{{PORT}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h2>
+    Configure Monitor Settings for FTP Triggering
+</h2>
+<p>
+    1. Open the Monitor Settings and switch to <b>Advanced</b> view to reveal the <b>Global Detector Settings</b>.
+</p>
+<p>
+    2. Within the <b>Global Detector Settings</b> set the following fields.
+</p>
+<ul>
+    <li>
+        <b>Send Frames</b> : No
+    </li>
+</ul>
+<p>
+    3. For Recording when a file is dropped in set the following options.
+</p>
+<ul>
+    <li class="text-left">
+        <b>Identity &gt; Mode</b> : Watch-Only
+    </li>
+    <li>
+        <b>Global Detector Settings &gt; How To Record</b> : Traditional
+    </li>
+    <li>
+        <b>Global Detector Settings &gt; Reset Timeout on Next Event</b> : Yes
+    </li>
+</ul>
+<h2>
+    Setting up the FTP Client in a Camera
+</h2>
+<p>
+    <i>For this tutorial we will use a <b>Reolink C1 Pro</b></i>
+</p>
+<p>
+    1. Open the Device Settings by clicking the gear icon in the top right.
+</p>
+<p class="text-left">
+    2. Click <b>Network</b> then <b>Advanced</b> on the left and finally <b>FTP</b> at the top.
+</p>
+<p>
+    <img src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/reolink-ftp.png" style="max-width:100%;border:1px solid #ddd;border-radius:5px">
+</p>
+<p>
+    3. Set the following fields to setup the Shinobi Event Trigger.
+</p>
+<ul>
+    <li>
+        <b>FTP Server :</b> The IP Address of the machine running Shinobi. <i>IPv4 Address is required.</i>
+    </li>
+    <li>
+        <b>FTP Port</b> : The Port in which the FTP Server is running, default is <b>21</b>.
+    </li>
+    <li>
+        <b>Username :</b> The Username you use to login to the Shinobi dashboard. This can also be an <b>API key</b>. Structure must simulate an Email address, <b>[API KEY]@Shinobi</b>
+    </li>
+    <li>
+        <b>Password :</b> The Password you use to login to the Shinobi dashboard. If an API key is used for the Username the Password must be the <b>Group Key</b>.
+    </li>
+    <li>
+        <b>Upload Directory :</b> Set it as the <b>Monitor ID</b> that will be triggered. Syntax would be <b>/[MONITOR_ID]</b>.
+    </li>
+    <li>
+        <b>Upload Picture Only :</b> Enable this to upload only a single file for the trigger. This also guarantees the fastest trigger possible from the camera. <i>This option may not exist in other brands.</i>
+    </li>
+</ul>
+<p>
+    4. Press <b>Test</b> and it will trigger an event in Shinobi.
+</p>
+<p>
+    5. Save the changes.
+</p>
+<h2>
+    Enjoy!
+</h2>
+                </section>
+
+                </div>
+            </main>
+        </div>
+      </section>
+    </main>
+<footer class="footer bg-white">
+  <div class="container">
+    <!-- <div class="row row-grid align-items-center mb-5">
+      <div class="col-lg-6">
+        <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
+        <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+      </div>
+      <div class="col-lg-6 text-lg-center btn-wrapper">
+        <button target="_blank" href="https://twitter.com/ShinobiCCTV" rel="nofollow" class="btn btn-default btn-sm">
+            Twitter
+        </button>
+      </div>
+    </div> -->
+    <hr>
+    <div class="row align-items-center justify-content-md-between">
+      <div class="col-md-6">
+        <div class="copyright">
+          © 2020 <a href="" target="_blank">Shinobi Systems</a>.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <ul class="nav nav-footer justify-content-end">
+          <li class="nav-item">
+            <a href="https://shinobi.video/" class="nav-link" target="_blank">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://licenses.shinobi.video/" class="nav-link" target="_blank">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://shinobi.video/" class="nav-link" target="_blank">Shinobi Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://shinobi.video/docs" class="nav-link" target="_blank">Documentation</a>
+          </li>
+          <li class="nav-item">
+            <a href="https://hub.shinobi.video/articles" class="nav-link" target="_blank">Articles</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!--Confirmation Window-->
+<div class="modal fade" id="confirm_window" tabindex="-1" role="dialog" aria-labelledby="confirm_windowLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirm_windowLabel"><i class="fa fa-exclamation-circle"></i> &nbsp; <span>Confirm</span></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/clientArea.js"></script>
+
+<!-- Core -->
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/jquery-ui.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/jquery_002.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/popper.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/bootstrap.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/headroom.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/moment.js"></script>
+<!-- Argon JS -->
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/argon.js"></script>
+<!-- Renderer -->
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/socket.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/clientArea_002.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/clientArea_004.js"></script>
+<script src="ShinobiHub%20-%20Article%20How%20to%20use%20FTP-based%20Event%20Triggering%20in%20Shinobi_files/clientArea_003.js"></script>
+
+
+
+
+<script>
+  var replaceNthMatch = function (original, pattern, n, replace) {
+    var parts, tempParts;
+
+    if (pattern.constructor === RegExp) {
+
+      // If there's no match, bail
+      if (original.search(pattern) === -1) {
+        return original;
+      }
+
+      // Every other item should be a matched capture group;
+      // between will be non-matching portions of the substring
+      parts = original.split(pattern);
+
+      // If there was a capture group, index 1 will be
+      // an item that matches the RegExp
+      if (parts[1].search(pattern) !== 0) {
+        throw {name: "ArgumentError", message: "RegExp must have a capture group"};
+      }
+    } else if (pattern.constructor === String) {
+      parts = original.split(pattern);
+      // Need every other item to be the matched string
+      tempParts = [];
+
+      for (var i=0; i < parts.length; i++) {
+        tempParts.push(parts[i]);
+
+        // Insert between, but don't tack one onto the end
+        if (i < parts.length - 1) {
+          tempParts.push(pattern);
+        }
+      }
+      parts = tempParts;
+    }  else {
+      throw {name: "ArgumentError", message: "Must provide either a RegExp or String"};
+    }
+
+    // Parens are unnecessary, but explicit. :)
+    indexOfNthMatch = (n * 2) - 1;
+
+  if (parts[indexOfNthMatch] === undefined) {
+    // There IS no Nth match
+    return original;
+  }
+
+  if (typeof(replace) === "function") {
+    // Call it. After this, we don't need it anymore.
+    replace = replace(parts[indexOfNthMatch]);
+  }
+
+  // Update our parts array with the new value
+  parts[indexOfNthMatch] = replace;
+
+  // Put it back together and return
+  return parts.join('');
+
+  }
+$('#page-search').keyup(function () {
+    e={e:$('.card .section-block'),val:$(this).val()};
+    e.e.find('.search-highlight').contents().unwrap();
+
+    if(e.val===''||e.val.length<2){
+        e.e.show();
+        return;
+    }
+    e.e.hide();
+    $.each(e.val.split(' '),function(g,val){
+        if(val.trim()==''){return}
+        e.e.filter(function () {
+            return new RegExp(val, 'i').test($(this).text());
+        }).show();
+        $.each(e.e,function(n,v){
+            var html=$(this).html();
+            var rex = new RegExp('(?![^<]+>)('+val+')','gi');
+            var matches = html.match(rex);
+            if(matches){
+            $.each(matches,function(m,b){
+                html=replaceNthMatch(html,rex,m+1,'<span class="search-highlight">'+matches[m]+'</span>')
+            })
+        }
+            $(this).html(html)
+
+        })
+    })
+})
+</script>
+
+
+</body></html>
