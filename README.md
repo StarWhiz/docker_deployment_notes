@@ -23,6 +23,15 @@ networks:
       name: caddy_net
 ```
 
+# To prevent automatic HTTPS on Caddy 2
+Append http:// to your CaddyFile Entries. Example Below.
+
+```
+http://subdomain.yourdomain.com {
+    reverse_proxy 192.168.16.5
+}
+```
+
 # Application Specific Deployments
 
 #### Seafile
