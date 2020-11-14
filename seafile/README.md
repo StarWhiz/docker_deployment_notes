@@ -77,6 +77,15 @@ networks:
       name: caddy_net
 ```
 
+Notes for WebDAV
+
+You may need to add the following lines to your docker file if you plan on enabling WebDAV
+```
+    ports:
+      - "4173:4173"
+```
+After that you do this open this port on your firewall and redirect it to the Docker Host's IP with seafile running on it.
+
 ## docker-compose up -d
 After you have the .env and docker-compose files set up in this directory. Do a ```docker-compose up -d``` to start the containers. After they start modify seahub_settings.py and ccnet.conf as shown below.
 
