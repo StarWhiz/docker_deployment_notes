@@ -29,7 +29,7 @@ services:
         container_name: zoneminder
         image: dlandon/zoneminder.master:latest
         restart: unless-stopped
-		network_mode: "bridge"
+        network_mode: "bridge"
         privileged: true
         environment:
             - TZ=America/Los_Angeles
