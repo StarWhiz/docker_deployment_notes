@@ -1,5 +1,5 @@
 # Introduction
-Caddy v2 is the easiest reverse proxy ever! You'll be able to host multiple dockerized applications with one VM and one domain name! I learned from DoTheEvo, but their guide assumes you already installed docker and docker-compose. From my [A-Z guide](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup)... you be handheld from the beginning. In addition to the app specific guides on DoTheEvo's page I also added some of my own!
+Caddy v2 is the easiest reverse proxy ever! You'll be able to host multiple dockerized applications with one VM and one domain name! I learned from [DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2), but their guide assumes you already installed docker and docker-compose. From my [A-Z guide](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup)... you be handheld from the beginning. In addition to the app specific guides on DoTheEvo's page I also added some of my own!
 
 Anyways please start with the [A-Z Guide](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup) guide below which will take you from base Ubuntu 20.04 to having docker, docker-compose, caddy v2 installed.
 
