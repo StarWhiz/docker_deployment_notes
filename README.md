@@ -8,21 +8,17 @@ https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu
 
 After you finish the A-Z guide. You can then follow application specific guides from me below. Or from [DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker) for other apps.
 
-## Application Specific Deployments
-#### Seafile
-https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile
+## Application Specific Deployment Guides
 
-#### Wordpress
-https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress
-
-#### Rocket.chat
-https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat 
-
-#### Zoneminder
-https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder
-
-#### ShinobiCCTV
-https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi
+##### [FreePBX+Asterisk](https://github.com/StarWhiz/docker_deployment_notes/tree/master/freepbx-asterisk)
+##### [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd)
+##### [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe)
+##### [Rocket.chat](https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat)
+##### [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi)
+##### [Seafile](https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile)
+##### [Ubiquiti UniFi Controller](https://github.com/StarWhiz/docker_deployment_notes/tree/master/unifi-controller)
+##### [Wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress)
+##### [Zoneminder](https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder)
 
 # Quick-References and Notes
 
@@ -83,7 +79,7 @@ VARIABLE_A=My_SQL_PASSWORD
 ```
 
 
-# Caddy v2 References
+## Caddy v2 References
 To prevent automatic HTTPS on Caddy 2, append http:// to your CaddyFile Entries. Example Below.
 ```
 http://subdomain.yourdomain.com {
