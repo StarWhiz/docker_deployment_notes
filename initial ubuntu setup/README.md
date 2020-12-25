@@ -9,7 +9,7 @@ Some very useful bash tips for newbies are:
 * Type `!1` to enter the first command on the `history` list. `!777` would enter in the 777th command on the `history list`
 * Use the tab button to complete commands. For example, lets say you have a file called ThisNameIsTooLong in your current folder and you want to edit it... You can type `nano This` and press **TAB** to auto-complete the filename.
 
-If you are an **experienced user** and want to blaze thru steps 1 and 8. You can use my scripts just make sure you modify your username, hostname, [public-key](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup/putty%20tutorial), and timezone. Scripts here: [part-1-ubuntu-initial-setup.sh](https://github.com/StarWhiz/docker_deployment_notes/blob/master/initial%20ubuntu%20setup/part-1-ubuntu-initial-setup.sh) and [part-2-docker-scripts](https://github.com/StarWhiz/docker_deployment_notes/blob/master/initial%20ubuntu%20setup/part-2-docker-scripts.sh)
+If you are an **experienced user** and want to blaze thru steps 1 and 8. You can use my scripts just make sure you modify your username, hostname, [public-key](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup/putty%20keys%20tutorial), and timezone. Scripts here: [part-1-ubuntu-initial-setup.sh](https://github.com/StarWhiz/docker_deployment_notes/blob/master/initial%20ubuntu%20setup/part-1-ubuntu-initial-setup.sh) and [part-2-docker-scripts](https://github.com/StarWhiz/docker_deployment_notes/blob/master/initial%20ubuntu%20setup/part-2-docker-scripts.sh)
 
 **The references I used to write the rest of these notes are bulleted below:**
 * Initial Server Setup: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04
@@ -52,7 +52,7 @@ mkdir .ssh
 cd .ssh 
 nano authorized_keys
 ```
-If you'd like to learn how to create an SSH key do so here: https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup/putty%20tutorial
+If you'd like to learn how to create an SSH key do so [here](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup/putty%20keys%20tutorial)
 
 ### 5. Disable Root Login
 ```
