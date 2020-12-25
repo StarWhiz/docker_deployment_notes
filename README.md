@@ -78,6 +78,16 @@ ${VARIABLE_A}
 VARIABLE_A=My_SQL_PASSWORD
 ```
 
+## Common UFW commands
+```
+sudo ufw status numbered     #numbered list of all ufw rules
+sudo delete 3                #delete rule #3 from ufw rules
+sudo ufw enable
+sudo ufw disable
+sudo ufw allow 21/tcp        # Open TCP port 21
+sudo ufw allow 21/udp        # Open UDP port 21
+sudo ufw allow 21            # Open UDP & TCP for port 21.
+```
 
 ## Caddy v2 References
 To prevent automatic HTTPS on Caddy 2, append http:// to your CaddyFile Entries. Example Below.
