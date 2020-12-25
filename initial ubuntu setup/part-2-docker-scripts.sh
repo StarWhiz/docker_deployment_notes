@@ -8,9 +8,6 @@ set -euo pipefail
 # Name of the user to create and grant sudo privileges
 USERNAME=yourusername
 
-# Change Time Zone to PST
-timedatectl set-timezone America/Los_Angeles
-
 apt update
 apt install apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
