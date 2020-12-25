@@ -74,6 +74,12 @@ networks:
   default:
     external:
       name: caddy_net
+	  
+### Example .env variables in docker-compose.yml
+${VARIABLE_A}
+
+### Example variable in .env
+VARIABLE_A=My_SQL_PASSWORD
 ```
 
 
