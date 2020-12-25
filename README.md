@@ -1,11 +1,12 @@
 # Introduction
-Caddy v2 is the easiest reverse proxy ever! You'll be able to host multiple dockerized applications with one VM and one domain name! I learned from DoTheEvo https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2 but it wasn't as noob friendly for people new to linux or for people who have no idea what to do with their VMs. So I create this! In addition to the application specific guides on DoTheEvo's page I added some of my own!
+Caddy v2 is the easiest reverse proxy ever! You'll be able to host multiple dockerized applications with one VM and one domain name! I learned from DoTheEvo, but their guide assumes you already installed docker and docker-compose. From my [A-Z guide](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup)... you be handheld from the beginning. In addition to the app specific guides on DoTheEvo's page I also added some of my own!
 
-Please start with the A-Z guide below which will take you from base Ubuntu 20.04 to having docker, docker-compose, caddy v2 installed.
+Anyways please start with the [A-Z Guide](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup) guide below which will take you from base Ubuntu 20.04 to having docker, docker-compose, caddy v2 installed.
 
-## A to Z Guide
-From Base Ubuntu -> docker, docker-compose, caddy v2 installed.
+## A to Z Guide (Start Here)
 https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup
+
+After you finish the A-Z guide. You can then follow application specific guides from me below. Or from [DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker) for other apps.
 
 ## Application Specific Deployments
 #### Seafile
