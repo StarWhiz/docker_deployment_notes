@@ -31,8 +31,7 @@ usermod -aG sudo sammy
 ```
 Logout or close the ssh connection. Then ssh back in as your new username instead of root.
 
-### 3. Setting Up Uncomplicated Firewall (Optional)
-
+### 3. Set Up Uncomplicated Firewall (Optional)
 ```
 sudo apt install ufw
 sudo ufw allow OpenSSH
@@ -43,6 +42,8 @@ sudo ufw enable
 This is a basic firewall on ubuntu. If you install this remember to unblock the specific ports you need open for some of your applications. In the example below we allow our own SSH connection, and open TCP ports 80 & 443 in order for Caddy v2 to work.
 
 ### 4. Adding your SSH Key (Optional)
+Optional because you can choose to keep logging in with passwords if you wish. However logging in via SSH keys is more secure.
+
 ```
 cd ~
 mkdir .ssh
@@ -50,7 +51,7 @@ cd .ssh
 nano authorized_keys
 ```
 
-If you'd like to learn how to create an SSH key I have a tutorial for the PuTTY version.
+If you'd like to learn how to create an SSH key I will be making tutorial for PuTTY users.
 
 ### 5. Disable Root Login
 ```
@@ -73,7 +74,7 @@ echo "sammy ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 ```
 You do this so you don't have to type your password everytime you add sudo in front of a command.
 
-### 7. Installing Docker
+### 7. Install Docker
 Replace ${USER} in the last line with your username, like `sudo usermod -aG docker saummy`.
 ```
 sudo apt update
@@ -93,7 +94,7 @@ id -nG
 ```
 This should return: **sammy** sudo docker
 
-### 8. Installing Docker-Compose
+### 8. Install Docker-Compose
 ```
 sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
@@ -102,7 +103,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 ```
 
-#### 9. Created a docker network called caddy_net
+### 9. Create a docker network called caddy_net
 ```
 docker network create caddy_net
 ```
@@ -181,6 +182,7 @@ networks:
 
 #### Create Caddyfile
 This CaddyFile below is an example for a server with wordpress and rocketchat deployed in docker containers on the same caddy_net network.
+
 **CaddyFile**
 ```
 {$MY_DOMAIN} {
@@ -196,7 +198,7 @@ chat.{$MY_DOMAIN} {
 }
 ```
 
-##### What does this all mean?
+#### What does this all mean?
 You will be editing the **Caddyfile** a lot! Everytime you make changes to the Caddyfile you should restart Caddy with
 ```
 docker exec -w /etc/caddy caddy caddy reload
@@ -219,7 +221,7 @@ docker-compose up -d
 ```
 to start caddy. To bring it down you can do `docker-compose down`.
 
-#### Time to deploy Applications
+### Time to deploy Applications
 Congrats you are now ready to deploy applications. The other applications will be deployed the same way you just deployed Caddy!
 
 The general flow for adding new application is:
@@ -235,3 +237,5 @@ The general flow for adding new application is:
 9. Test your app by visiting yourappsubdomain.yourwebsite.com
 
 That's it! As you do this more often, the more you'll appreciate how fast it is to deploy applications with docker and docker-compose with caddy v2!
+
+Refer to the readme at: https://github.com/StarWhiz/docker_deployment_notes for command references
