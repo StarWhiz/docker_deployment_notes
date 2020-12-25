@@ -1,0 +1,237 @@
+# Initial Installation
+These notes are for people who are new to Linux, Docker, and Caddy starting from a base Ubuntu 20.04 installation on a remote VM or remote Server. This will assume you have root access and can access the shell or terminal via SSH.
+
+You should have some basic linux knowledge such as being able to create folders, create files, edit files, and run scripts. Example basic commands you should understand are `cd, ls, pwd, mkdir, nano somefilename.txt, ./runscript`
+
+Some very useful bash tips for newbies are:
+* Use up or down arrows to cycle thru your last used commands.
+* Type `history` and Enter to list all your last used commands.
+* Type `!1` to enter the first command on the `history` list. `!777` would enter in the 777th command on the `history list`
+* Use the tab button to complete commands. For example, lets say you have a file called ThisNameIsTooLong in your current folder and you want to edit it... You can type `nano This` and press **TAB** to auto-complete the filename.
+
+**The references I used to write the rest of these notes are bulleted below:**
+* Initial Server Setup: https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04
+* How to install Docker: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04
+* How to install docker-compose: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
+* How to install Caddy: https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04
+
+**Now on to the Main Installation Guide**
+
+### 1. Update Ubuntu
+```
+sudo apt update
+sudo apt upgrade
+```
+
+### 2. Create Username.
+In this example the username is **sammy**. You can choose your own username, all my examples will be using **sammy**.
+```
+adduser sammy
+usermod -aG sudo sammy
+```
+Logout or close the ssh connection. Then ssh back in as your new username instead of root.
+
+### 3. Setting Up Uncomplicated Firewall (Optional)
+
+```
+sudo apt install ufw
+sudo ufw allow OpenSSH
+sudo ufw allow 443/tco
+sudo ufw allow 80/tcp
+sudo ufw enable
+```
+This is a basic firewall on ubuntu. If you install this remember to unblock the specific ports you need open for some of your applications. In the example below we allow our own SSH connection, and open TCP ports 80 & 443 in order for Caddy v2 to work.
+
+### 4. Adding your SSH Key (Optional)
+```
+cd ~
+mkdir .ssh
+cd .ssh 
+nano authorized_keys
+```
+
+If you'd like to learn how to create an SSH key I have a tutorial for the PuTTY version.
+
+### 5. Disable Root Login
+```
+sudo sed --in-place 's/^PermitRootLogin.*/PermitRootLogin prohibit-password/g' /etc/ssh/sshd_config
+sudo sed --in-place 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+```
+This disables root login. If you need to be a root user, first login as **sammy**, your username. Then use the command below to be a root user.
+```
+sudo su
+```
+To stop being a root user and go back to **sammy** just do
+```
+exit
+```
+
+### 6. Setup Passwordless Sudo
+Replace **sammy** with your actual username.
+```
+echo "sammy ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+```
+You do this so you don't have to type your password everytime you add sudo in front of a command.
+
+### 7. Installing Docker
+Replace ${USER} in the last line with your username, like `sudo usermod -aG docker saummy`.
+```
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+sudo apt update
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
+sudo usermod -aG docker ${USER}
+```
+Logout of **sammy** and SSH back in.
+
+```
+id -nG
+```
+This should return: **sammy** sudo docker
+
+### 8. Installing Docker-Compose
+```
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+docker-compose --version
+```
+
+#### 9. Created a docker network called caddy_net
+```
+docker network create caddy_net
+```
+
+# Installing and Using Caddy
+Caddy is the easiest reverse proxy ever! 
+
+It allows you to host multiple applications based on the same or different hostname: such as nextcloud.yourwebsite.com, seafile.yourwebsite.com, rocketchat.yourwebsite.com, and yourwebsite.com.
+
+### Requirements
+* **Port 80 and 443 forwarded** on the router/firewall to the docker host machine. If you're using a remote server, we already did this with ufw. But if you're running a local server, you will need to open ports 80/tcp and 443/tcp on your router as well and point them to your local server.
+
+* **A domain name** like `example.com` you can buy one for cheap on namecheap.
+  * After buying your domain you need to set custom DNS records. 
+  * Create new type A records that point to the Public IP of your server.
+ 
+### Minimum File Structure
+```
+/home/
+└── ~/
+    └── docker/
+        └── caddy/
+            ├── config/
+            ├── data/
+            ├── .env
+            ├── Caddyfile
+            └── docker-compose.yml
+```
+To achieve this a part of this folder structure do the following below.
+```
+cd ~
+mkdir docker
+cd docker
+mkdir caddy
+cd caddy
+```
+So now you're inside the caddy folder. 
+
+At minimum you will need a **.env**, **Caddyfile** and **docker-compose.yml**. the config/ and data/ folders are automatically generated by docker-compose later.
+
+#### Creating .env 
+Do this with `nano .env` and add the following lines in the .env file
+**.env**
+```
+MY_DOMAIN=example.com
+DOCKER_MY_NETWORK=caddy_net
+```
+**Ctrl+O** to save file.
+
+#### Creating docker-compose.yml 
+**docker-compose.yml**
+```
+version: "3.7"
+services:
+
+  caddy:
+    image: caddy
+    container_name: caddy
+    hostname: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - MY_DOMAIN
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./data:/data
+      - ./config:/config
+
+networks:
+  default:
+    external:
+      name: $DOCKER_MY_NETWORK
+```
+
+#### Create Caddyfile
+This CaddyFile below is an example for a server with wordpress and rocketchat deployed in docker containers on the same caddy_net network.
+**CaddyFile**
+```
+{$MY_DOMAIN} {
+    reverse_proxy wordpress:80
+}
+
+www.{$MY_DOMAIN} {
+    reverse_proxy wordpress:80
+}
+
+chat.{$MY_DOMAIN} {
+    reverse_proxy rocketchat:9000
+}
+```
+
+##### What does this all mean?
+You will be editing the **Caddyfile** a lot! Everytime you make changes to the Caddyfile you should restart Caddy with
+```
+docker exec -w /etc/caddy caddy caddy reload
+```
+You will be using that command above very often.
+
+In the example Caddyfile, the first two blocks are to handle yourwebsite.com and www.yourwebsite.com and point them to your wordpress container.
+
+The third block handles chat.yourwebsite.com and points them to your rocketchat container. 
+
+I hope this makes sense. If it doesn't please refer to: https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2
+
+For now your CaddyFile can be blank as you don't have any other containers set up for now.
+
+**Starting Caddy**
+Make sure you're in /home/sammy/docker/caddy
+Then do
+```
+docker-compose up -d
+```
+to start caddy. To bring it down you can do `docker-compose down`.
+
+#### Time to deploy Applications
+Congrats you are now ready to deploy applications. The other applications will be deployed the same way you just deployed Caddy!
+
+The general flow for adding new application is:
+
+1. Find an application specific guide from either my GitHub or DoTheEvo's GitHub: https://github.com/DoTheEvo/selfhosted-apps-docker
+2. Replicate the minimum file structure.
+3. Navigate inside the new app specific folder ` /home/docker/sammy/newapp`
+4. Create the mimimum files for the app specific guides
+5. Add blocks to your Caddyfile in ` /home/docker/sammy/caddy` and save.
+6. `docker exec -w /etc/caddy caddy caddy reload`
+7. Change back to your app specific folder ` /home/docker/sammy/newapp`
+8. `docker-compose up -d` to start the new application
+9. Test your app by visiting yourappsubdomain.yourwebsite.com
+
+That's it! As you do this more often, the more you'll appreciate how fast it is to deploy applications with docker and docker-compose with caddy v2!

@@ -17,6 +17,14 @@ Command to enter a container's shell
 
 # Commonly added to docker-compose.yml files
 ```
+
+### Commonly Added
+services:
+  exampleapp:
+    container_name: NameForCaddyRevProxy
+    restart: unless-stopped
+
+### The Caddy Network
 networks:
   default:
     external:
