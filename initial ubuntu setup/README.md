@@ -182,9 +182,9 @@ networks:
 ```
 
 #### Create Caddyfile
-This CaddyFile below is an example for a server with wordpress and rocketchat deployed in docker containers on the same caddy_net network.
+This Caddyfile below is an example for a server with wordpress and rocketchat deployed in docker containers on the same caddy_net network.
 
-**CaddyFile**
+**Caddyfile**
 ```
 {$MY_DOMAIN} {
     reverse_proxy wordpress:80
@@ -212,7 +212,7 @@ The third block handles chat.yourwebsite.com and points them to your rocketchat 
 
 I hope this makes sense. If it doesn't please refer to: https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2
 
-For now your CaddyFile can be blank as you don't have any other containers set up for now.
+For now your Caddyfile can be blank as you don't have any other containers set up for now.
 
 **Starting Caddy**
 Make sure you're in /home/sammy/docker/caddy
