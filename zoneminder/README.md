@@ -8,14 +8,15 @@
             ├── docker-compose.yml
 ```
 
-# Caddyfile
+## Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 zoneminder.yourdomain.com {
     reverse_proxy zoneminder:80
 }
 ```
 
-# docker-compose.yml
+## docker-compose.yml
 Notes on some compose settings.
 Why is priviledged set to true? So the docker container can access system resources like a CUDA GPU for object detection.
 Timezone should be adjusted to your time zone.
@@ -54,5 +55,5 @@ networks:
       name: caddy_net
 ```
 
-# other notes
+## other notes
 Certificates are located in /config/keys/

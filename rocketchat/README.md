@@ -8,14 +8,15 @@
             ├── docker-compose.yml
 ```
 
-# Caddyfile
+# Things to Modify
+
+## Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 subdomain.example.com {
 	reverse_proxy rocketchat:3000
 }
 ```
-
-# Things to Modify
 
 ## .env
 set your environment variables

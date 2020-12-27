@@ -3,7 +3,9 @@ You need a reverse proxy to access WebUI when windscribe is running. The reason 
 
 Good used in conjunction with CloudCmd or PureFTPd
 
-### Caddyfile
+### Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+
 ```
 qbit.yourdomain.com {
     reverse_proxy qbit-windscribe:8080

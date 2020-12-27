@@ -119,3 +119,13 @@ networks:
     external:
       name: caddy_net
 ```
+
+### Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+```
+asterisk.yourdomain.com {
+    reverse_proxy asterisk:80
+}
+```
+
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.

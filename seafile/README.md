@@ -8,7 +8,8 @@
             ├── docker-compose.yml
 ```
 
-# Caddyfile
+## Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 subdomain.example.com {
 	reverse_proxy seafile:80
