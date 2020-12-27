@@ -76,7 +76,7 @@ echo "sammy ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 You do this so you don't have to type your password everytime you add sudo in front of a command.
 
 ### 7. Install Docker
-Replace ${USER} in the last line with your username, like `sudo usermod -aG docker saummy`.
+Replace ${USER} in the last line with your username, like `sudo usermod -aG docker sammy`.
 ```
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
