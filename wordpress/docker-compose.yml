@@ -4,26 +4,28 @@ services:
 
   wordpress:
     image: wordpress
-    restart: always
+    restart: unless-stopped
+    container_name: wordpress
     environment:
       WORDPRESS_DB_HOST: wordpress-db
       WORDPRESS_DB_USER: $DB_USER
       WORDPRESS_DB_PASSWORD: $DB_PASS
       WORDPRESS_DB_NAME: $DB_NAME
     volumes:
-      - ~/docker/wordpress/wordpress:/var/www/html
-      - ~/docker/wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   wordpress-db:
     image: mysql:5.7
-    restart: always
+    restart: unless-stopped
+    container_name: wordpress-db
     environment:
       MYSQL_DATABASE: $DB_NAME
       MYSQL_USER: $DB_USER
       MYSQL_PASSWORD: $DB_PASS
       MYSQL_ROOT_PASSWORD: $DB_ROOT_PASS
     volumes:
-      - ~/docker/wordpress/wordpress-db:/var/lib/mysql
+      - ./wordpress-db:/var/lib/mysql
 
 networks:
   default:
