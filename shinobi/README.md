@@ -166,8 +166,21 @@ rtmp://[USERNAME]:[PASSWORD]@CAMERAIPADDRESS:PORT/bcs/channel0_sub.bcs?token=sda
 You can use the main stream for recording while using the sub stream for streaming both at the same time in shinobi. This still hasn't worked for me and I've been trying to figure this one out ever since. If you know a solution let me know. I can't get split LQ stream and HQ recording right, for the life of me.
 Reference: https://hub.shinobi.video/articles/view/w8azEAI2peYeNul
 
-### RMTP FTP Motion Detection
+### Gotcha #1 RMTP FTP Motion Detection
 You can also designate motion detection to the cameras instead of shinobi to reduce load.
 Reference: https://hub.shinobi.video/articles/view/LyCI3yQsUTouSAJ
 
 ONE BIG GOTCHA... It took me a long time to figure out, but in order for FTP to work with Reolink Cameras. In your Reolink Client when setting up FTP there is an an option called Transport Mode. Make sure you select PORT instead of AUTO otherwise FTP won't work.
+
+### Gotcha #2 Multiple input feeds. Low Q Stream + High Q Recording
+This is a work around that allows for multiple input feeds.
+
+For context. 
+Input 0 = LQ Sub Stream 
+Input 1 = HQ Main Stream.
+
+Under Input: Primary Input to 0:v
+Under Stream: Input Feed Map to 0:v
+Under Traditional Recording: Input Feed Map to 1:v   ... Then Press + sign, add another Input Feed Map to 1:a
+
+The order of inputs matters. The reason is because Primary Input seems to only work when it is set to 0:v, meaning input 0 will have no audio. This is perfect because we want to stream in LQ without audio. For recording we want HQ video and audio so input 1:v and 1:a so the Main Stream should be set as input 1.
