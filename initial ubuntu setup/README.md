@@ -147,6 +147,7 @@ At minimum you will need a **.env**, **Caddyfile** and **docker-compose.yml**. t
 
 #### Creating .env 
 Do this with `nano .env` and add the following lines in the .env file. Do not use subdomain. Just use yourrootdomain.com, in this example I'm using example.com
+The purpose of the .env file is to substitute variables in your docker-compose.yml in the same directory.
 **.env**
 ```
 MY_DOMAIN=example.com
@@ -154,7 +155,8 @@ DOCKER_MY_NETWORK=caddy_net
 ```
 **Ctrl+O** to save file.
 
-#### Creating docker-compose.yml 
+#### Creating docker-compose.yml
+A small explanation about this can be found [here](https://github.com/StarWhiz/docker_deployment_notes#commonly-added-lines-added-to-app-specific-docker-composeyml-files) 
 **docker-compose.yml**
 ```
 version: "3.7"
@@ -182,7 +184,7 @@ networks:
 ```
 
 #### Create Caddyfile
-This Caddyfile below is an example for a server with wordpress and rocketchat deployed in docker containers on the same caddy_net network.
+This Caddyfile below is an example for a server with wordpress deployed in a docker container on the same caddy_net network.
 
 **Caddyfile**
 ```
@@ -195,7 +197,7 @@ www.{$MY_DOMAIN} {
 }
 
 chat.{$MY_DOMAIN} {
-    reverse_proxy rocketchat:9000
+    reverse_proxy rocketchat:3000
 }
 ```
 
@@ -206,13 +208,13 @@ docker exec -w /etc/caddy caddy caddy reload
 ```
 You will be using that command above very often.
 
-In the example Caddyfile, the first two blocks are to handle yourwebsite.com and www.yourwebsite.com and point them to your wordpress container.
+In the example Caddyfile, the first two blocks are to handle yourwebsite.com and www.yourwebsite.com and point them to your wordpress container_name.
 
-The third block handles chat.yourwebsite.com and points them to your rocketchat container. 
+The third block handles chat.yourwebsite.com and points them to your rocketchat container_name. 
 
 I hope this makes sense. If it doesn't please refer to: https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2
 
-For now your Caddyfile can be blank as you don't have any other containers set up for now.
+For now your Caddyfile can be the same as the example above if you plan on deploying wordpress and rocket.chat.
 
 **Starting Caddy**
 Make sure you're in /home/sammy/docker/caddy
@@ -223,17 +225,17 @@ docker-compose up -d
 to start caddy. To bring it down you can do `docker-compose down`.
 
 ### Time to deploy Applications
-Congrats you are now ready to deploy applications. The other applications will be deployed the same way you just deployed Caddy!
+Congrats you are now ready to deploy applications. The other applications will be deployed the same way you just deployed Caddy! I recommend you deploy [wordpress] (https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) first if you are new to this.
 
-The general flow for adding new application is:
+The general flow for adding new application like wordpress for example is:
 
-1. Find an application specific guide from either my GitHub or DoTheEvo's GitHub: https://github.com/DoTheEvo/selfhosted-apps-docker
-2. Replicate the minimum file structure.
-3. Navigate inside the new app specific folder ` /home/docker/sammy/newapp`
-4. Create the mimimum files for the app specific guides
-5. Add blocks to your Caddyfile in ` /home/docker/sammy/caddy` and save.
-6. `docker exec -w /etc/caddy caddy caddy reload`
-7. Change back to your app specific folder ` /home/docker/sammy/newapp`
+1. Find an application specific [guide](https://github.com/StarWhiz/docker_deployment_notes#application-specific-deployment-guides)
+2. Make a new app specific folder in `/home/sammy/docker/` with `mkdir newapp`
+3. Navigate inside the new app specific folder with `cd newapp`
+4. Create the mimimum files as mentioned in the app specific guides, but don't worry about creating folders inside the newapp folder as they are auto generated in docker-compose.yml
+5. Use nano to add the app specific blocks to your Caddyfile in ` /home/sammy/docker/caddy/Caddyfile` and save.
+6. Reload caddy `docker exec -w /etc/caddy caddy caddy reload`
+7. Change back to your app specific folder ` /home/sammy/docker/newapp`
 8. `docker-compose up -d` to start the new application
 9. Test your app by visiting yourappsubdomain.yourwebsite.com
 
