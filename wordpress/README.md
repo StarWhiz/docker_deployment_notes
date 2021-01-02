@@ -105,7 +105,7 @@ Modify 3 areas in docker-compose.yml from "wordpress" to "wordpress2"
     container_name: wordpress2-db
     ...
 ```
-Add a subdomain to Caddyfile and point it to wordpress2
+Add a subdomain to Caddyfile and point it to wordpress2. Don't forget to add type A records to your DNS for the subdomain!
 ```
 secondsite.example.com {
     reverse_proxy wordpress2:80
