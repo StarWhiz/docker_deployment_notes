@@ -225,7 +225,7 @@ docker-compose up -d
 to start caddy. To bring it down you can do `docker-compose down`.
 
 ### Time to deploy Applications
-Congrats you are now ready to deploy applications. The other applications will be deployed the same way you just deployed Caddy! I recommend you deploy [wordpress] (https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) first if you are new to this.
+Congrats you are now ready to deploy applications. The other applications will be deployed the same way you just deployed Caddy! I recommend you deploy [wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) first if you are new to this.
 
 The general flow for adding new application like wordpress for example is:
 
