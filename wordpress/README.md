@@ -79,3 +79,41 @@ networks:
     external:
       name: $DOCKER_MY_NETWORK
 ```
+
+### Optional: What if you want to do multiple wordpress pages?
+Simple... Just repeat with the following changes. Below is an example for a new app folder called wordpress2"
+```
+/home/
+└── ~/
+    └── docker/
+        └── wordpress2/
+            ├── .env
+            ├── docker-compose.yml
+            ├── uploads.ini
+```
+
+Modify 3 areas in the original docker-compose.yml from "wordpress" to "wordpress2"
+```
+  wordpress:
+    ...
+    container_name: wordpress2
+    environment:
+      WORDPRESS_DB_HOST: wordpress2-db
+    ...
+  wordpress-db:
+    ...
+    container_name: wordpress2-db
+    ...
+```
+Add a subdomain to Caddyfile and point it to wordpress2
+```
+secondsite.example.com {
+    reverse_proxy wordpress2:80
+}
+```
+`docker exec -w /etc/caddy caddy caddy reload`
+
+Then `docker-compose up -d` inside the wordpress2 folder.
+
+As you can see we basically wrote in wordpress2 for everything. If you want more instances you can do wordpress3... wordpress4... and so on.
+
