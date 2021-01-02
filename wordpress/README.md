@@ -10,7 +10,7 @@
 ```
 
 ### Add to Caddyfile (from ~/docker/caddy)
-Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+You may have done this already if you followed the [A-Z Guide](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup#create-caddyfile) If not, do so and remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 example.com {
 	reverse_proxy wordpress:80
