@@ -11,19 +11,19 @@ After you finish the A-Z guide. You can then follow application specific guides 
 ## Application Specific Deployment Guides
 
 #### DoTheEvo's App Specific Guides
-* [caddy_v2](caddy_v2/) - reverse proxy
-* [bitwarden_rs](bitwarden_rs/) - password manager
-* [bookstack](bookstack/) - notes and documentation
-* [borg_backup](borg_backup/) - backup utility
-* [ddclient](ddclient/) - automatic DNS update
-* [dnsmasq](dnsmasq/) - DNS and DHCP server
-* [homer](homer/) - homepage
-* [nextcloud](nextcloud/) - file share & sync
-* [portainer](portainer/) - docker management
-* [prometheus_grafana](prometheus_grafana/) - monitoring
-* [unifi](unifi/) - management utility for ubiquiti devices
-* [watchtower](watchtower/) - automatic docker images update
-* [wireguard](wireguard/) - the one and only VPN to ever consider
+* [caddy_v2](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2) - reverse proxy
+* [bitwarden_rs](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/bitwarden_rs) - password manager
+* [bookstack](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/bookstack) - notes and documentation
+* [borg_backup](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/borg_backup) - backup utility
+* [ddclient](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/ddclient) - automatic DNS update
+* [dnsmasq](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/dnsmasq) - DNS and DHCP server
+* [homer](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/homer) - homepage
+* [nextcloud](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/nextcloud) - file share & sync
+* [portainer](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/portainer) - docker management
+* [prometheus_grafana](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/prometheus_grafana) - monitoring
+* [unifi](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/unifi) - management utility for ubiquiti devices
+* [watchtower](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/watchtower) - automatic docker images update
+* [wireguard](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/wireguard) - the one and only VPN to ever consider
 
 
 #### StarWhiz's App Specific Guides
