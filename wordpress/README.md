@@ -23,8 +23,7 @@ www.example.com {
 
 
 ### uploads.ini
-
-Make sure you create this file otherwise you can't adjust size limits. [Uploads.ini](https://github.com/StarWhiz/docker_deployment_notes/blob/master/wordpress/uploads.ini)
+Make sure you create this file otherwise you can't adjust size limits.
 ```
 file_uploads = On
 upload_max_filesize = 2056M
@@ -32,7 +31,6 @@ post_max_size = 2056M
 ```
 
 ### .env
-[.env](https://github.com/StarWhiz/docker_deployment_notes/blob/master/wordpress/.env)
 ```
 # General
 MY_DOMAIN=example.com
@@ -46,7 +44,6 @@ DB_ROOT_PASS=rootpass
 ```
 
 ### docker-compose.yml
-[docker-compose.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/wordpress/docker-compose.yml)
 ```
 version: '3.1'
 
