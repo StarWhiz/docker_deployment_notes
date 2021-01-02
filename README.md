@@ -10,15 +10,32 @@ After you finish the A-Z guide. You can then follow application specific guides 
 
 ## Application Specific Deployment Guides
 
-##### [FreePBX+Asterisk](https://github.com/StarWhiz/docker_deployment_notes/tree/master/freepbx-asterisk)
-##### [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd)
-##### [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe)
-##### [Rocket.chat](https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat)
-##### [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi)
-##### [Seafile](https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile)
-##### [Ubiquiti UniFi Controller](https://github.com/StarWhiz/docker_deployment_notes/tree/master/unifi-controller)
-##### [Wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress)
-##### [Zoneminder](https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder)
+#### DoTheEvo's App Specific Guides
+* [caddy_v2](caddy_v2/) - reverse proxy
+* [bitwarden_rs](bitwarden_rs/) - password manager
+* [bookstack](bookstack/) - notes and documentation
+* [borg_backup](borg_backup/) - backup utility
+* [ddclient](ddclient/) - automatic DNS update
+* [dnsmasq](dnsmasq/) - DNS and DHCP server
+* [homer](homer/) - homepage
+* [nextcloud](nextcloud/) - file share & sync
+* [portainer](portainer/) - docker management
+* [prometheus_grafana](prometheus_grafana/) - monitoring
+* [unifi](unifi/) - management utility for ubiquiti devices
+* [watchtower](watchtower/) - automatic docker images update
+* [wireguard](wireguard/) - the one and only VPN to ever consider
+
+
+#### StarWhiz's App Specific Guides
+* [FreePBX+Asterisk](https://github.com/StarWhiz/docker_deployment_notes/tree/master/freepbx-asterisk) - VOIP & telephony server
+* [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd) - FTP server
+* [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe) - Torrent Client w/ Windscribe VPN
+* [Rocket.chat](https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat) - Discord / Slack Clone
+* [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi) - CCTV NVR
+* [Seafile](https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile) - Cloud Drive
+* [Ubiquiti UniFi Controller](https://github.com/StarWhiz/docker_deployment_notes/tree/master/unifi-controller) - Management Utility for Ubiquiti Devices
+* [Wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) - CMS / Website Hosting
+* [Zoneminder](https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder) - CCTV NVR
 
 # Quick-References and Notes
 
