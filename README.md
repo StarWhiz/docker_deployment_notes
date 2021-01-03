@@ -121,3 +121,13 @@ subdomain.yourdomain.com {
     reverse_proxy 192.168.16.5:8080
 }
 ```
+
+## Other Linux Commands
+Check size of current directory
+```
+sudo du -sh ./
+```
+Check total disk usage
+```
+sudo df -h ./
+```
