@@ -58,7 +58,7 @@ If you'd like to learn how to create an SSH key do so [here](https://github.com/
 ```
 sudo sed --in-place 's/^PermitRootLogin.*/PermitRootLogin prohibit-password/g' /etc/ssh/sshd_config
 sudo sed --in-place 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
-systemctl restart sshd
+sudo systemctl restart sshd
 ```
 Using two sed commands above is the short way to disable root login. 
 To disable it manually you can just do `sudo nano /etc/ssh/sshd_config` find a line called PermitRootLogin modify it. 
