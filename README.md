@@ -132,3 +132,41 @@ Check total disk usage
 ```
 sudo df -h ./
 ```
+
+## Random Rsync Notes For Container Migration
+Remember to docker-compose down everything inside local machine so nothing shows up on docker container ls. 
+```
+# Generate keys. Choose defaults. Public key saves to ~/.ssh/id_rsa.pub
+# Why do we do this? Because we set PermitRootLogin prohibit-password earlier.
+# So we can only login root on the remote server via rsa key.
+
+ssh-keygen -t rsa
+cat ~/.ssh/id_rsa.pub
+
+# Installing Rsync. Local and remote server. 2 installs total.
+sudo apt update
+sudo apt install rsync
+
+# Login to remote server
+sudo su                 # to be the root user
+mkdir ~/.ssh            # if it didn't exist already
+cd .ssh
+nano authorized_keys    # Append/Paste lines from id_rsa.pub generated from local server.
+                        # Then save an exit.
+						
+# Back to your local server... The command
+rsync -aP -e "ssh -i /home/<username>/.ssh/id_rsa" <source> <destination>
+
+# Copy whole folder from source to destination example
+rsync -aP -e "ssh -i /home/sammy/.ssh/id_rsa" ~/docker/someapp root@<IPADDRESS>:/home/sammy/ 
+
+# Copy contents of folder from source to destination example # There is a / in front of ./docker in this case.
+rsync -aP -e "ssh -i /home/sammy/.ssh/id_rsa" ~/docker/someapp/ root@<IPADDRESS>:/home/sammy/
+
+# Rsync Flags
+-a # The -a option is a combination flag. It stands for “archive” and syncs recursively and preserves symbolic links, special and device files, modification times, group, owner, and permissions
+-e # specify ssh command...
+-v # verbose
+-P # progress + partial combined
+-h # output numbers in human readable format
+```
