@@ -37,7 +37,7 @@ Logout or close the ssh connection. Then ssh back in as your new username instea
 ```
 sudo apt install ufw
 sudo ufw allow OpenSSH
-sudo ufw allow 443/tco comment "caddy"
+sudo ufw allow 443/tcp comment "caddy"
 sudo ufw allow 80/tcp comment "caddy"
 sudo ufw enable
 ```
