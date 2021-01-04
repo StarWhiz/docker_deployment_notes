@@ -41,7 +41,7 @@ sudo ufw allow 443/tcp comment "caddy"
 sudo ufw allow 80/tcp comment "caddy"
 sudo ufw enable
 ```
-This is a basic firewall on ubuntu. If you install this remember to unblock the specific ports you need open for some of your applications. In the example below we allow our own SSH connection, and open TCP ports 80 & 443 in order for Caddy v2 to work.
+This is a basic firewall on ubuntu. If you install this remember to unblock the specific ports you need open for some of your applications. In the example above we allow our own SSH connection, and open TCP ports 80 & 443 in order for Caddy v2 to work.
 
 ### 4. Adding your SSH Key (Optional)
 Optional because you can choose to keep logging in with passwords if you wish. However logging in via SSH keys is more secure.
