@@ -43,6 +43,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 ## Most Commonly Used Commands
 ```
 docker exec -w /etc/caddy caddy caddy reload
+docker network create caddy_net # Only need to do this once on new VMs (From Step 9 of A-Z Guide)
 ```
 Use this command everytime you make changes to Caddyfile.
 
