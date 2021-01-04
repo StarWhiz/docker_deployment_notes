@@ -81,7 +81,7 @@ networks:
 ```
 
 ### Final steps (For people following A-Z)
-When you are done creating these 3 files, editing caddy, and reloading caddy... Make sure you're in the wordpress folder and do a `docker-compose up -d` to turn it on. Just imagine each folder as one container. You have to `docker-compose up` inside each container folders to start it. To stop it do a `docker-compose down`.
+When you are done creating these 3 files, editing caddy, and reloading caddy... Make sure you're in the wordpress folder and do a `docker-compose up -d` to turn it on. Just imagine each folder as one container. You have to `docker-compose up` inside each container folders to start it. To stop it do a `docker-compose down`. To view all your running containers do a `docker container ls`. More commands are referenced [here](https://github.com/StarWhiz/docker_deployment_notes#quick-references-and-notes)
 
 ### Optional: What if you want to do multiple wordpress pages?
 Simple... Just repeat with the following changes. Below is an example for a new app folder called wordpress2"
