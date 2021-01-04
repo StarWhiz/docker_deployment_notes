@@ -54,7 +54,7 @@ nano authorized_keys
 ```
 If you'd like to learn how to create an SSH key do so [here](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup/putty%20keys%20tutorial)
 
-### 5. Disable Root Login
+### 5. Disable Root Login by Password and Disable Login by Password (You will need to login via SSH Key)
 ```
 sudo sed --in-place 's/^PermitRootLogin.*/PermitRootLogin prohibit-password/g' /etc/ssh/sshd_config
 sudo sed --in-place 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
