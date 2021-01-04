@@ -37,8 +37,8 @@ Logout or close the ssh connection. Then ssh back in as your new username instea
 ```
 sudo apt install ufw
 sudo ufw allow OpenSSH
-sudo ufw allow 443/tco
-sudo ufw allow 80/tcp
+sudo ufw allow 443/tco comment "caddy"
+sudo ufw allow 80/tcp comment "caddy"
 sudo ufw enable
 ```
 This is a basic firewall on ubuntu. If you install this remember to unblock the specific ports you need open for some of your applications. In the example below we allow our own SSH connection, and open TCP ports 80 & 443 in order for Caddy v2 to work.
