@@ -95,15 +95,15 @@ Simple... Just repeat with the following changes. Below is an example for a new 
             ├── uploads.ini
 ```
 First you duplicate .env and uploads.ini inside the new directory wordpress2, but then you modify the docker-compose.yml.
-Modify 3 areas in docker-compose.yml from "wordpress" to "wordpress2"
+Modify 5 areas in docker-compose.yml from "wordpress" to "wordpress2"
 ```
-  wordpress:
+  wordpress2:
     ...
     container_name: wordpress2
     environment:
       WORDPRESS_DB_HOST: wordpress2-db
     ...
-  wordpress-db:
+  wordpress2-db:
     ...
     container_name: wordpress2-db
     ...

@@ -20,7 +20,6 @@ subdomain.example.com {
 
 ## .env
 set your environment variables
-https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/.env
 ```
 # General
 MY_DOMAIN=example.com
@@ -34,7 +33,6 @@ SEAFILE_HOSTNAME=subdomain.example.com
 ```
 
 ## docker-compose.yml
-https://github.com/StarWhiz/docker_deployment_notes/blob/master/seafile/docker-compose.yml
 ```
 version: '2.0'
 services:

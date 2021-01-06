@@ -28,18 +28,18 @@ MUMBLE_PASS=sampleRootPassword
 version: '3.3'
 services:
   mumble:
+    image: phlak/mumble
+    restart: unless-stopped
+	container_name: mumble-server
+    environment:
+      - SUPERUSER_PASSWORD=${MUMBLE_PASS}
+      - TZ=America/Los_Angeles
     ports:
      - 64738:64738
      - 64738:64738/udp
     volumes:
       - ./mumble-data:/etc/mumble
-    container_name: mumble-server
-    image: phlak/mumble
-    environment:
-      - SUPERUSER_PASSWORD=${MUMBLE_PASS}
-      - TZ=America/Los_Angeles
-    restart: unless-stopped
-
+	  
 networks:
   default:
     external:

@@ -9,7 +9,7 @@
 ```
 
 ### Notes
-Make sure port 521 is open on your firewall. Do not use Caddy for this. Just `docker-compose up -d` when you are done.
+Make sure port 521 is open on your firewall or ufw. Do not use Caddy for this. Just `docker-compose up -d` when you are done.
 
 Connect to the ftp server with your IP:521 and the USERNAME + PASS set in .env.
 
