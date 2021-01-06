@@ -1,4 +1,5 @@
 /home/
+```
 └── ~/
     └── docker/
         └── mumble/
@@ -6,6 +7,7 @@
             ├── docker-compose.yml
 	        └── mumble-data
 				└── config.ini
+```
 
 You will need 3 files minimum to start the mumble server.
 
