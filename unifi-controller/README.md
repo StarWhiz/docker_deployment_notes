@@ -1,4 +1,4 @@
-#### Tips
+### Tips
 Don't even use caddy for this deployment I don't know how to make it work. 
 
 Just use the forwarded ports. Make sure UFW allows all the required ports such as 3478, 10001, 8080, etc...
@@ -14,7 +14,7 @@ After `docker-compose up -d`. Navigate to HOSTIPADDRESS:8080 to access the contr
             ├── docker-compose.yml
 ```
 
-#### docker-compose.yml
+### docker-compose.yml
 ```
 ---
 version: "2.1"

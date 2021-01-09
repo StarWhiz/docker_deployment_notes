@@ -1,7 +1,7 @@
-## Intro
+### Intro
 This guide references: https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker as the original source for installation.
 
-## Minimum File Structure
+### Minimum File Structure
 ```
 /home/
 └── ~/
@@ -272,7 +272,7 @@ networks:
             name: caddy_net
 ```
 
-.env
+### .env
 Here you want to edit the PUBLIC_URL to match your subdomain.example.com
 
 Then after saving this. Run the script called ./gen-passwords.sh to generate the 6 passwords.

@@ -93,7 +93,7 @@ docker-compose up -d
 # rm docker-compose.yml
 ```
 
-# Minimum File Structure
+### Minimum File Structure
 ```
 /home/
 └── ~/
@@ -102,7 +102,7 @@ docker-compose up -d
             ├── docker-compose.yml
 ```
 
-## Add to Caddyfile (from ~/docker/caddy)
+### Add to Caddyfile (from ~/docker/caddy)
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 shinobi.yourdomain.com {
@@ -110,7 +110,7 @@ shinobi.yourdomain.com {
 }
 ```
 
-# docker-compose.yml
+### docker-compose.yml
 Notes: No tensorflow option. Use script above if you want that feature.
 
 ```
@@ -137,10 +137,10 @@ networks:
       name: caddy_net
 ```
 
-# Why port 521 Open?
+## Why port 521 Open?
 Why did I do ports 521:521? Well I wanted to enable FTP inside the docker with port 521 open (see below). You don't have to choose 521 this is arbitrary make sure your conf.json matches.. I will assume no port forward is needed on the router because Cameras and Shinobi NVR is on the sane LAN.
 
-# shinobi/config/conf.json
+## shinobi/config/conf.json
 
 Here I added the following lines to conf.json to enable FTP.
 ```
@@ -151,10 +151,10 @@ Here I added the following lines to conf.json to enable FTP.
    "thisIsDocker": true,
 ```
 
-# Camera specific notes
+## Camera specific notes
 You may need to port forward RTSP or RTMP ports for your cameras.
 
-# Reolink Specific (RLC-410-5MP and RLC-520) Gotchas
+## Reolink Specific (RLC-410-5MP and RLC-520) Gotchas
 
 ### RTMP Main Stream (High Bit Rate 1024Kbps ~ 8192Kbps)
 rtmp://[USERNAME]:[PASSWORD]@CAMERAIPADDRESS:PORT/bcs/channel0_main.bcs?token=sdasdasc&channel=0&stream=0&user=[USERNAME]&password=[PASSWORD]

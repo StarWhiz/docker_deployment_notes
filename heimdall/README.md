@@ -2,7 +2,7 @@ Heimdall Application Dashboard
 
 Official Site: https://heimdall.site/
 
-## Minimum File Structure
+### Minimum File Structure
 ```
 /home/
 └── ~/

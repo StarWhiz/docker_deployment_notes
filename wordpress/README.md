@@ -1,4 +1,4 @@
-# Minimum File Structure
+### Minimum File Structure
 ```
 /home/
 └── ~/

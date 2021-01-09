@@ -20,7 +20,7 @@ WIND_PASS=
 WIND_PORT=
 ```
 
-#### docker-compose.yml
+### docker-compose.yml
 ```
 version: "2.1"
 services:

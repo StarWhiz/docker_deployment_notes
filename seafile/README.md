@@ -1,4 +1,4 @@
-# Minimum File Structure
+### Minimum File Structure
 ```
 /home/
 └── ~/
@@ -8,7 +8,7 @@
             ├── docker-compose.yml
 ```
 
-## Add to Caddyfile (from ~/docker/caddy)
+### Add to Caddyfile (from ~/docker/caddy)
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 subdomain.example.com {
@@ -16,9 +16,7 @@ subdomain.example.com {
 }
 ```
 
-# Things to Modify
-
-## .env
+### .env
 set your environment variables
 ```
 # General
@@ -32,7 +30,7 @@ SEAFILE_ADMIN_PASSWORD=examplepass # Specifies Seafile admin password.
 SEAFILE_HOSTNAME=subdomain.example.com
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 ```
 version: '2.0'
 services:
@@ -85,10 +83,10 @@ You may need to add the following lines to your docker file if you plan on enabl
 ```
 After that you do this open this port on your firewall and redirect it to the Docker Host's IP with seafile running on it.
 
-## docker-compose up -d
+### docker-compose up -d
 After you have the .env and docker-compose files set up in this directory. Do a ```docker-compose up -d``` to start the containers. After they start modify seahub_settings.py and ccnet.conf as shown below.
 
-## seahub_settings.py
+### seahub_settings.py
 nano /home/~/docker/seafile/seafile-data/seafile/conf/seahub_settings.py
 
 Change FILE_SERVER_ROOT to be https instead of http.
@@ -97,7 +95,7 @@ Example Below:
 FILE_SERVER_ROOT = "https://subdomain.example.com/seafhttp"
 ```
 
-## ccnet.conf
+### ccnet.conf
 nano /home/~/docker/seafile/seafile-data/seafile/conf/ccnet.conf
 
 Change SERVICE_URL from http to https and remove the :8000 at the end.
@@ -108,7 +106,7 @@ SERVICE_URL https://subdomain.example.com
 
 # Optional: Setting Up WebDav
 
-## Caddyfile
+### Caddyfile
 ```
 webdav.example.com {
 	reverse_proxy seafile:80
@@ -116,7 +114,7 @@ webdav.example.com {
 ```
 Here I assigned a new subdomain webdav and point it to port 8080 which is the defualt on seafdav.conf
 
-## seafdav.conf
+### seafdav.conf
 ```
 nano /home/~/docker/seafile/seafile-data/seafile/conf/seafdav.conf
 ```
