@@ -29,6 +29,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 #### StarWhiz's App Specific Guides
 * [Heimdall](https://github.com/StarWhiz/docker_deployment_notes/tree/master/heimdall) - Another Homepage Dashboard
 * [FreePBX+Asterisk](https://github.com/StarWhiz/docker_deployment_notes/tree/master/freepbx-asterisk) - VOIP & telephony server
+* [Jitsi Meet](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jitsi-meet) - Videoconferencing
 * [Mumble](https://github.com/StarWhiz/docker_deployment_notes/tree/master/mumble) - Voice Chat Before Discord Days
 * [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd) - FTP server
 * [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe) - Torrent Client w/ Windscribe VPN
