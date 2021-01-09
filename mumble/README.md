@@ -51,6 +51,6 @@ networks:
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 mumble.example.com {
-	reverse_proxy mumble-server:64738
+    reverse_proxy mumble-server:64738
 }
 ```

@@ -12,7 +12,7 @@
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 subdomain.example.com {
-	reverse_proxy seafile:80
+    reverse_proxy seafile:80
 }
 ```
 
