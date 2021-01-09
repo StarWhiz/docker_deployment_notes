@@ -1,6 +1,8 @@
 ### Intro
 This guide references: https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker as the original source for installation.
 
+Currently this method is very basic and hosts an instance of jitsi without video recording and without authentication. Anyone with link can start a video conference. You would have to play around with .env and refer to the documentation to do these things.
+
 ### Minimum File Structure
 ```
 /home/
@@ -276,7 +278,7 @@ networks:
 ### .env
 Here you want to edit the PUBLIC_URL to match your subdomain.example.com
 
-Then after saving this. Run the script called ./gen-passwords.sh to generate the 6 passwords.
+Then after saving this, run the script called ./gen-passwords.sh to generate the 6 passwords in the first few lines.
 ```
 # shellcheck disable=SC2034
 
