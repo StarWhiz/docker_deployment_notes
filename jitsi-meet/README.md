@@ -16,7 +16,7 @@ This guide references: https://jitsi.github.io/handbook/docs/devops-guide/devops
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 meet.example.com {
-	reverse_proxy jitsi-web:80
+    reverse_proxy jitsi-web:80
 }
 ```
 
@@ -232,6 +232,7 @@ services:
     # Video bridge
     jvb:
         image: jitsi/jvb:latest
+        container_name: jitsi-jvb
         restart: ${RESTART_POLICY}
         ports:
             - '${JVB_PORT}:${JVB_PORT}/udp'
