@@ -1,4 +1,4 @@
-# Minimum File Structure
+### Minimum File Structure
 ```
 /home/
 └── ~/
@@ -8,9 +8,7 @@
             ├── docker-compose.yml
 ```
 
-# Things to Modify
-
-## Add to Caddyfile (from ~/docker/caddy)
+### Add to Caddyfile (from ~/docker/caddy)
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 subdomain.example.com {
@@ -18,7 +16,7 @@ subdomain.example.com {
 }
 ```
 
-## .env
+### .env
 set your environment variables
 https://github.com/StarWhiz/docker_deployment_notes/blob/master/rocketchat/.env
 ```
@@ -32,7 +30,7 @@ SMTP_MAIL_URL=smtp.mailgun.org
 ROCKETCHAT_BOT_PASSWORD=samplebotpassword
 ```
 
-## docker-compose.yml
+### docker-compose.yml
 https://github.com/StarWhiz/docker_deployment_notes/blob/master/rocketchat/docker-compose.yml
 ```
 version: '2'
@@ -124,5 +122,8 @@ networks:
       name: ${DOCKER_MY_NETWORK}
 ```
 
-## docker-compose up -d
-After you have the .env and docker-compose files set up in this directory. Do a ```docker-compose up -d``` to start the containers.
+### docker-compose up -d
+After you have the .env and docker-compose files set up in this directory. Do a ```docker-compose up -d``` to start the containers. It should take about 30-60 seconds to launch.
+
+### Finalization - Hubot
+After you can access your rocketchat server, you can stop the hubot errors for happening by creating a new bot user in Administration > Users > + New. Then create a bot with username bot, and email bot@yourdomain.com and password to match the password you used in the .env file. Lastly, for role choose bot and hit save. Now if you do a `docker logs rocketchat-hubot` you won't see any more errors and the container will stop restarting over and over again.
