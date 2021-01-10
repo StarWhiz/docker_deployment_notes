@@ -17,8 +17,7 @@ subdomain.example.com {
 ```
 
 ### .env
-set your environment variables
-https://github.com/StarWhiz/docker_deployment_notes/blob/master/rocketchat/.env
+Set your environment variables. SMTP service is needed if you want rocketchat to be able to send emails.
 ```
 # General
 MY_DOMAIN=example.com
@@ -31,7 +30,6 @@ ROCKETCHAT_BOT_PASSWORD=samplebotpassword
 ```
 
 ### docker-compose.yml
-https://github.com/StarWhiz/docker_deployment_notes/blob/master/rocketchat/docker-compose.yml
 ```
 version: '2'
 
