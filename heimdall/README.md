@@ -10,6 +10,16 @@ Official Site: https://heimdall.site/
         └── heimdall/
             ├── docker-compose.yml
 ```
+
+### Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+
+```
+heimdall.example.com {
+    reverse_proxy heimdall:80
+}
+```
+
 ### docker-compose.yml
 ```
 version: "2.1"
@@ -30,13 +40,4 @@ networks:
   default:
     external:
       name: caddy_net
-```
-
-### Add to Caddyfile (from ~/docker/caddy)
-Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
-
-```
-heimdall.example.com {
-    reverse_proxy heimdall:80
-}
 ```

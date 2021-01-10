@@ -6,6 +6,13 @@
         └── cloudcmd/
             ├── docker-compose.yml
 ```
+### Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+```
+cloud.yourdomain.com {
+    reverse_proxy cloudcmd:8000
+}
+```
 
 ### docker-compose.yml
 ```
@@ -25,12 +32,3 @@ networks:
     external:
       name: caddy_net
 ```
-
-### Add to Caddyfile (from ~/docker/caddy)
-Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
-```
-cloud.yourdomain.com {
-    reverse_proxy cloudcmd:8000
-}
-```
-

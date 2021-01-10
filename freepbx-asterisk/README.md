@@ -1,4 +1,3 @@
-# DO NOT USE CURRENTLY BROKEN
 ### Minimum File structure
 ```
 /home/
@@ -9,24 +8,38 @@
             ├── docker-compose.yml
 ```
 
-#### .env
+### Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+```
+freepbx.yourdomain.com {
+    reverse_proxy freepbx:80
+}
+```
+
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+
+### .env
+You should change the passwords here.
+
 ```
 DB_HOST=freepbx-db
 DB_PORT=3306
 DB_NAME=asterisk
 DB_USER=asterisk
-DB_PASS=
-DB_ROOT_PASS=
+DB_PASS=examplepass1
+DB_ROOT_PASS=examplepass2
+SITE_URL=pbx.yourdomain.com
 ```
 
-#### docker-compose.yml
+### docker-compose.yml
 ```
 version: '2'
 
 services:
   freepbx-app:
-    container_name: freepbx
     image: tiredofit/freepbx
+    container_name: freepbx
+    restart: unless-stopped
     ports:
      #### If you aren't using a reverse proxy
      #- 80:80
@@ -46,9 +59,8 @@ services:
      #- ./db:/var/lib/mysql
      ### You can drop custom files overtop of the image if you have made modifications to modules/css/whatever - Use with care
      #- ./assets/custom:/assets/custom
-
     environment: 
-      - VIRTUAL_HOST=pbx.starfroz.tk
+      - VIRTUAL_HOST=${SITE_URL}
       - VIRTUAL_NETWORK=caddy_net
       - VIRTUAL_PORT=80
 ###      - LETSENCRYPT_HOST=hostname.example.com
@@ -68,10 +80,6 @@ services:
       - DB_NAME=${DB_NAME}
       - DB_USER=${DB_USER}
       - DB_PASS=${DB_PASS}
-     
-    restart: always
-    networks:
-      - caddy_net
 
     ### These final lines are for Fail2ban. If you don't want, comment and also add ENABLE_FAIL2BAN=FALSE to your environment
     cap_add:
@@ -79,9 +87,9 @@ services:
     privileged: true
 
   freepbx-db:
-    container_name: freepbx-db
     image: tiredofit/mariadb
-    restart: always
+    container_name: freepbx-db
+    restart: unless-stopped
     volumes:
       - ./db:/var/lib/mysql
     environment:
@@ -89,12 +97,11 @@ services:
       - MYSQL_DATABASE=${DB_NAME}
       - MYSQL_USER=${DB_USER}
       - MYSQL_PASSWORD=${DB_PASS}
-    networks:
-      - caddy_net
 
   freepbx-db-backup:
-    container_name: freepbx-db-backup
     image: tiredofit/db-backup
+    container_name: freepbx-db-backup
+    restart: unless-stopped
     links:
      - freepbx-db
     volumes:
@@ -111,9 +118,6 @@ services:
       - DB_CLEANUP_TIME=8640
       - COMPRESSION=BZ
       - MD5=TRUE
-    networks:
-      - caddy_net
-    restart: always
 
 networks:
   default:
@@ -121,12 +125,10 @@ networks:
       name: caddy_net
 ```
 
-### Add to Caddyfile (from ~/docker/caddy)
-Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
-```
-asterisk.yourdomain.com {
-    reverse_proxy asterisk:80
-}
-```
+### docker-compose up -d
+After you created the .env and docker-compose.yml in this directory... do a `docker-compose up -d` to turn on the container. Then after it is finish booting...
 
-Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+Visit https://freepbx.yourdomain.com/admin/ to edit config. (Add /admin to the domain you choose in Caddy)
+
+
+

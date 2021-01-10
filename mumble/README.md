@@ -10,7 +10,15 @@
 				└── config.ini
 ```
 
-You will need 3 files minimum to start the mumble server.
+You will need 3 files minimum to start the mumble server. In this case config.ini should be inside the mumble-data folder before starting the container.
+
+### Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+```
+mumble.example.com {
+    reverse_proxy mumble-server:64738
+}
+```
 
 ### mumble/config.ini
 ```
@@ -47,10 +55,3 @@ networks:
       name: caddy_net
 ```
 
-### Add to Caddyfile (from ~/docker/caddy)
-Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
-```
-mumble.example.com {
-    reverse_proxy mumble-server:64738
-}
-```
