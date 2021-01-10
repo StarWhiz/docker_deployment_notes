@@ -40,6 +40,9 @@ version: '2'
 services:
   rocketchat:
     image: rocketchat/rocket.chat:latest
+    container_name: rocketchat
+#   port:
+#       - 3000:3000
     command: >
       bash -c
         "for i in `seq 1 30`; do
@@ -54,19 +57,20 @@ services:
     environment:
       - PORT=3000
       - ROOT_URL=${ROOT_URL}
-      - MONGO_URL=mongodb://mongo:27017/rocketchat
-      - MONGO_OPLOG_URL=mongodb://mongo:27017/local
+      - MONGO_URL=mongodb://rocketchat-db:27017/rocketchat
+      - MONGO_OPLOG_URL=mongodb://rocketchat-db:27017/local
       - MAIL_URL=${SMTP_MAIL_URL}
 #       - HTTP_PROXY=http://proxy.domain.com
 #       - HTTPS_PROXY=http://proxy.domain.com
     depends_on:
-      - mongo
+      - rocketchat-db
     labels:
       - "traefik.backend=rocketchat"
       - "traefik.frontend.rule=Host: your.domain.tld"
 
-  mongo:
+  rocketchat-db:
     image: mongo:4.0
+    container_name: rocketchat-db
     restart: unless-stopped
     volumes:
      - ./data/db:/data/db
@@ -77,12 +81,12 @@ services:
 
   # this container's job is just run the command to initialize the replica set.
   # it will run the command and remove himself (it will not stay running)
-  mongo-init-replica:
+  rocketchat-db-init-replica:
     image: mongo:4.0
     command: >
       bash -c
         "for i in `seq 1 30`; do
-          mongo mongo/rocketchat --eval \"
+          mongo rocketchat-db/rocketchat --eval \"
             rs.initiate({
               _id: 'rs0',
               members: [ { _id: 0, host: 'localhost:27017' } ]})\" &&
@@ -91,11 +95,12 @@ services:
           sleep 5;
         done; (exit $$s)"
     depends_on:
-      - mongo
+      - rocketchat-db
 
   # hubot, the popular chatbot (add the bot user first and change the password before starting this image)
-  hubot:
+  rocketchat-hubot:
     image: rocketchat/hubot-rocketchat:latest
+    container_name: rocketchat-hubot    
     restart: unless-stopped
     environment:
       - ROCKETCHAT_URL=rocketchat:3000
