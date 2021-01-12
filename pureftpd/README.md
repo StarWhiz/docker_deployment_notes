@@ -9,7 +9,7 @@
 ```
 
 ### Notes
-Make sure port 521 is open on your firewall or ufw. Do not use Caddy for this. Just `docker-compose up -d` when you are done.
+Make sure port 521 is open on your firewall or ufw. Do not use Caddy for this. Just `docker-compose up -d` in side the folder when you are done.
 
 Connect to the ftp server with your IP:521 and the USERNAME + PASS set in .env.
 
@@ -21,6 +21,8 @@ FTP_USER_HOME=/home/
 ```
 
 ### docker-compose.yml
+In this docker compose example we are mounting your current user's home folder to the folder called mountedfolder inside the docker container. You can see this under the line containing `- "~/:/home/mountedfolder"`
+
 ```
 version: '3'
 
@@ -32,8 +34,8 @@ services:
       - "521:21"
       - "30000-30009:30000-30009"
     volumes:
-      - "./:/home/admin/test"
-      - "./:/etc/pure-ftpd/passwd"
+      - "~/:/home/mountedfolder"
+      - "./passwd:/etc/pure-ftpd/passwd"
 # uncomment for ssl/tls
 #      - "./:/etc/ssl/private/"
     environment:
@@ -44,4 +46,5 @@ services:
 # also for ssl/tls:
 #      ADDED_FLAGS: "--tls=2"
     restart: unless-stopped
+
 ```
