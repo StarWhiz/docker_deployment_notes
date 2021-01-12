@@ -9,7 +9,12 @@
 ```
 
 ### Notes
-Make sure port 521 is open on your firewall or ufw. Do not use Caddy for this. Just `docker-compose up -d` in side the folder when you are done.
+Make sure port 521 is open and 30000-30009 on your firewall or ufw. Do not use Caddy for this. Just `docker-compose up -d` in side the folder when you are done. You can do this with
+
+```
+sudo ufw allow 521/tcp comment "PureFTPd"
+sudo ufw allow 30000:30009/tcp comment "PureFTPd"
+```
 
 Connect to the ftp server with your IP:521 and the USERNAME + PASS set in .env.
 
