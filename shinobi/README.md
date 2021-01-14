@@ -173,14 +173,15 @@ Reference: https://hub.shinobi.video/articles/view/LyCI3yQsUTouSAJ
 ONE BIG GOTCHA... It took me a long time to figure out, but in order for FTP to work with Reolink Cameras. In your Reolink Client when setting up FTP there is an an option called Transport Mode. Make sure you select PORT instead of AUTO otherwise FTP won't work.
 
 ### Gotcha #2 Multiple input feeds. Low Q Stream + High Q Recording
-This is a work around that allows for multiple input feeds.
+This is a work around that allows for multiple input feeds. I do it this way because if you don't you can get one of two problems. Problem 1 stream is laggy and super delayed but recording is fine. Or Stream is fine but recording won't work at all.
 
 For context. 
 Input 0 = LQ Sub Stream 
 Input 1 = HQ Main Stream.
+Input 2 = LQ Sub Stream Again.
 
 Under Input: Primary Input to 0:v
-Under Stream: Input Feed Map to 0:v
+Under Stream: Input Feed Map to 2:v
 Under Traditional Recording: Input Feed Map to 1:v   ... Then Press + sign, add another Input Feed Map to 1:a
 
-The order of inputs matters. The reason is because Primary Input seems to only work when it is set to 0:v, meaning input 0 will have no audio. This is perfect because we want to stream in LQ without audio. For recording we want HQ video and audio so input 1:v and 1:a so the Main Stream should be set as input 1.
+The order of inputs matters.
