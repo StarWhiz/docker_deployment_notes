@@ -41,7 +41,7 @@ services:
       - WINDSCRIBE_FIREWALL=on
     volumes:
       - ./config:/config
-      - /data:/data
+      - ./data:/data
 #    ports:
 #      - 8080:8080
     dns:
