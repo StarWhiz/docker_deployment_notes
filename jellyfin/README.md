@@ -55,3 +55,6 @@ networks:
     external:
       name: caddy_net
 ```
+
+### Tips
+If you need remote access. Make sure you login to the admin panel. Click on Networking under Advanced. Then scroll down and check a setting that says "Allow remote connections to this Jellyfin Server.
