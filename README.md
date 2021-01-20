@@ -51,8 +51,8 @@ docker network create caddy_net # Only need to do this once on new VMs (From Ste
 Use this command everytime you make changes to Caddyfile.
 
 ```
-docker exec -t -i CONTAINERNAME /bin/bash
-docker exec -t -i CONTAINERNAME /bin/sh
+docker exec -ti CONTAINERNAME /bin/bash
+docker exec -ti CONTAINERNAME /bin/sh
 ```
 Commands to enter a container's shell. Use bash first, if that doens't work try sh.
 
