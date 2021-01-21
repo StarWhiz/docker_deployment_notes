@@ -19,7 +19,7 @@ jelly.example.com {
 ```
 
 ### docker-compose.yml
-For the docker-compose you need to modify the the `/path/to/your/media`. You may also need to modify PUID/GUID if you have more than one linux account. Usually 1000 and 1000 will work if you followed my A-Z guide.
+For the docker-compose you need to modify the the `/path/to/your/media` to point to where your media is actually located. You may also need to modify PUID/GUID if you have more than one linux account. Usually 1000 and 1000 will work if you followed my A-Z guide.
 
 Optionally you may want to open ports 7359/udp and 1900/udp on your ufw firewall so jellyfin can be discovered if it is installed on a server on your LAN. `sudo ufw allow 7359/udp comment "jellyfin discovery"` is an example command to do this.
 
@@ -39,7 +39,7 @@ services:
       #- UMASK_SET=<022> #optional
     volumes:
       - ./config:/config
-      - ./media:/data/media
+      - /path/to/your/media:/data/media
       # - /path/to/your/media2:/data/media2   #Optional, you can add as many paths as you want...
       # - /path/to/your/anime:/data/anime     #Optional
       # - /path/to/movies:/data/movies        #Optional
