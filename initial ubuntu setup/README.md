@@ -49,8 +49,12 @@ Optional because you can choose to keep logging in with passwords if you wish. H
 ```
 cd ~
 mkdir .ssh
+chmod 700 .ssh
 cd .ssh 
 nano authorized_keys
+chmod 6644 authorized_keys
+cd ~
+chown -R sammy:sammy .ssh
 ```
 If you'd like to learn how to create an SSH key do so [here](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup/putty%20keys%20tutorial)
 
