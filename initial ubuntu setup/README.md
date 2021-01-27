@@ -47,7 +47,7 @@ This is a basic firewall on ubuntu. If you install this remember to unblock the 
 Optional because you can choose to keep logging in with passwords if you wish. However logging in via SSH keys is more secure.
 
 ```
-cd ~
+cd /home/sammy
 mkdir .ssh
 chmod 700 .ssh
 cd .ssh 
