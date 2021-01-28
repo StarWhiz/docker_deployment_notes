@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<html>
+<head>
+<title>Online vCard Converter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="keywords" content="vcard,vcf,ldif,ldap,csv,gmail,convert,mac,addresses,contacts,export,import" />
+<meta name="description" content="Convert your vCard files to CSV or LDIF in order to import them to Gmail (like A to G) or Outlook" />
+<style type="text/css">
+
+body {
+  margin: 1em;
+  background: #fff;
+  font-family:'Lucida Grande', Geneva, Verdana, Arial, Helvetica, sans-serif;
+  font-size: small;
+}
+  
+td.cell {
+  background:#efefef;
+  padding-right: 0.6em;
+}
+
+td.label {
+  color: #333;
+  font-weight: bold;
+  text-align: right;
+}
+
+.title {
+  font-size:20px;
+  font-weight:bold;
+}
+
+.hint {
+  color: #999999;
+}
+
+.error {
+  color: #cc0000;
+}
+
+.disclaimer {
+  width: 48em;
+  color: #333;
+  font-size: 0.9em;
+  border: 1px solid #cc6;
+  background: #ffd;
+  margin-top: 1em;
+  padding: 1em;
+}
+
+.disclaimer h4 {
+  margin-top: 0;
+}
+
+</style>
+<script type="text/javascript">
+
+function set_form_fields(elem)
+{
+  var format = elem.options[elem.selectedIndex].value;
+  var header = elem.form._header;
+  var delimiter = elem.form._delimiter;
+  var encoding = elem.form._encoding;
+  var newlines = elem.form._newlines;
+  var dn = elem.form._dn;
+
+  switch (format)
+  {
+    case 'gmail':
+      encoding.selectedIndex = 0;
+      newlines.selectedIndex = 0;
+
+    case 'ldif':
+    case 'img':
+      header.disabled = true;
+      delimiter.disabled = true;
+      encoding.disabled = true;
+      newlines.disabled = true;
+      dn.disabled = true;
+      break;
+
+    case 'ldap':
+      header.disabled = true;
+      delimiter.disabled = true;
+      encoding.disabled = false;
+      newlines.disabled = true;
+      dn.disabled = false;
+      break;
+
+    case 'csv':
+      header.disabled = false;
+      delimiter.disabled = false;
+      encoding.disabled = false;
+      newlines.disabled = false;
+      dn.disabled = true;
+      break;
+
+    case 'fritzbox':
+      encoding.selectedIndex = 1;
+      delimiter.selectedIndex = 1;
+      newlines.selectedIndex = 2;
+      header.checked = true;
+      header.disabled = true;
+      delimiter.disabled = true;
+      encoding.disabled = true;
+      newlines.disabled = true;
+      dn.disabled = true;
+      break;
+  }
+
+  var rootdnrow = document.getElementById('ldaprootdn');
+  rootdnrow.style.display = dn.disabled ? 'none' : (document.all && !window.opera ? 'block' : 'table-row');
+}
+
+</script>
+</head>
+<body>
+
+<form method="post" action="index.php" enctype="multipart/form-data">
+
+<table border="0" cellspacing="0" cellpadding="0"><tr>
+
+<td width="180" height="90"><img src="vcf2csv_logo.jpg" width="170" height="78" alt="VCard to CSV Logo"></td>
+<td class="title">vCard to LDIF/CSV Converter</td>
+
+</tr></table>
+
+<p>Preferred to export Apple's Address Book to Mozilla Thunderbird.<br />
+<span class="hint">Simply drag all contacts from the Address Book to your desktop and upload the created vCard file.</span></p>
+
+<?php
+
+if (!empty($GLOBALS['error_msg']))
+  print '<p class="error">'.$GLOBALS['error_msg']."</p>\n";
+
+?>
+
+<table border="0" cellspacing="1" cellpadding="2"><tr>
+
+<td class="cell label">vCard-File:</td>
+<td class="cell"><input type="file" size="30" name="_vcards">
+  <span class="hint" style="padding-left:1em">(max. <?php echo show_bytes(parse_bytes(ini_get('upload_max_filesize'))); ?>)</span></td>
+
+</tr><tr>
+
+<td class="cell label">Format:</td>
+<td class="cell"><select name="_format" onChange="set_form_fields(this)">
+  <option value="ldif">LDIF (Mozilla Thunderbird)</option>
+  <option value="ldap">LDIF (Import to LDAP server)</option>
+  <option value="csv">CSV</option>
+  <option value="gmail">Gmail (CSV)</option>
+  <option value="fritzbox">FritzBox (CSV)</option>
+  <option value="img">Images</option>
+</select>
+<select name="_delimiter" disabled>
+  <option value="tab">Tab</option>
+  <option value=";">Semicolon</option>
+  <option value=",">Comma</option>
+</select>
+<input type="checkbox" name="_header" id="checkHeader" value="1" disabled><label for="checkHeader">&nbsp;Add header line</label></td>
+
+</tr><tr id="ldaprootdn" style="display:none">
+
+<td class="cell label">Root DN:</td>
+<td class="cell">
+  <input type="text" name="_dn" id="dnID" style="width:30em;" disabled>&nbsp;
+  <label for="accessCode"><br>Use as Root DN LDAP identifier, to add it at the end of the "dn:" LDIF line <br>(for example: dc=Users, dc=nodomain)</label>
+  <span class="hint" style="padding-left:1em">(max. 255 chars)</span>
+</td>
+
+</tr><tr>
+
+<td class="cell label">Encoding:</td>
+<td class="cell">
+  <select name="_encoding" disabled>
+    <option value="UTF-8" selected>Unicode (UTF-8)</option>
+    <option value="UTF-16LE">Unicode (UTF-16LE)</option>
+    <option value="ISO-8859-1">Windows Latin-1 (ISO-8859-1)</option>
+    <option value="ISO-8859-15">Windows Latin-9 (ISO-8859-15)</option>
+    <option value="MS-ANSI">Microsoft ANSI (Windows-1252)</option>
+    <!--<option value="MacRoman">Macintosh (Mac Roman)</option>-->
+  </select>
+  <select name="_newlines" disabled>
+    <option value="lf" selected>Line Feed (Default)</option>
+    <option value="cr">Carriage Return (old Mac OS)</option>
+    <option value="crlf">CR-LF (Windows)</option>
+  </select>
+</td>
+
+</tr><tr valign="top">
+
+<td class="cell label">Filter:</td>
+<td class="cell">
+  <input type="checkbox" name="_mailonly" id="checkMailonly" value="1"><label for="checkMailonly">&nbsp;vCards with e-mail only</label><br />
+  <input type="checkbox" name="_phoneonly" id="checkPhoneonly" value="1"><label for="checkPhoneonly">&nbsp;vCards with phone numbers only</label>
+</td>
+
+</tr><tr>
+
+<td class="cell label">Modifications:</td>
+<td class="cell">
+  <input type="text" name="_accesscode" id="accessCode" style="width:3em;">&nbsp;
+  <label for="accessCode">replace this International Access Code with &laquo;0&raquo;</label>
+</td>
+
+</tr><tr>
+
+<td></td>
+<td><br><input type="submit" value="convert"></td>
+
+</tr></table>
+</form>
+
+<div class="disclaimer">
+<h4>How to convert files</h4>
+
+<ol>
+<li>Select a file from your computer's local drive for the field &quot;vCard-File&quot;</li>
+<li>Choose the desired output format</li>
+<li>Click the &quot;convert&quot; button</li>
+</ol>
+
+<p>The converted file is automatically downloaded to your computer.
+ If you're not prompted where to save the file, you'll find it in the &quot;Downloads&quot; folder on your computer.</p>
+
+<h4>Privacy Policy</h4>
+
+<p>This public service is intended to provide simple functions to convert any vCard file into another format.
+It was created for personal needs and is now provided on a private and non commercial basis.
+The uploaded file will not be stored permanently nor will the converted addresses be kept on the server.</p>
+
+<p>You can also <a href="https://github.com/thomascube/vcfconvert/releases">download</a> the script
+and run it locally. All you need is a webserver or a shell with PHP installed. This software is free and open source
+and everybody is welcome to help us improving it. Fork us on <a href="https://github.com/thomascube/vcfconvert">github</a>!</p>
+
+<p>For questions about development, privacy or security, please contact tellme&#x0040;brotherli.&#099;&#104;</p>
+</div>
+
+</body>
+</html>
