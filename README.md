@@ -37,6 +37,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 * [Rocket.chat](https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat) - Discord / Slack Clone
 * [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi) - CCTV NVR
 * [Seafile](https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile) - Cloud Drive
+* [Snipe IT](https://github.com/StarWhiz/docker_deployment_notes/tree/master/snipeit) - IT Asset Management
 * [Ubiquiti UniFi Controller](https://github.com/StarWhiz/docker_deployment_notes/tree/master/unifi-controller) - Management Utility for Ubiquiti Devices
 * [Wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) - CMS / Website Hosting
 * [Zoneminder](https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder) - CCTV NVR
