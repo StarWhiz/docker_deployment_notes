@@ -42,6 +42,9 @@ After you finish the A-Z guide. You can then follow application specific guides 
 * [Wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) - CMS / Website Hosting
 * [Zoneminder](https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder) - CCTV NVR
 
+#### Other App Specific References
+* [140+ Docker Scripts by technorabilia](https://github.com/technorabilia/docker-bits)
+
 # Quick-References and Notes
 
 ## Most Commonly Used Commands
