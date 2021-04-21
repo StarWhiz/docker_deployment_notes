@@ -103,6 +103,10 @@ Example Below:
 ```
 SERVICE_URL https://subdomain.example.com
 ```
+# Optional: Changing upload file size limit
+You can change your upload size limits by editing seafile.conf...
+sudo nano ~/docker/seafile/seafile-data/seafile/conf/seafile.conf
+
 
 # Optional: Setting Up WebDav
 
