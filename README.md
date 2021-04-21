@@ -146,10 +146,11 @@ Remember to docker-compose down everything inside local machine so nothing shows
 # Why do we do this? Because we set PermitRootLogin prohibit-password earlier.
 # So we can only login root on the remote server via rsa key.
 
+# As root user on local server generate Keys...
 ssh-keygen -t rsa
 cat ~/.ssh/id_rsa.pub
 
-# Installing Rsync. Local and remote server. 2 installs total.
+# Install Rsync. Local and remote server. 2 installs total.
 sudo apt update
 sudo apt install rsync
 
