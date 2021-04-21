@@ -87,7 +87,7 @@ After that you do this open this port on your firewall and redirect it to the Do
 After you have the .env and docker-compose files set up in this directory. Do a ```docker-compose up -d``` to start the containers. After they start modify seahub_settings.py, ccnet.conf, and maybe gunicorn.conf.py (if you have connnection refused issues) as shown below.
 
 ### seahub_settings.py
-sudo nano ~/docker/seafile/seafile-data/seafile/conf/seahub_settings.py
+`sudo nano ~/docker/seafile/seafile-data/seafile/conf/seahub_settings.py`
 
 Change FILE_SERVER_ROOT to be https instead of http.
 Example Below:
@@ -96,7 +96,7 @@ FILE_SERVER_ROOT = "https://subdomain.example.com/seafhttp"
 ```
 
 ### ccnet.conf
-sudo nano ~/docker/seafile/seafile-data/seafile/conf/ccnet.conf
+`sudo nano ~/docker/seafile/seafile-data/seafile/conf/ccnet.conf`
 
 Change SERVICE_URL from http to https and remove the :8000 at the end.
 Example Below:
@@ -105,15 +105,14 @@ SERVICE_URL https://subdomain.example.com
 ```
 
 ### gunicorn.conf.py
-sudo nano ~/docker/seafile/seafile-data/seafile/conf/gunicorn.conf.py
+`sudo nano ~/docker/seafile/seafile-data/seafile/conf/gunicorn.conf.py`
 
 According to @DemoniWaari [#3](https://github.com/StarWhiz/docker_deployment_notes/issues/3) you may need to change the default `bind = "127.0.0.1:8000"` to `bind = "0.0.0.0:8000"` if you get a connection refused error.
 
 ### Optional: seafile.conf - changing upload file size limit
-You can change your upload size limits by editing seafile.conf...
+You can change your upload size limits by editing `max_upload_size=1000` seafile.conf... The number is in GBs
 
-sudo nano ~/docker/seafile/seafile-data/seafile/conf/seafile.conf
-
+`sudo nano ~/docker/seafile/seafile-data/seafile/conf/seafile.conf`
 
 # Optional: Setting Up WebDav
 
