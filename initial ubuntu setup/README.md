@@ -128,7 +128,7 @@ It allows you to host multiple applications based on the same or different hostn
 
 * **A domain name** like `example.com` you can buy one for cheap on namecheap.
   * After buying your domain you need to set custom DNS records. 
-  * Create new type A records that point to the Public IP of your server.
+  * Create type A records that point to the Public IP of your server. So if you made a chat.{$MY_DOMAIN} entry in Caddyfile create a "Type A" record for chat.yourdomain.com and point it to the Public IP of your server.
  
 ### Minimum File Structure
 ```
