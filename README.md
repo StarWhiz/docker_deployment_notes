@@ -45,6 +45,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 #### Other App Specific References
 * [140+ Docker Scripts by technorabilia](https://github.com/technorabilia/docker-bits)
 * [More docker-compose files by bearlikelion](https://github.com/bearlikelion/docker-compose)
+* [awesome-compose](https://github.com/docker/awesome-compose)
 # Quick-References and Notes
 
 ## Most Commonly Used Commands
