@@ -119,7 +119,7 @@ You can change your upload size limits by editing `max_upload_size=1000` seafile
 ### Caddyfile
 ```
 webdav.example.com {
-	reverse_proxy seafile:80
+	reverse_proxy seafile:8080
 }
 ```
 Here I assigned a new subdomain webdav and point it to port 8080 which is the defualt on seafdav.conf
