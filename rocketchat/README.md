@@ -37,7 +37,7 @@ services:
   rocketchat:
     image: rocketchat/rocket.chat:latest
     container_name: rocketchat
-#   port:
+#   ports:
 #       - 3000:3000
     command: >
       bash -c
