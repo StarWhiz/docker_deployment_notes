@@ -132,3 +132,13 @@ Set ```enabled=true```
 Set ```share_name = /```
 
 Remember to do a docker-compose restart and a caddy exec restart after modifying seafile conf files!
+
+### Maintainance - Freeing Space
+When you delete files in seafile and empty trash in the web UI, it doesn't free up space on your server. 
+After emptying trash in the webUI you should run the garbage collector w/ the command below to free up space.
+
+```
+docker exec seafile /scripts/gc.sh
+```
+
+
