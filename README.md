@@ -65,12 +65,14 @@ Commands to enter a container's shell. Use bash first, if that doens't work try 
 
 ## Commonly used Docker Specific Commands
 ```
-docker container ls     # list all running containers
-docker container ls -a  # list all containers even stopped ones
-docker container rm     # remove container
-docker container kill   # kill a running container
-docker system prune     # Remove all unused docker: containers, images, networks and volumes to free up space
-docker container prune  # Similar to system prune but only targets containers.
+docker container ls       # list all running containers
+docker container ls -a    # list all containers even stopped ones
+docker container rm       # remove container
+docker container kill     # kill a running container
+docker system prune       # Remove all unused docker: containers, images, networks and volumes to free up space
+docker container prune    # Similar to system prune but only targets containers.
+docker logs CONTAINERNAME # Shows logs for the container
+docker logs --follow CONTAINERNAME # Shows log for the container in the foreground
 
 ### While inside app specific folder
 docker-compose restart  # restart docker stack for application
