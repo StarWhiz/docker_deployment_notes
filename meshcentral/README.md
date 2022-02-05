@@ -9,8 +9,8 @@ THIS IS A WIP DO NOT USE...
         └── meshcentral/
             ├── config.json.template
             ├── docker-compose.yml
-	        └── Dockerfile
-			└── startup.sh
+	    ├── Dockerfile
+	    ├── startup.sh
 ```
 
 You will need the files in this GitHubs folder to build the meshcentral image and deploy it.
