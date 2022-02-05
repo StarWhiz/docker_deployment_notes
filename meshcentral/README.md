@@ -27,9 +27,9 @@ meshcentral.joindigital.com {
                 header_up Host {http.reverse_proxy.upstream.hostport}
                 header_up X-Real-IP {http.request.remote}
                 header_up X-Forwarded-For {http.request.remote}
-				transport http {
-					tls_insecure_skip_verify
-				}
+		transport http {
+			tls_insecure_skip_verify
+		}
         }
 }
 ```
