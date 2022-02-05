@@ -21,7 +21,7 @@ Symfony can help you host any php application. For this example, I selfhost vcfc
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 vcfconvert.yourdomain.com {
-    reverse_proxy vcfconvert:80
+	reverse_proxy vcfconvert:80
 }
 ```
 

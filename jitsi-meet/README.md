@@ -18,7 +18,7 @@ Currently this method is very basic and hosts an instance of jitsi without video
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 meet.example.com {
-    reverse_proxy jitsi-web:80
+	reverse_proxy jitsi-web:80
 }
 ```
 

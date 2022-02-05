@@ -10,7 +10,7 @@
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 cloud.yourdomain.com {
-    reverse_proxy cloudcmd:8000
+	reverse_proxy cloudcmd:8000
 }
 ```
 

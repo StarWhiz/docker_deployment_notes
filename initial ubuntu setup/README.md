@@ -199,15 +199,15 @@ This Caddyfile below is an example for a server with wordpress deployed in a doc
 **Caddyfile**
 ```
 {$MY_DOMAIN} {
-    reverse_proxy wordpress:80
+	reverse_proxy wordpress:80
 }
 
 www.{$MY_DOMAIN} {
-    reverse_proxy wordpress:80
+	reverse_proxy wordpress:80
 }
 
 chat.{$MY_DOMAIN} {
-    reverse_proxy rocketchat:3000
+	reverse_proxy rocketchat:3000
 }
 ```
 

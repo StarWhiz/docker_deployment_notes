@@ -15,7 +15,7 @@ Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Ca
 
 ```
 snipeit.example.com {
-    reverse_proxy wordpress:80
+	reverse_proxy wordpress:80
 }
 ```
 

@@ -12,7 +12,7 @@
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 zoneminder.yourdomain.com {
-    reverse_proxy zoneminder:80
+	reverse_proxy zoneminder:80
 }
 ```
 

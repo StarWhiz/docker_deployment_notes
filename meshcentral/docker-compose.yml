@@ -1,0 +1,24 @@
+version: '3'
+services:
+    meshcentral:
+        restart: unless-stopped
+        container_name: meshcentral
+        build: .
+#        ports:
+#            - 4430:4430  #I Used 4430 because caddy v2 doesn't play well with a container using port 443. Can change 4430 to something else in the environment var CONTAINER_PORT below 
+        environment:
+            - HOSTNAME=meshcentral.YOURDOMAIN.com
+            - CONTAINER_PORT=4430
+            - REVERSE_PROXY=YOURDOMAIN.com
+            - REVERSE_PROXY_TLS_PORT=443
+            - IFRAME=false
+            - ALLOW_NEW_ACCOUNTS=true
+            - WEBRTC=true
+        volumes:
+            - ./data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
+            - ./user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
+
+networks:
+    default:
+        external:
+            name: caddy_net

@@ -14,7 +14,7 @@ https://jellyfin.org/
 ### Add to Caddyfile (from ~/docker/caddy)
 ```
 jelly.example.com {
-    reverse_proxy jellyfin:8096
+	reverse_proxy jellyfin:8096
 }
 ```
 

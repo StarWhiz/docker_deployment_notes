@@ -12,7 +12,7 @@
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 subdomain.example.com {
-    reverse_proxy rocketchat:3000
+	reverse_proxy rocketchat:3000
 }
 ```
 

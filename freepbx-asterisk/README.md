@@ -12,7 +12,7 @@
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 freepbx.yourdomain.com {
-    reverse_proxy freepbx:80
+	reverse_proxy freepbx:80
 }
 ```
 

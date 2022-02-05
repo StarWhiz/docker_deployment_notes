@@ -106,7 +106,7 @@ docker-compose up -d
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 ```
 shinobi.yourdomain.com {
-    reverse_proxy shinobi:8080
+	reverse_proxy shinobi:8080
 }
 ```
 

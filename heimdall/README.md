@@ -16,7 +16,7 @@ Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Ca
 
 ```
 heimdall.example.com {
-    reverse_proxy heimdall:80
+	reverse_proxy heimdall:80
 }
 ```
 
