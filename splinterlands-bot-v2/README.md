@@ -4,7 +4,7 @@ Thank you PCJones for creating this bot!
 This is my implementation of the dockerized version of the bot it is fatter than ontje-dev's version (341MB vs 129MB).
 * Note1: For my version I can't get automatic updates to work! due to a "config/version.usb" timestamp error.
 
-* Note2: If you rather use ontje-dev's version you can use their [Dockerfile](https://github.com/ontje-dev/Ultimate-Splinterlands-Bot-Docker/blob/main/Dockerfile) with the docker-compose-onteje-dev-version.yml included in this repository.
+* Note2: If you rather use ontje-dev's version you can use their [Dockerfile](https://github.com/ontje-dev/Ultimate-Splinterlands-Bot-Docker/blob/main/Dockerfile) with the [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml) included in this repository.
 
 To start deploying. Create all the folders and files below with the modifications specified.
 
