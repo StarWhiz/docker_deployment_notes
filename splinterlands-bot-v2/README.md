@@ -1,7 +1,8 @@
 [Ultimate Splinterlands Bot V2](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2) 
 Thank you PCJones for creating this bot!
 
-This is my implementation of the dockerized version of the bot it is fatter than ontje-dev's version (341MB vs 129MB).
+This is my implementation of the dockerized version of the bot. It is fatter than ontje-dev's version (341MB vs 129MB). But it builds faster!
+
 * Note1: I can't seem get update checks to work on my version! due to a "config/version.usb" timestamp error. But it seems to work on ontje-dev's version
 
 * Note2: If you rather use ontje-dev's version you can use their [Dockerfile](https://github.com/ontje-dev/Ultimate-Splinterlands-Bot-Docker/blob/main/Dockerfile) with the [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml) included in this repository. Make sure you modify the `BOT_VERSION` in their Dockerfile to the version you want as described in my Dockerfile [section](https://github.com/StarWhiz/docker_deployment_notes/tree/master/splinterlands-bot-v2#dockerfile).
@@ -181,7 +182,7 @@ services:
 ```
 
 ### Running the Container
-Type in `docker-compose up -d` to run the container!
+Type in `docker-compose up -d` to run the container! If this is the first time running it will take a while to build. Any subsequent runs will be started in seconds.
 
 To check how the bot is doing live run `docker logs --follow splinterlands` otherwise to check the logs run `docker logs splinterlands`
 
