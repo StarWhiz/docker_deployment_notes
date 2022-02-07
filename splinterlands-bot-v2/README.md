@@ -2,7 +2,7 @@
 Thank you PCJones for creating this bot!
 
 This is my implementation of the dockerized version of the bot it is fatter than ontje-dev's version (341MB vs 129MB).
-* Note1: I can't seem get automatic updates to work on my version! due to a "config/version.usb" timestamp error. But it works on ontje-dev's version
+* Note1: I can't seem get update checks to work on my version! due to a "config/version.usb" timestamp error. But it seems to work on ontje-dev's version
 
 * Note2: If you rather use ontje-dev's version you can use their [Dockerfile](https://github.com/ontje-dev/Ultimate-Splinterlands-Bot-Docker/blob/main/Dockerfile) with the [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml) included in this repository. Make sure you modify the `BOT_VERSION` in their Dockerfile to the version you want as described in my Dockerfile [section](https://github.com/StarWhiz/docker_deployment_notes/tree/master/splinterlands-bot-v2#dockerfile).
 
@@ -128,11 +128,9 @@ linux-x64
 ```
 
 ### Dockerfile
-You need to modify ARG BOT_VERSION="2.9-fix2" to be on the latest version.
+You need to modify ARG BOT_VERSION="2.9-fix2" to be on the latest version, if "2.9-fix2" isn't the latest version.
 
-Check for latest version here [Ultimate Splinterlands Bot V2](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2/releases)
-
-To update this image you would run docker-compose build in this folder if the version changed.
+Check for latest version here: [Ultimate Splinterlands Bot V2](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2/releases)
 
 Note: You may use [ontje-dev's Dockerfile](https://github.com/ontje-dev/Ultimate-Splinterlands-Bot-Docker/blob/main/Dockerfile) instead which has a smaller footprint.
 
@@ -186,3 +184,11 @@ services:
 Type in `docker-compose up -d` to run the container!
 
 To check how the bot is doing live run `docker logs --follow splinterlands` otherwise to check the logs run `docker logs splinterlands`
+
+### Updating The Bot
+To update the bot...
+* Run `docker-compose down` inside the splinterlands folder to bring down the container
+* Edit the Dockerfile argument `ARG BOT_VERSION="2.9-fix2"` to the version you want.
+* After that, run `docker-compose build` to rebuild the image under the new version.
+* Run `docker-compose up -d` to launch the bot.
+* And as always you can watch what the bot is doing live with `docker logs --follow splinterlands`
