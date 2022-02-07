@@ -14,9 +14,9 @@ To check how the bot is doing live run `docker logs --follow splinterlands` othe
 └── ~/
     └── docker/
         └── splinterlands-botv2/
-		    └── config/
-			├── accounts.txt
-			├── config.txt
+            └── config/
+	        ├── accounts.txt
+		├── config.txt
             ├── Dockerfile
             ├── docker-compose.yml
 ```
