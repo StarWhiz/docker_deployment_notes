@@ -6,6 +6,5 @@ services:
         container_name: splinterlands
         build: .
         volumes:
-            - ./config:/linux-x64/config
-        command: "./ultimatesplinterlandsbotv2"
-#       fordebugging... command: "tail -f /dev/null"
+            - ./config:/bot/config
+        command: ["dotnet", "/bot/Ultimate Splinterlands Bot V2.dll"]

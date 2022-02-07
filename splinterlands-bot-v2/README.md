@@ -1,12 +1,12 @@
 [Ultimate Splinterlands Bot V2](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2) 
+Thank you PCJones for creating this bot!
 
-This is my implementation of the dockerized version of the bot! For some reason I can't get updates to work! Thank you PCJones for creating this bot!
+This is my implementation of the dockerized version of the bot it is fatter than ontje-dev's version (341MB vs 129MB).
+* Note1: For my version I can't get automatic updates to work! due to a "config/version.usb" timestamp error.
 
-After creating all the folders and files below with the modifications specified.
+* Note2: If you rather use ontje-dev's version you can use their [Dockerfile](https://github.com/ontje-dev/Ultimate-Splinterlands-Bot-Docker/blob/main/Dockerfile) with the docker-compose-onteje-dev-version.yml included in this repository.
 
-Run `docker-compose up -d` to run the container!
-
-To check how the bot is doing live run `docker logs --follow splinterlands` otherwise to check the logs run `docker logs splinterlands`
+To start deploying. Create all the folders and files below with the modifications specified.
 
 ### Minimum File Structure
 ```
@@ -21,14 +21,14 @@ To check how the bot is doing live run `docker logs --follow splinterlands` othe
             ├── docker-compose.yml
 ```
 ### accounts.txt
-modify to use your own usernames and posting keys
+Modify to use your own usernames and posting keys
 ```
 username:postingkey
 username:postingkey
 ```
 
 ### config.txt
-no modification needed to run but you can modify if you want to!
+No modification needed to run but you can modify if you want to!
 ```
 ##################General Settings##################
 PRIORITIZE_QUEST=true
@@ -175,3 +175,7 @@ networks:
             name: caddy_net
 ```
 
+### Running the Container
+Type in `docker-compose up -d` to run the container!
+
+To check how the bot is doing live run `docker logs --follow splinterlands` otherwise to check the logs run `docker logs splinterlands`
