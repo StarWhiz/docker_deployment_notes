@@ -1,0 +1,174 @@
+[Ultimate Splinterlands Bot V2](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2) 
+
+This is my implementation of the dockerized version of the bot! For some reason I can't get updates to work! Thank you PCJones for creating this bot!
+
+### Minimum File Structure
+```
+/home/
+└── ~/
+    └── docker/
+        └── splinterlands-botv2/
+		    └── config/
+				├── accounts.txt
+				├── config.txt
+            ├── Dockerfile
+            ├── docker-compose.yml
+```
+### accounts.txt
+modify to use your own usernames and posting keys
+```
+username:postingkey
+username:postingkey
+```
+
+### config.txt
+no modification needed to run but you can modify if you want to!
+```
+##################General Settings##################
+PRIORITIZE_QUEST=true
+SLEEP_BETWEEN_BATTLES=5
+START_BATTLE_ABOVE_ECR=0
+STOP_BATTLE_BELOW_ECR=75
+MINIMUM_BATTLE_POWER=0
+CLAIM_SEASON_REWARD=false
+CLAIM_QUEST_REWARD=false
+
+##E.g. if you are almost bronze 1 and have enough power, it won't claim quest reward until you are bronze 1
+DONT_CLAIM_QUEST_NEAR_HIGHER_LEAGUE=true
+
+##If enabled it will click on the advance to next league button
+ADVANCE_LEAGUE=true
+
+##seperate by comma like this: earth,life - it will request new quest on earth and life quest
+##Remove the # at the beginning of the next line to activate
+#REQUEST_NEW_QUEST=earth
+##################General Settings##################
+
+##################Lightning Mode Settings##################
+#####If you want to use the fast, low resource blockchain mode of the bot enable this#####
+#####It has 90% less requests to splinterlands API then playing via browser, so you  #####
+#####will not get soft banned from splinterlands anymore.                            #####
+USE_LIGHTNING_MODE=true
+
+##Threads = number of parallel accoounts.
+##Threads are MUCH faster than in the browser mode
+THREADS=1
+
+##Disable this if you want a cleaner log or you have problems with too many
+##requests to the splinterlands API. Disabling will also make battles 10-25 seconds faster.
+SHOW_BATTLE_RESULTS=true
+##################Lightning Mode Settings##################
+
+#######################API Settings########################
+
+USE_API=true
+API_URL=http://splinterlandsapi.pcjones.de:8080/
+
+##PRIVATE API Settings - ignore if you don't have it
+USE_PRIVATE_API=false
+PRIVATE_API_URL=
+PRIVATE_API_SHOP=
+POWER_TRANSFER_BOT=false
+#######################API Settings########################
+
+#####################Advanced Settings#####################
+AUTO_UPDATE=true
+SHOW_API_RESPONSE=true
+DEBUG=false
+WRITE_LOG_TO_FILE=false
+
+##Enable this if you get weird characters in your console that makes it hard to read
+DISABLE_CONSOLE_COLORS=false
+
+##Linux / VPS Variables - ignore if bot works
+#CHROME_BINARY_PATH=path/to/chrome/binary
+CHROME_NO_SANDBOX=true
+
+##Advanced bot logic
+
+#If you enable both DONT_CLAIM_QUEST_NEAR_HIGHER_LEAGUE and this the bot will not only wait
+#until you have enough rating for the higher league, but also until you have enough
+#power. Don't enable this unless you actively manage your power.
+WAIT_FOR_MISSING_CP_AT_QUEST_CLAIM=false
+#####################Advanced Settings#####################
+
+
+
+
+
+
+
+
+###################Browser Mode Settings###################
+#####If you want to use the old browser based version of the bot enable this#####
+USE_BROWSER_MODE=false
+
+## HEADLESS true = invisible browser
+HEADLESS=true
+
+##MAX_BROWSER_INSTANCES = MultiThreading!
+##2 = 2 Browsers will open, so 2 accounts can fight at the same time
+MAX_BROWSER_INSTANCES=2
+###################Browser Mode Settings###################
+```
+
+### Dockerfile
+You need to modify ARG BOT_VERSION="2.9-fix2" to be on the latest version.
+
+Check for latest version here [Ultimate Splinterlands Bot V2](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2/releases)
+
+To update this image you would run docker-compose build in this folder if the version changed.
+
+```
+
+FROM ubuntu:latest
+
+ARG BOT_VERSION="2.9-fix2"
+
+RUN apt-get update && apt-get install -y wget
+
+# Add dotnet runtime to repository
+RUN wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN dpkg -i packages-microsoft-prod.deb
+RUN rm packages-microsoft-prod.deb
+
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    dotnet-runtime-6.0 \
+    unzip
+
+RUN wget https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2/releases/download/v${BOT_VERSION}/linux-x64.zip
+
+RUN unzip linux-x64.zip || true
+
+RUN rm -f linux-x64.zip
+
+WORKDIR ./linux-x64
+
+RUN mv Ultimate\ Splinterlands\ Bot\ V2 ultimatesplinterlandsbotv2
+
+RUN chmod +x ultimatesplinterlandsbotv2
+```
+
+### docker-compose.yml
+```
+
+version: '3'
+
+services:
+    splinterlandsbotv2:
+        restart: unless-stopped
+        container_name: splinterlands
+        build: .
+        volumes:
+            - ./config:/linux-x64/config
+        command: "./ultimatesplinterlandsbotv2"
+#       fordebugging... command: "tail -f /dev/null"
+
+networks:
+    default:
+        external:
+            name: caddy_net
+
+```
+
