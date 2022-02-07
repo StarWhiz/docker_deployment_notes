@@ -167,7 +167,7 @@ RUN chmod +x ultimatesplinterlandsbotv2
 ```
 
 ### docker-compose.yml
-Note: If you are using ontje-dev's Dockerfile sub this docker-compose with [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml)
+Note: If you are using ontje-dev's Dockerfile, subtitute this docker-compose with [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml)
 ```
 version: '3'
 
@@ -180,11 +180,6 @@ services:
             - ./config:/linux-x64/config
         command: "./ultimatesplinterlandsbotv2"
 #       fordebugging... command: "tail -f /dev/null"
-
-networks:
-    default:
-        external:
-            name: caddy_net
 ```
 
 ### Running the Container
