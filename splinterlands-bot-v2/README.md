@@ -165,7 +165,7 @@ RUN chmod +x ultimatesplinterlandsbotv2
 ```
 
 ### docker-compose.yml
-Note: If you are using ontje-dev's Dockerfile, subtitute this docker-compose with [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml)
+Note: If you are using ontje-dev's Dockerfile, substitute this docker-compose with [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml)
 ```
 version: '3'
 
