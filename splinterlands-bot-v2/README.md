@@ -120,7 +120,7 @@ MAX_BROWSER_INSTANCES=2
 ```
 
 ### version.usb (optional)
-This file is not required to run the container. I got this file from the [linux-x64.zip](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2/releases). It's used for an update check but I'm not sure why it fails. 
+This file is not required to run the container. I got this file from the [linux-x64.zip](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2/releases). It's used for an update check but I'm not sure why it fails in my container but not ontje-dev's.
 ```
 2022-01-28 22:54:52
 linux-x64 
@@ -133,6 +133,8 @@ You need to modify ARG BOT_VERSION="2.9-fix2" to be on the latest version.
 Check for latest version here [Ultimate Splinterlands Bot V2](https://github.com/PCJones/Ultimate-Splinterlands-Bot-V2/releases)
 
 To update this image you would run docker-compose build in this folder if the version changed.
+
+Note: You may use [ontje-dev's Dockerfile](https://github.com/ontje-dev/Ultimate-Splinterlands-Bot-Docker/blob/main/Dockerfile) instead which has a smaller footprint.
 
 ```
 FROM ubuntu:latest
@@ -165,6 +167,7 @@ RUN chmod +x ultimatesplinterlandsbotv2
 ```
 
 ### docker-compose.yml
+Note: If you are using ontje-dev's Dockerfile sub this docker-compose with [docker-compose-onteje-dev-version.yml](https://github.com/StarWhiz/docker_deployment_notes/blob/master/splinterlands-bot-v2/docker-compose-onteje-dev-version.yml)
 ```
 version: '3'
 
