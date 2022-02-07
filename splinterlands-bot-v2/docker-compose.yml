@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    splinterlandsbotv2:
+        restart: unless-stopped
+        container_name: splinterlands
+        build: .
+        volumes:
+            - ./config:/linux-x64/config
+        command: "./ultimatesplinterlandsbotv2"
+#       fordebugging... command: "tail -f /dev/null"
+
+networks:
+    default:
+        external:
+            name: caddy_net
