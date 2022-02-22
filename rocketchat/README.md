@@ -125,3 +125,5 @@ After you have the .env and docker-compose files set up in this directory. Do a 
 
 ### Finalization - Hubot
 After you can access your rocketchat server, you can stop the hubot errors for happening by creating a new bot user in Administration > Users > + New. Then create a bot with username bot, and email bot@yourdomain.com and password to match the password you used in the .env file. Lastly, for role choose bot and hit save. Now if you do a `docker logs rocketchat-hubot` you won't see any more errors and the container will stop restarting over and over again.
+
+While you're at it you can set up your SMTP server if you choose to under Administration > Email > SMTP
