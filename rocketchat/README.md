@@ -127,3 +127,9 @@ After you have the .env and docker-compose files set up in this directory. Do a 
 After you can access your rocketchat server, you can stop the hubot errors for happening by creating a new bot user in Administration > Users > + New. Then create a bot with username bot, and email bot@yourdomain.com and password to match the password you used in the .env file. Lastly, for role choose bot and hit save. Now if you do a `docker logs rocketchat-hubot` you won't see any more errors and the container will stop restarting over and over again.
 
 While you're at it you can set up your SMTP server if you choose to under Administration > Email > SMTP
+
+### Upgrading from Mongo 4.0 to newer version
+Disregard this if this is your first time running rocket.chat.
+If you had a working rocket.chat instance running on mongo 4.0 and wanted to upgrade to a newer mongo
+You will need to export your old database and import it into a new one.
+Details can be found here: https://github.com/RocketChat/Rocket.Chat/issues/24160#issuecomment-1048290278
