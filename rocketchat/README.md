@@ -65,20 +65,20 @@ services:
       - "traefik.frontend.rule=Host: your.domain.tld"
 
   rocketchat-db:
-    image: mongo:latest
+    image: mongo:5.0
     container_name: rocketchat-db
     restart: unless-stopped
     volumes:
      - ./data/db:/data/db
      #- ./data/dump:/dump
-    command: mongod --smallfiles --oplogSize 128 --replSet rs0 --storageEngine=mmapv1
+    command: command: mongod --oplogSize 128 --replSet rs0
     labels:
       - "traefik.enable=false"
 
   # this container's job is just run the command to initialize the replica set.
   # it will run the command and remove himself (it will not stay running)
   rocketchat-db-init-replica:
-    image: mongo:latest
+    image: mongo:5.0
     command: >
       bash -c
         "for i in `seq 1 30`; do
