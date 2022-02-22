@@ -65,7 +65,7 @@ services:
       - "traefik.frontend.rule=Host: your.domain.tld"
 
   rocketchat-db:
-    image: mongo:5.0
+    image: mongo:5.0.5
     container_name: rocketchat-db
     restart: unless-stopped
     volumes:
@@ -78,7 +78,7 @@ services:
   # this container's job is just run the command to initialize the replica set.
   # it will run the command and remove himself (it will not stay running)
   rocketchat-db-init-replica:
-    image: mongo:5.0
+    image: mongo:5.0.5
     command: >
       bash -c
         "for i in `seq 1 30`; do
@@ -96,7 +96,7 @@ services:
   # hubot, the popular chatbot (add the bot user first and change the password before starting this image)
   rocketchat-hubot:
     image: rocketchat/hubot-rocketchat:latest
-    container_name: rocketchat-hubot    
+    container_name: rocketchat-hubot
     restart: unless-stopped
     environment:
       - ROCKETCHAT_URL=rocketchat:3000
