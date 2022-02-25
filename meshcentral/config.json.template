@@ -10,25 +10,25 @@
     "redirPort": 80,
     "_redirAliasPort": 80,
     "AgentPong": 300,
-    "TLSOffload": false,
+    "TLSOffload": true,
     "SelfUpdate": false,
     "AllowFraming": false,
     "WebRTC": false
   },
   "domains": {
-	"": {
-	"_title": "MyServer",
+        "": {
+        "_title": "MyServer",
     "_title2": "Servername",
     "_minify": true,
     "NewAccounts": true,
-	"_userNameIsEmail": true,
+        "_userNameIsEmail": true,
     "_certUrl": "my.reverse.proxy"
-	}
+        }
   },
   "_letsencrypt": {
     "__comment__": "Requires NodeJS 8.x or better, Go to https://letsdebug.net/ first before>",
     "_email": "myemail@mydomain.com",
     "_names": "myserver.mydomain.com",
-	"production": false
+        "production": false
   }
 }

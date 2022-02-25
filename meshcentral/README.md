@@ -1,5 +1,5 @@
 ### Introduction
-THIS IS A WIP DO NOT USE...
+This will deploy meshcentral with caddy.
 
 ### Minimum File Structure
 ```
@@ -13,23 +13,17 @@ THIS IS A WIP DO NOT USE...
 	    ├── startup.sh
 ```
 
-You will need the files in this GitHubs folder to build the meshcentral image and deploy it.
+You will need the files in this GitHubs folder (Dockerfile, startup.sh, and config.json.template) to build the meshcentral image and deploy it.
 
 ### Add to Caddyfile (from ~/docker/caddy)
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
-The `tls_insecure_skip_verify` line is not recommemded. This tutorial is a WIP until I figure out how
-to get caddy to work with meshcentral without the `tls_insecure_skip_verify` line.
 
 ```
 meshcentral.joindigital.com {
-        tls /certs/cert.pem /certs/key.pem
         reverse_proxy meshcentral:4430 {
                 header_up Host {http.reverse_proxy.upstream.hostport}
                 header_up X-Real-IP {http.request.remote}
                 header_up X-Forwarded-For {http.request.remote}
-		transport http {
-			tls_insecure_skip_verify
-		}
         }
 }
 ```
