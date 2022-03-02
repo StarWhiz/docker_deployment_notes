@@ -19,7 +19,7 @@ You will need the files in this GitHubs folder (Dockerfile, startup.sh, and conf
 Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
 
 ```
-meshcentral.joindigital.com {
+meshcentral.YOURDOMAIN.com {
         reverse_proxy meshcentral:4430 {
                 header_up Host {http.reverse_proxy.upstream.hostport}
                 header_up X-Real-IP {http.request.remote}

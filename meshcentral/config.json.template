@@ -6,7 +6,7 @@
     "_LANonly": true,
     "_sessionKey": "MyReallySecretPassword1",
     "port": 4430,
-    "_aliasPort": 443,
+    "aliasPort": 443,
     "redirPort": 80,
     "_redirAliasPort": 80,
     "AgentPong": 300,
@@ -16,19 +16,10 @@
     "WebRTC": false
   },
   "domains": {
-        "": {
-        "_title": "MyServer",
-    "_title2": "Servername",
-    "_minify": true,
-    "NewAccounts": true,
-        "_userNameIsEmail": true,
-    "_certUrl": "my.reverse.proxy"
-        }
-  },
-  "_letsencrypt": {
-    "__comment__": "Requires NodeJS 8.x or better, Go to https://letsdebug.net/ first before>",
-    "_email": "myemail@mydomain.com",
-    "_names": "myserver.mydomain.com",
-        "production": false
+    "": {
+      "title": "MeshCentral",
+      "_NewAccounts": false,
+      "certUrl": "https://joindigital.com:443"
+    }
   }
 }
