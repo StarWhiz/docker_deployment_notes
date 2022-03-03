@@ -13,12 +13,11 @@
     "TLSOffload": true,
     "SelfUpdate": false,
     "AllowFraming": false,
-    "WebRTC": false
+    "WebRTC": true
   },
   "domains": {
     "": {
       "title": "MeshCentral",
-      "_NewAccounts": false,
       "certUrl": "my.reverse.proxy"
     }
   }
