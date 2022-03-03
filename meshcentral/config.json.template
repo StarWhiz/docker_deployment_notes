@@ -19,7 +19,7 @@
     "": {
       "title": "MeshCentral",
       "_NewAccounts": false,
-      "certUrl": "https://joindigital.com:443"
+      "certUrl": "my.reverse.proxy"
     }
   }
 }
