@@ -59,3 +59,5 @@ networks:
 
 ```
 
+After everything is set up do `docker-compose up -d` in this folder to start meshcentral!
+
