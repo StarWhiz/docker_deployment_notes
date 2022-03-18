@@ -12,6 +12,8 @@ https://jellyfin.org/
 ```
 
 ### Add to Caddyfile (from ~/docker/caddy)
+Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Caddyfile.
+
 ```
 jelly.example.com {
 	reverse_proxy jellyfin:8096
