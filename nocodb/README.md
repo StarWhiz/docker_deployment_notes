@@ -16,7 +16,7 @@ Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Ca
 
 ```
 nocodb.YOURDOMAIN.com {
-        reverse_proxy nocodb:8080
+		reverse_proxy nocodb:8080
 }
 ```
 
