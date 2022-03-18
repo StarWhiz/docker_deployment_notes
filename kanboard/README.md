@@ -1,6 +1,8 @@
 A simple Kanban Board
 https://kanboard.org/
 
+This is not a full tutorial but more of a reference.
+
 ### Minimum File Structure
 ```
 /home/
