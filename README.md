@@ -26,20 +26,27 @@ After you finish the A-Z guide. You can then follow application specific guides 
 * [wireguard](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/wireguard) - the one and only VPN to ever consider
 
 
-#### StarWhiz's App Specific Guides
+#### StarWhiz's App Specific Guides & References
+* [Vaultwarden formerly Bitwarden](https://github.com/StarWhiz/docker_deployment_notes/tree/master/bitwarden-vaultwarden) - Open Soruce Password Manager
 * [Heimdall](https://github.com/StarWhiz/docker_deployment_notes/tree/master/heimdall) - Another Homepage Dashboard
 * [FreePBX+Asterisk](https://github.com/StarWhiz/docker_deployment_notes/tree/master/freepbx-asterisk) - VOIP & telephony server
 * [Jellyfin](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jellyfin) - Open Source Plex / Media Server
 * [Jitsi Meet](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jitsi-meet) - Videoconferencing
+* [Kanboard](https://github.com/StarWhiz/docker_deployment_notes/tree/master/kanboard) - An Open Source Kanban Board
+* [MeshCentral](https://github.com/StarWhiz/docker_deployment_notes/tree/master/meshcentral) - Remote Access Control like TeamViewer and Connectwise
 * [Mumble](https://github.com/StarWhiz/docker_deployment_notes/tree/master/mumble) - Voice Chat Before Discord Days
+* [NocoDB](https://github.com/StarWhiz/docker_deployment_notes/tree/master/nocodb) - Airtable alternative
+* [Organizr](https://github.com/StarWhiz/docker_deployment_notes/tree/master/organizr) - Another homage dashboard like heimdall
 * [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd) - FTP server
 * [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe) - Torrent Client w/ Windscribe VPN (Issue: Storage Leaks)
 * [Rocket.chat](https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat) - Discord / Slack Clone
 * [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi) - CCTV NVR
 * [Seafile](https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile) - Cloud Drive
 * [Snipe IT](https://github.com/StarWhiz/docker_deployment_notes/tree/master/snipeit) - IT Asset Management
+* [Splinterlands-bot-v2](https://github.com/StarWhiz/docker_deployment_notes/tree/master/splinterlands-bot-v2) - Bot for Splinterlands
 * [Ubiquiti UniFi Controller](https://github.com/StarWhiz/docker_deployment_notes/tree/master/unifi-controller) - Management Utility for Ubiquiti Devices
 * [Wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) - CMS / Website Hosting
+* [VCFconvert](https://github.com/StarWhiz/docker_deployment_notes/tree/master/vcfconvert) - Converts .vCard files to .csv or LDIF
 * [Zoneminder](https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder) - CCTV NVR
 
 #### Other App Specific References
