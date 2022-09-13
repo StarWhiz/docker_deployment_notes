@@ -27,6 +27,7 @@ cp composer.json docker/server
 
 ### 3. Copy config-sample.php to config.php in the root repository and modify BASE_URL in config.php
 Also change the database in config.php from `localhost` to `easyappointments-database:3306`
+Please note I am using the parameter `const DEBUG_MODE    = TRUE;` because the default `const DEBUG_MODE    = FALSE;` doesn't work.
 ```
 cp config-sample.php config.php
 nano config.php
@@ -40,7 +41,7 @@ nano config.php
 
     const BASE_URL      = 'https://appointments.example.com';
     const LANGUAGE      = 'english';
-    const DEBUG_MODE    = FALSE;
+    const DEBUG_MODE    = TRUE;
 
     // ------------------------------------------------------------------------
     // DATABASE SETTINGS
@@ -142,5 +143,3 @@ appointments.example.com {
 cd ~/docker/easyappointments/docker/
 docker-compose up -d
 ```
-
-If there are issues you can try to debug by changing debug mode to TRUE in step 3.
