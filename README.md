@@ -28,6 +28,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 
 #### StarWhiz's App Specific Guides & References
 * [Vaultwarden formerly bitwarden_rs](https://github.com/StarWhiz/docker_deployment_notes/tree/master/bitwarden-vaultwarden) - Open Soruce Password Manager
+* [Easy!Appointments]()
 * [Heimdall](https://github.com/StarWhiz/docker_deployment_notes/tree/master/heimdall) - Another Homepage Dashboard
 * [FreePBX+Asterisk](https://github.com/StarWhiz/docker_deployment_notes/tree/master/freepbx-asterisk) - VOIP & telephony server
 * [Jellyfin](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jellyfin) - Open Source Plex / Media Server
