@@ -142,3 +142,5 @@ appointments.example.com {
 cd ~/docker/easyappointments/docker/
 docker-compose up -d
 ```
+
+If there are issues you can try to debug by changing debug mode to TRUE in step 3.
