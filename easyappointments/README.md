@@ -11,16 +11,16 @@
 
 The file structure here is slightly different from usual since we will be cloning a git repository to install this. Below are the steps needed to fully deploy easyappointments with our Caddy reverse proxy!
 
-### 1. Clone repository and optionally check out the develop branch
+### 1. Clone repository and optionally check out the develop branch. Navigate to repository directory.
 ```
 cd ~/docker/
 git clone https://github.com/alextselegidis/easyappointments.git
+cd easyappointments
 git checkout -b develop
 ```
 
-### 2. Navigate to cloned repository folder and copy composer.json and composer.lock to ./docker/server
+### 2. Copy composer.json and composer.lock to ./docker/server
 ```
-cd easyappointments
 cp composer.lock docker/server
 cp composer.json docker/server
 ```
