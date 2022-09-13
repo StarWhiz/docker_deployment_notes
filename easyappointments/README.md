@@ -11,24 +11,45 @@
 
 The file structure here is slightly different from usual since we will be cloning a git repository to install this. Below are the steps needed to fully deploy easyappointments with our Caddy reverse proxy!
 
-### 1. Clone repository and optionally check out the develop branch. Navigate to repository directory.
+### 1. Clone repository and optionally check out the develop branch
 ```
 cd ~/docker/
 git clone https://github.com/alextselegidis/easyappointments.git
-cd easyappointments
 git checkout -b develop
 ```
 
-### 2. Copy composer.json and composer.lock to ./docker/server
+### 2. Navigate to cloned repository folder and copy composer.json and composer.lock to ./docker/server
 ```
+cd easyappointments
 cp composer.lock docker/server
 cp composer.json docker/server
 ```
 
 ### 3. Copy config-sample.php to config.php in the root repository and modify BASE_URL in config.php
+Also change the database in config.php from `localhost` to `easyappointments-database:3306`
 ```
 cp config-sample.php config.php
 nano config.php
+```
+
+**config.php**
+```
+    // ------------------------------------------------------------------------
+    // GENERAL SETTINGS
+    // ------------------------------------------------------------------------
+
+    const BASE_URL      = 'https://appointments.example.com';
+    const LANGUAGE      = 'english';
+    const DEBUG_MODE    = FALSE;
+
+    // ------------------------------------------------------------------------
+    // DATABASE SETTINGS
+    // ------------------------------------------------------------------------
+
+    const DB_HOST       = 'easyappointments-database:3306';
+    const DB_NAME       = 'easyappointments';
+    const DB_USERNAME   = 'root';
+    const DB_PASSWORD   = 'root';
 ```
 
 ### 4. Modify permissions of the storage folder in the repository
