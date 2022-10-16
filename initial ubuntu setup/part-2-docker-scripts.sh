@@ -18,7 +18,7 @@ apt install docker-ce
 systemctl status docker
 usermod -aG docker ${USERNAME}
 
-# Install Docker-Compose
+# Install Docker-Compose - Do this with a regular user account not as root
 mkdir -p ~/.docker/cli-plugins/
 curl -SL "https://github.com/docker/compose/releases/download/v2.11.2/docker-compose-$(uname -s)-$(uname -m)" -o ~/.docker/cli-plugins/docker-compose
 chmod +x ~/.docker/cli-plugins/docker-compose
