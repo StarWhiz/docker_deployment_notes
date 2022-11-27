@@ -38,10 +38,11 @@ After you finish the A-Z guide. You can then follow application specific guides 
 * [Mumble](https://github.com/StarWhiz/docker_deployment_notes/tree/master/mumble) - Voice Chat Before Discord Days
 * [NocoDB](https://github.com/StarWhiz/docker_deployment_notes/tree/master/nocodb) - Airtable alternative
 * [Organizr](https://github.com/StarWhiz/docker_deployment_notes/tree/master/organizr) - Another homage dashboard like heimdall
+* [OvenMediaEngine + Radium Next](https://github.com/StarWhiz/docker_deployment_notes/tree/master/OvenMediaEngine-RadiumNext) - Sub-second latency streaming from OBS to a web browser. It's better than real-time discord streams! Great for movie nights!
 * [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd) - FTP server
 * [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe) - Torrent Client w/ Windscribe VPN (Issue: Storage Leaks)
 * [Rocket.chat](https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat) - Discord / Slack Clone
-* [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi) - CCTV NVR
+* [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi) - CCTV NVR - I don't recommend this tutorial it doesn't work well.
 * [Seafile](https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile) - Cloud Drive
 * [Snipe IT](https://github.com/StarWhiz/docker_deployment_notes/tree/master/snipeit) - IT Asset Management
 * [Splinterlands-bot-v2](https://github.com/StarWhiz/docker_deployment_notes/tree/master/splinterlands-bot-v2) - Bot for Splinterlands
