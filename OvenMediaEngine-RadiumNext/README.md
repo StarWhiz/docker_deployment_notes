@@ -434,7 +434,7 @@ Inside the ~/docker/radium-next folder do the following command
 ```
 docker compose up -d
 ```
-again to view logs it works the same way as before.
+again to view logs it works the same way as before. If you have any problems try to solve it using the logs.
 
 Now you're ready to stream from OBS!
 
