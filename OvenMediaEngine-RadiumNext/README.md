@@ -70,7 +70,8 @@ services:
 
 networks:
   default:
-    name: caddy_net
+    external:
+      name: caddy_net
 ```
 
 ### Copy your stream.example.com Caddy crts and keys to ovenmediaengine/config
