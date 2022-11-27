@@ -29,7 +29,7 @@ Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Ca
 
 ```
 stream.example.com {
-	reverse_proxy radium:3000
+	reverse_proxy radium-next:3000
 }
 ```
 
