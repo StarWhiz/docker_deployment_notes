@@ -27,6 +27,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 
 
 #### StarWhiz's App Specific Guides & References
+Disclaimer: My guides aren't as high quality as DoTheEvo's guides. Also most of them are based on docker v1. If you're on docker v2 just replace `docker-compose` command with `docker compose`!
 * [Vaultwarden formerly bitwarden_rs](https://github.com/StarWhiz/docker_deployment_notes/tree/master/bitwarden-vaultwarden) - Open Soruce Password Manager
 * [Easy!Appointments](https://github.com/StarWhiz/docker_deployment_notes/tree/master/easyappointments) - Self Hosted Appointment Scheduler 
 * [Heimdall](https://github.com/StarWhiz/docker_deployment_notes/tree/master/heimdall) - Another Homepage Dashboard
