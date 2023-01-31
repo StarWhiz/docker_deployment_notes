@@ -53,6 +53,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: YOURDATABASEPASSWORD
       MYSQL_DATABASE: yourls
+    volumes:
+      - ./data:/var/lib/mysql
 
 networks:
   default:
