@@ -23,6 +23,9 @@ urls.YOURDOMAIN.com {
 ### docker-compose.yml
 Change YOURDATABASEPASSWORD in 2 lines and change YOURADMINUSERPASSWORD in one line from the yml below.
 
+
+
+
 ```
 version: '3.1'
 
@@ -40,6 +43,8 @@ services:
       YOURLS_SITE: https://urls.YOURDOMAIN.com
       YOURLS_USER: yourls
       YOURLS_PASS: YOURADMINUSERPASSWORD
+    volumes:
+      - ./plugins:/var/www/html/user/plugins
 
   mysql:
     image: mysql
@@ -53,5 +58,4 @@ networks:
   default:
     external:
       name: caddy_net
-
 ```
