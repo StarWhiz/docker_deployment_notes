@@ -9,7 +9,7 @@ This is not a full tutorial but more of a reference.
 └── ~/
     └── docker/
         └── kutt/
-		    ├── .env
+            ├── .env
             ├── docker-compose.yml
 ```
 ### Add to Caddyfile (from ~/docker/caddy)
