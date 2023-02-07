@@ -27,12 +27,16 @@ urls.YOURDOMAIN.com {
 
 ### docker-compose.yml
 Change urls.YOURDOMAIN.com under DEFAULT_DOMAIN
+
 Change SOMESTRONGPASSWORD twice.
-Change GEOLITE_LICENSE_KEY= (how to get your key here: https://shlink.io/documentation/geolite-license-key/)
 
-On your first docker-compose up -d run the command `docker exec -it shlink shlink api-key:generate` to get your API key. You'll need this key for the servers.json file.
+Change GEOLITE_LICENSE_KEY=yoUR1ge2OliTE3key1 (how to get your key here: https://shlink.io/documentation/geolite-license-key/)
 
-then do `docker-compose down` we will bring it back up after creating servers.json below this section.
+Save the docker-compose.yml
+
+Run `docker-compose up -d` for the first time then run the command `docker exec -it shlink shlink api-key:generate` to get your API key. You'll need this key for the servers.json file.
+
+After that, do `docker-compose down` we will bring it back up after creating servers.json below this section.
 
 ```
 version: '3.3'
