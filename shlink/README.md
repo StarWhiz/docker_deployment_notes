@@ -1,3 +1,6 @@
+> Warning these instructions do not work properly at this time. There's also no authentication built in with this deployment.
+> I recommend using [kutt.io](https://github.com/StarWhiz/docker_deployment_notes/tree/master/kutt) instead at this time.
+
 Another shortlink alternative https://shlink.io/
 
 This is not a full tutorial but more of a reference.
