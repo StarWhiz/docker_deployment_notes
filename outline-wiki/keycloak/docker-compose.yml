@@ -1,0 +1,42 @@
+version: '3.3'
+
+services:
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:22.0
+    restart: always
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak
+      KC_DB_USER: keycloak
+      KC_DB_SCHEMA: public
+      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
+      KC_HOSTNAME: ${KC_HOSTNAME}
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_PROXY: edge
+    depends_on:
+      - keycloak-db
+    command: start
+    networks:
+      - caddy_net
+
+  keycloak-db:
+    container_name: keycloak-db
+    image: postgres:16
+    restart: always
+    security_opt:
+      - label:disable
+    volumes:
+      - ./container-data/db:/var/lib/postgresql/data
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
+    networks:
+      - caddy_net
+
+networks:
+  caddy_net:
+    external: true
