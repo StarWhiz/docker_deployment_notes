@@ -82,13 +82,12 @@ Home URL: https://outline.<your-domain>.com
 redirect URI: https://outline.<your-domain>.com/auth/oidc.callback
 ```
 
-#### PLACEHOLDER GIF 0
+![Keycloak Create Client](https://github.com/StarWhiz/docker_deployment_notes/assets/9423276/c4b8f19e-912d-44e7-8d67-51a33d22e891)
 
 Finally create an account under users and set a password.
 
-#### PLACEHOLDER GIF 1
-
-#### PLACEHOLDER GIF 2
+![Keycloak Create User](https://github.com/StarWhiz/docker_deployment_notes/assets/9423276/c74e2045-7ec2-4c64-856d-5f2a156a710a)
+![Keycloak Setpassword](https://github.com/StarWhiz/docker_deployment_notes/assets/9423276/ac64c774-fdbb-4c3b-9968-e64fe99e7c1c)
 
 # The “outline” directory
 
@@ -204,8 +203,7 @@ Finally create a bucket called `outlinebucket`
 
 After creation, under the anonymous tab add two access rules: `avatar` and `public` as readonly access rules. Don’t worry if you’re confused here’s a gif below explaining all this.
 
-
-#### PLACEHOLDER GIF 3
+![Minio](https://github.com/StarWhiz/docker_deployment_notes/assets/9423276/32d34e39-1cb9-422a-a849-132f07893100)
 
 That’s it!
 
