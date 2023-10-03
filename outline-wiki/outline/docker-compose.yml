@@ -1,41 +1,78 @@
-version: '3.3'
-
+version: "3.2"
 services:
-  keycloak:
-    container_name: keycloak
-    image: quay.io/keycloak/keycloak:22.0
-    restart: always
-    environment:
-      KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://keycloak-db:5432/keycloak
-      KC_DB_USER: keycloak
-      KC_DB_SCHEMA: public
-      KC_DB_PASSWORD: ${KC_DB_PASSWORD}
-      KC_HOSTNAME: ${KC_HOSTNAME}
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-      KC_PROXY: edge
+  outline:
+    image: docker.getoutline.com/outlinewiki/outline:0.72.0
+    container_name: outline
+    env_file: ./docker.env
+#     ports:
+#       - "3000:3000"
     depends_on:
-      - keycloak-db
-    command: start
+      - outline-postgres
+      - outline-redis
+      - outline-minio
     networks:
       - caddy_net
 
-  keycloak-db:
-    container_name: keycloak-db
-    image: postgres:16
+
+  outline-redis:
+    image: redis:6.2.6
+    container_name: outline-redis
+    env_file: ./docker.env
+#    ports:
+#      - "6379:6379"
+    volumes:
+      - ./redis.conf:/redis.conf
+    command: ["redis-server", "/redis.conf"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 30s
+      retries: 3
+    networks:
+      - caddy_net
+
+
+  outline-postgres:
+    image: postgres:15
+    container_name: outline-postgres
+    env_file: ./docker.env
+#    ports:
+#      - "5432:5432"
+    volumes:
+      - ./psqldatabase-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+    user: postgres
+    environment:
+      PGUSER: 'postgres'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: ${POSTGRES_PW}
+      POSTGRES_DB: 'outline'
+    networks:
+      - caddy_net
+
+  outline-minio:
+    image: minio/minio:RELEASE.2023-09-07T02-05-02Z.hotfix.2befe55d4
     restart: always
+    container_name: outline-minio
     security_opt:
       - label:disable
     volumes:
-      - ./container-data/db:/var/lib/postgresql/data
+      - ./container-data/data:/data
       - /etc/localtime:/etc/localtime:ro
     environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: ${KC_DB_PASSWORD}
+      - MINIO_ROOT_USER=minio
+      - MINIO_ROOT_PASSWORD=${MINIO_ROOT_PASSWORD}
+      - MINIO_BROWSER_REDIRECT_URL=${MINIO_BROWSER_REDIRECT_URL}
+    # ports:
+      # - 9000:9000
+      # - 9001:9001
+    command: "server /data --console-address :9001"
     networks:
-      - caddy_net
+      - caddy_net      
 
 networks:
   caddy_net:

@@ -49,6 +49,8 @@ We will start with keycloak for single sign on first because it is easier and we
 
 Copy and use the same docker-compose.yml in this repo’s ./keycloak directory
 
+Feel free to change the version of the pull in this repo I'm using 0.72.0
+
 Then you copy the .env in this repo to the same directory and modify it
 
 ## modifying the .env
