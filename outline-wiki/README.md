@@ -210,3 +210,49 @@ After creation, under the anonymous tab add two access rules: `avatar` and `publ
 That’s it!
 
 Now login to outline with your keycloak account. And you should be able to drag and drop images to your documents!
+
+
+## Troubleshooting
+
+You may have to run
+
+`sudo chown -R systemd-coredump:systemd-coredump psqldatabase-data/`
+
+on your psqldatabase-data folder if you get the error (on docker-compose logs -f) that says
+
+`initdb: error: could not change permissions of directory "/var/lib/postgresql/data": Operation not permitted`
+
+## Migrating Domain Notes
+back up .env, docker-compose.yml, and docker.env
+
+edit only docker.env (if you plan on keeping same database + keycloak)
+```
+URL=https://outline.stoplagging.com
+PORT=3000
+
+OIDC_CLIENT_ID=outline.stoplagging.com
+```
+
+If new instance with new database edit
+```
+AWS_S3_UPLOAD_BUCKET_URL=https://outlinedata.stoplagging.com
+```
+
+If new instance with new keycloak edit
+
+```
+OIDC_AUTH_URI=https://auth.stoplagging.com/realms/master/protocol/openid-connect/auth
+OIDC_TOKEN_URI=https://auth.stoplagging.com/realms/master/protocol/openid-connect/token
+OIDC_USERINFO_URI=https://auth.stoplagging.com/realms/master/protocol/openid-connect/userinfo
+```
+
+docker-compose up again
+don't forget to edit caddy
+docker exec -w /etc/caddy caddy caddy reload
+
+Now in keycloak go to Clients 
+export the original domain name
+edit the .json
+find & replace all old domain name with new domain name in text editor.
+Edit description
+reimport new domain name!
