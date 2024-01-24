@@ -37,7 +37,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 * [wireguard]() - the one and only VPN to ever consider
 * [wg-easy]() - wireguard in docker with web gui
 * [zammad]() - ticketing system
-* [arch_linux_host_install](
+* [arch_linux_host_install]()
 
 
 #### StarWhiz's App Specific Guides & References
