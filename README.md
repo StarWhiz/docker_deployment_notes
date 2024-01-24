@@ -11,33 +11,33 @@ After you finish the A-Z guide. You can then follow application specific guides 
 ## Application Specific Deployment Guides
 
 #### DoTheEvo's App Specific Guides
-* [caddy_v2]() - reverse proxy
-* [vaultwarden]() - password manager
-* [bookstack]() - notes and documentation
-* [kopia]() - backup utility replacing borg
-* [borg_backup]() - backup utility
-* [ddclient]() - automatic DNS update
-* [dnsmasq]() - DNS and DHCP server
-* [gotify / ntfy / signal]() - instant notifications apps
-* [frigate]() - managing security cameras
-* [jellyfin]() - video and music streaming
-* [minecraft]() - game server
-* [meshcrentral]() - web based remote desktop, like teamviewer or anydesk
-* [rustdesk]() - remote desktop, like teamviewer or anydesk
-* [nextcloud]() - file share & sync
-* [opnsense]() - a firewall, enterprise level 
-* [qbittorrent]() - torrent client
-* [portainer]() - docker management
-* [prometheus_grafana_loki]() - monitoring
-* [unifi]() - management utility for ubiquiti devices
-* [snipeit]() - IT inventory management
-* [trueNAS scale]() - network file sharing
-* [uptime kuma]() - uptime alerting tool 
-* [squid]() - anonymize forward proxy
-* [wireguard]() - the one and only VPN to ever consider
-* [wg-easy]() - wireguard in docker with web gui
-* [zammad]() - ticketing system
-* [arch_linux_host_install]()
+* [caddy_v2](https://github.com/DoTheEvo/selfhosted-apps-docker) - reverse proxy
+* [vaultwarden](https://github.com/DoTheEvo/selfhosted-apps-docker) - password manager
+* [bookstack](https://github.com/DoTheEvo/selfhosted-apps-docker) - notes and documentation
+* [kopia](https://github.com/DoTheEvo/selfhosted-apps-docker) - backup utility replacing borg
+* [borg_backup](https://github.com/DoTheEvo/selfhosted-apps-docker) - backup utility
+* [ddclient](https://github.com/DoTheEvo/selfhosted-apps-docker) - automatic DNS update
+* [dnsmasq](https://github.com/DoTheEvo/selfhosted-apps-docker) - DNS and DHCP server
+* [gotify / ntfy / signal](https://github.com/DoTheEvo/selfhosted-apps-docker) - instant notifications apps
+* [frigate](https://github.com/DoTheEvo/selfhosted-apps-docker) - managing security cameras
+* [jellyfin](https://github.com/DoTheEvo/selfhosted-apps-docker) - video and music streaming
+* [minecraft](https://github.com/DoTheEvo/selfhosted-apps-docker) - game server
+* [meshcrentral](https://github.com/DoTheEvo/selfhosted-apps-docker) - web based remote desktop, like teamviewer or anydesk
+* [rustdesk](https://github.com/DoTheEvo/selfhosted-apps-docker) - remote desktop, like teamviewer or anydesk
+* [nextcloud](https://github.com/DoTheEvo/selfhosted-apps-docker) - file share & sync
+* [opnsense](https://github.com/DoTheEvo/selfhosted-apps-docker) - a firewall, enterprise level 
+* [qbittorrent](https://github.com/DoTheEvo/selfhosted-apps-docker) - torrent client
+* [portainer](https://github.com/DoTheEvo/selfhosted-apps-docker) - docker management
+* [prometheus_grafana_loki](https://github.com/DoTheEvo/selfhosted-apps-docker) - monitoring
+* [unifi](https://github.com/DoTheEvo/selfhosted-apps-docker) - management utility for ubiquiti devices
+* [snipeit](https://github.com/DoTheEvo/selfhosted-apps-docker) - IT inventory management
+* [trueNAS scale](https://github.com/DoTheEvo/selfhosted-apps-docker) - network file sharing
+* [uptime kuma](https://github.com/DoTheEvo/selfhosted-apps-docker) - uptime alerting tool 
+* [squid](https://github.com/DoTheEvo/selfhosted-apps-docker) - anonymize forward proxy
+* [wireguard](https://github.com/DoTheEvo/selfhosted-apps-docker) - the one and only VPN to ever consider
+* [wg-easy](https://github.com/DoTheEvo/selfhosted-apps-docker) - wireguard in docker with web gui
+* [zammad](https://github.com/DoTheEvo/selfhosted-apps-docker) - ticketing system
+* [arch_linux_host_install](https://github.com/DoTheEvo/selfhosted-apps-docker)
 
 
 #### StarWhiz's App Specific Guides & References
