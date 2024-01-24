@@ -35,10 +35,12 @@ Disclaimer: My guides aren't as high quality as DoTheEvo's guides. Also most of 
 * [Jellyfin](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jellyfin) - Open Source Plex / Media Server
 * [Jitsi Meet](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jitsi-meet) - Videoconferencing
 * [Kanboard](https://github.com/StarWhiz/docker_deployment_notes/tree/master/kanboard) - An Open Source Kanban Board
+* [Kutt.it](https://github.com/StarWhiz/docker_deployment_notes/tree/master/kutt) - Modern looking URL Shortener / Custom Shortlinks
 * [MeshCentral](https://github.com/StarWhiz/docker_deployment_notes/tree/master/meshcentral) - Remote Access Control like TeamViewer and Connectwise
 * [Mumble](https://github.com/StarWhiz/docker_deployment_notes/tree/master/mumble) - Voice Chat Before Discord Days
 * [NocoDB](https://github.com/StarWhiz/docker_deployment_notes/tree/master/nocodb) - Airtable alternative
 * [Organizr](https://github.com/StarWhiz/docker_deployment_notes/tree/master/organizr) - Another homage dashboard like heimdall
+* [Outline Wiki](https://github.com/StarWhiz/docker_deployment_notes/tree/master/outline-wiki) - Gorgeous wiki that looks like confluence but feels fast and smooth! Supports video drag and drop unlike most Wikis!
 * [OvenMediaEngine + Radium Next](https://github.com/StarWhiz/docker_deployment_notes/tree/master/OvenMediaEngine-RadiumNext) - Sub-second latency streaming from OBS to a web browser. It's better than real-time discord streams! Great for movie nights!
 * [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd) - FTP server
 * [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe) - Torrent Client w/ Windscribe VPN (Not Recommended... Issue = Storage Leaks will fill your VPS's Storage overtime...)
