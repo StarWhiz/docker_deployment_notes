@@ -11,33 +11,33 @@ After you finish the A-Z guide. You can then follow application specific guides 
 ## Application Specific Deployment Guides
 
 #### DoTheEvo's App Specific Guides
-* [caddy_v2](caddy_v2/) - reverse proxy
-* [vaultwarden](vaultwarden/) - password manager
-* [bookstack](bookstack/) - notes and documentation
-* [kopia](kopia_backup/) - backup utility replacing borg
-* [borg_backup](borg_backup/) - backup utility
-* [ddclient](ddclient/) - automatic DNS update
-* [dnsmasq](dnsmasq/) - DNS and DHCP server
-* [gotify / ntfy / signal](gotify-ntfy-signal/) - instant notifications apps
-* [frigate](frigate/) - managing security cameras
-* [jellyfin](jellyfin/) - video and music streaming
-* [minecraft](minecraft/) - game server
-* [meshcrentral](meshcrentral/) - web based remote desktop, like teamviewer or anydesk
-* [rustdesk](rustdesk/) - remote desktop, like teamviewer or anydesk
-* [nextcloud](nextcloud/) - file share & sync
-* [opnsense](opnsense/) - a firewall, enterprise level 
-* [qbittorrent](qbittorrent/) - torrent client
-* [portainer](portainer/) - docker management
-* [prometheus_grafana_loki](prometheus_grafana_loki/) - monitoring
-* [unifi](unifi/) - management utility for ubiquiti devices
-* [snipeit](snipeit/) - IT inventory management
-* [trueNAS scale](trueNASscale/) - network file sharing
-* [uptime kuma](uptime-kuma/) - uptime alerting tool 
-* [squid](squid/) - anonymize forward proxy
-* [wireguard](wireguard/) - the one and only VPN to ever consider
-* [wg-easy](wg-easy/) - wireguard in docker with web gui
-* [zammad](zammad/) - ticketing system
-* [arch_linux_host_install](arch_linux_host_install)
+* [caddy_v2]() - reverse proxy
+* [vaultwarden]() - password manager
+* [bookstack]() - notes and documentation
+* [kopia]() - backup utility replacing borg
+* [borg_backup]() - backup utility
+* [ddclient]() - automatic DNS update
+* [dnsmasq]() - DNS and DHCP server
+* [gotify / ntfy / signal]() - instant notifications apps
+* [frigate]() - managing security cameras
+* [jellyfin]() - video and music streaming
+* [minecraft]() - game server
+* [meshcrentral]() - web based remote desktop, like teamviewer or anydesk
+* [rustdesk]() - remote desktop, like teamviewer or anydesk
+* [nextcloud]() - file share & sync
+* [opnsense]() - a firewall, enterprise level 
+* [qbittorrent]() - torrent client
+* [portainer]() - docker management
+* [prometheus_grafana_loki]() - monitoring
+* [unifi]() - management utility for ubiquiti devices
+* [snipeit]() - IT inventory management
+* [trueNAS scale]() - network file sharing
+* [uptime kuma]() - uptime alerting tool 
+* [squid]() - anonymize forward proxy
+* [wireguard]() - the one and only VPN to ever consider
+* [wg-easy]() - wireguard in docker with web gui
+* [zammad]() - ticketing system
+* [arch_linux_host_install](
 
 
 #### StarWhiz's App Specific Guides & References
