@@ -70,6 +70,10 @@ chown --recursive "${USERNAME}":"${USERNAME}" "${home_directory}/.ssh"
 # Disable root SSH login with password. 2nd line disables PasswordAuthentication for sudo user
 sed --in-place 's/^PermitRootLogin.*/PermitRootLogin prohibit-password/g' /etc/ssh/sshd_config
 sed --in-place 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+
+# It seems in newer Ubuntu versions like 24.04 the config is stored in /etc/ssh/sshd_config.d/50-cloud-init.conf so this line below turns off pw auth 
+# in the newer Ubuntu. Credits to oitconz for finding this at https://github.com/StarWhiz/docker_deployment_notes/issues/5#issue-2087522025
+sed --in-place 's/PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config.d/50-cloud-init.conf
 if sshd -t -q; then
     systemctl restart sshd
 fi
