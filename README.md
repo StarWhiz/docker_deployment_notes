@@ -11,45 +11,54 @@ After you finish the A-Z guide. You can then follow application specific guides 
 ## Application Specific Deployment Guides
 
 #### DoTheEvo's App Specific Guides
-* [caddy_v2](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2) - reverse proxy
-* [bitwarden_rs](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/bitwarden_rs) - password manager
-* [bookstack](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/bookstack) - notes and documentation
-* [borg_backup](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/borg_backup) - backup utility
-* [ddclient](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/ddclient) - automatic DNS update
-* [dnsmasq](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/dnsmasq) - DNS and DHCP server
-* [homer](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/homer) - homepage
-* [nextcloud](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/nextcloud) - file share & sync
-* [portainer](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/portainer) - docker management
-* [prometheus_grafana](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/prometheus_grafana) - monitoring
-* [unifi](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/unifi) - management utility for ubiquiti devices
-* [watchtower](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/watchtower) - automatic docker images update
-* [wireguard](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/wireguard) - the one and only VPN to ever consider
+* [caddy_v2](caddy_v2/) - reverse proxy
+* [vaultwarden](vaultwarden/) - password manager
+* [bookstack](bookstack/) - notes and documentation
+* [kopia](kopia_backup/) - backup utility replacing borg
+* [borg_backup](borg_backup/) - backup utility
+* [ddclient](ddclient/) - automatic DNS update
+* [dnsmasq](dnsmasq/) - DNS and DHCP server
+* [gotify / ntfy / signal](gotify-ntfy-signal/) - instant notifications apps
+* [frigate](frigate/) - managing security cameras
+* [jellyfin](jellyfin/) - video and music streaming
+* [minecraft](minecraft/) - game server
+* [meshcrentral](meshcrentral/) - web based remote desktop, like teamviewer or anydesk
+* [rustdesk](rustdesk/) - remote desktop, like teamviewer or anydesk
+* [nextcloud](nextcloud/) - file share & sync
+* [opnsense](opnsense/) - a firewall, enterprise level 
+* [qbittorrent](qbittorrent/) - torrent client
+* [portainer](portainer/) - docker management
+* [prometheus_grafana_loki](prometheus_grafana_loki/) - monitoring
+* [unifi](unifi/) - management utility for ubiquiti devices
+* [snipeit](snipeit/) - IT inventory management
+* [trueNAS scale](trueNASscale/) - network file sharing
+* [uptime kuma](uptime-kuma/) - uptime alerting tool 
+* [squid](squid/) - anonymize forward proxy
+* [wireguard](wireguard/) - the one and only VPN to ever consider
+* [wg-easy](wg-easy/) - wireguard in docker with web gui
+* [zammad](zammad/) - ticketing system
+* [arch_linux_host_install](arch_linux_host_install)
 
 
 #### StarWhiz's App Specific Guides & References
 Disclaimer: My guides aren't as high quality as DoTheEvo's guides. Also most of them are based on docker v1. If you're on docker v2 just replace `docker-compose` command with `docker compose`!
-* [Vaultwarden formerly bitwarden_rs](https://github.com/StarWhiz/docker_deployment_notes/tree/master/bitwarden-vaultwarden) - Open Soruce Password Manager
+If DoTheEvo has a guide for the same application follow theirs over mine! I did not include my own guides in this list so just browse the folders in this repostory to view the everything.
+
 * [Easy!Appointments](https://github.com/StarWhiz/docker_deployment_notes/tree/master/easyappointments) - Self Hosted Appointment Scheduler 
 * [Heimdall](https://github.com/StarWhiz/docker_deployment_notes/tree/master/heimdall) - Another Homepage Dashboard
 * [FreePBX+Asterisk](https://github.com/StarWhiz/docker_deployment_notes/tree/master/freepbx-asterisk) - VOIP & telephony server
-* [Jellyfin](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jellyfin) - Open Source Plex / Media Server
 * [Jitsi Meet](https://github.com/StarWhiz/docker_deployment_notes/tree/master/jitsi-meet) - Videoconferencing
 * [Kanboard](https://github.com/StarWhiz/docker_deployment_notes/tree/master/kanboard) - An Open Source Kanban Board
 * [Kutt.it](https://github.com/StarWhiz/docker_deployment_notes/tree/master/kutt) - Modern looking URL Shortener / Custom Shortlinks
-* [MeshCentral](https://github.com/StarWhiz/docker_deployment_notes/tree/master/meshcentral) - Remote Access Control like TeamViewer and Connectwise
 * [Mumble](https://github.com/StarWhiz/docker_deployment_notes/tree/master/mumble) - Voice Chat Before Discord Days
 * [NocoDB](https://github.com/StarWhiz/docker_deployment_notes/tree/master/nocodb) - Airtable alternative
 * [Organizr](https://github.com/StarWhiz/docker_deployment_notes/tree/master/organizr) - Another homage dashboard like heimdall
 * [Outline Wiki](https://github.com/StarWhiz/docker_deployment_notes/tree/master/outline-wiki) - Gorgeous wiki that looks like confluence but feels fast and smooth! Supports video drag and drop unlike most Wikis!
 * [OvenMediaEngine + Radium Next](https://github.com/StarWhiz/docker_deployment_notes/tree/master/OvenMediaEngine-RadiumNext) - Sub-second latency streaming from OBS to a web browser. It's better than real-time discord streams! Great for movie nights!
 * [PureFTPd](https://github.com/StarWhiz/docker_deployment_notes/tree/master/pureftpd) - FTP server
-* [qBit+windscribe](https://github.com/StarWhiz/docker_deployment_notes/tree/master/qbit-windscribe) - Torrent Client w/ Windscribe VPN (Not Recommended... Issue = Storage Leaks will fill your VPS's Storage overtime...)
 * [Rocket.chat](https://github.com/StarWhiz/docker_deployment_notes/tree/master/rocketchat) - Discord / Slack Clone
-* [ShinobiCCTV (Not Recommended)](https://github.com/StarWhiz/docker_deployment_notes/tree/master/shinobi) - CCTV NVR - I don't recommend this tutorial it doesn't work well.
 * [Seafile](https://github.com/StarWhiz/docker_deployment_notes/tree/master/seafile) - Cloud Drive
-* [Snipe IT](https://github.com/StarWhiz/docker_deployment_notes/tree/master/snipeit) - IT Asset Management
 * [Splinterlands-bot-v2](https://github.com/StarWhiz/docker_deployment_notes/tree/master/splinterlands-bot-v2) - Bot for Splinterlands
-* [Ubiquiti UniFi Controller](https://github.com/StarWhiz/docker_deployment_notes/tree/master/unifi-controller) - Management Utility for Ubiquiti Devices
 * [Wordpress](https://github.com/StarWhiz/docker_deployment_notes/tree/master/wordpress) - CMS / Website Hosting
 * [VCFconvert](https://github.com/StarWhiz/docker_deployment_notes/tree/master/vcfconvert) - Converts .vCard files to .csv or LDIF
 * [Zoneminder](https://github.com/StarWhiz/docker_deployment_notes/tree/master/zoneminder) - CCTV NVR
