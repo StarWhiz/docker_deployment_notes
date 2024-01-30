@@ -96,3 +96,8 @@ Check if the connection to the remote is working with the command belo winside t
 ```
 rclone ls YOURREMOTENAME:
 ```
+
+### Optional: Edit Global Policy to match StarWhiz's Config
+Login to the GUI
+Edit compression to zstd-fastest
+Edit scheduling to 12 hours
