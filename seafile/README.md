@@ -76,10 +76,10 @@ networks:
 
 Notes for WebDAV
 
-You may need to add the following lines to your docker file if you plan on enabling WebDAV
+You may need to add the following lines to your docker file if you plan on enabling WebDAV.
 ```
     ports:
-      - "4173:4173"
+      - "8080:8080"
 ```
 After that you do this open this port on your firewall and redirect it to the Docker Host's IP with seafile running on it.
 
@@ -130,6 +130,14 @@ nano ~/docker/seafile/seafile-data/seafile/conf/seafdav.conf
 ```
 Set ```enabled=true```
 Set ```share_name = /```
+Example Below
+```
+[WEBDAV]
+enabled = true
+port = 8080
+fastcgi = false
+share_name = /
+```
 
 Remember to do a docker-compose restart and a caddy exec restart after modifying seafile conf files!
 
