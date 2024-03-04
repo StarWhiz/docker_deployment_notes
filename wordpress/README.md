@@ -43,7 +43,7 @@ DB_NAME=wordpress
 DB_ROOT_PASS=rootpass
 ```
 
-### docker-compose.yml
+### docker-compose.yml Old Edition
 ```
 version: '3.1'
 
@@ -78,6 +78,48 @@ networks:
   default:
     external:
       name: $DOCKER_MY_NETWORK
+```
+
+### docker-compose.yml 2024.03.04 Edition
+For this new edition of docker-compose the network `caddy_net` is being used here. The syntax has changed quite a bit since docker compose v2 came out.
+And `docker-compose up -d` is now just `docker compose up -d` in v2.
+```
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress
+    restart: unless-stopped
+    container_name: wordpress
+    environment:
+      WORDPRESS_DB_HOST: wordpress-db
+      WORDPRESS_DB_USER: $DB_USER
+      WORDPRESS_DB_PASSWORD: $DB_PASS
+      WORDPRESS_DB_NAME: $DB_NAME
+    volumes:
+      - ./wordpress:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    networks:
+      - caddy_net
+
+  wordpress-db:
+    image: mysql:8.0
+    restart: unless-stopped
+    container_name: wordpress-db
+    environment:
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASS
+      MYSQL_ROOT_PASSWORD: $DB_ROOT_PASS
+    volumes:
+      - ./wordpress-db:/var/lib/mysql
+    networks:
+      - caddy_net
+
+networks:
+  caddy_net:
+    external: true
 ```
 
 ### Final steps (For people following A-Z)
