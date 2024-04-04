@@ -7,10 +7,7 @@ This will deploy meshcentral with caddy.
 └── ~/
     └── docker/
         └── meshcentral/
-            ├── config.json.template
             ├── docker-compose.yml
-	    ├── Dockerfile
-	    ├── startup.sh
 ```
 
 You will need the files in this GitHubs folder (Dockerfile, startup.sh, and config.json.template) to build the meshcentral image and deploy it.
@@ -37,7 +34,7 @@ services:
     meshcentral:
         restart: unless-stopped
         container_name: meshcentral
-        build: .
+        image: ghcr.io/ylianst/meshcentral:1.1.22
 #        ports:
 #            - 4430:4430  #I Used 4430 because caddy v2 doesn't play well with a container using port 443. Can change 4430 to something else in the environment var CONTAINER_PORT below 
         environment:
@@ -51,6 +48,7 @@ services:
         volumes:
             - ./data:/opt/meshcentral/meshcentral-data    #config.json and other important files live here. A must for data persistence
             - ./user_files:/opt/meshcentral/meshcentral-files    #where file uploads for users live
+            - ./web:/opt/meshcentral/meshcentral-web # location for site customization files
 
 networks:
     default:
