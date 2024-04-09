@@ -40,7 +40,7 @@ services:
         environment:
             - HOSTNAME=meshcentral.YOURDOMAIN.com
             - CONTAINER_PORT=4430
-            - REVERSE_PROXY=meshcentral.YOURDOMAIN.com
+            - REVERSE_PROXY=YOURDOMAIN.com
             - REVERSE_PROXY=true
             - REVERSE_PROXY_TLS_PORT=443
             - IFRAME=false
