@@ -1,5 +1,6 @@
 ### This document is outdated
 please see for the how to https://manual.seafile.com/11.0/docker/deploy_seafile_with_docker/
+and this to solve the CSRF Verification failed error https://github.com/haiwen/seafile/issues/2707#issuecomment-1732493096
 
 ### Minimum File Structure
 ```
