@@ -1,3 +1,6 @@
+### This document is outdated
+please see for the how to https://manual.seafile.com/11.0/docker/deploy_seafile_with_docker/
+
 ### Minimum File Structure
 ```
 /home/
