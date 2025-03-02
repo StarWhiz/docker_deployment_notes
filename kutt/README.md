@@ -17,7 +17,7 @@ Remember to `docker exec -w /etc/caddy caddy caddy reload` after editing your Ca
 
 ```
 urls.YOURDOMAIN.com {
-		reverse_proxy kutt:80
+	reverse_proxy kutt:80
 }
 ```
 
