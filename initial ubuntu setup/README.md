@@ -161,7 +161,6 @@ The purpose of the .env file is to substitute variables in your docker-compose.y
 **.env**
 ```
 MY_DOMAIN=example.com
-DOCKER_MY_NETWORK=caddy_net
 ```
 **Ctrl+O** to save file.
 
@@ -186,11 +185,12 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./data:/data
       - ./config:/config
+    networks:
+      - caddy_net
 
 networks:
-  default:
-    external:
-      name: $DOCKER_MY_NETWORK
+  caddy_net:
+    external: true
 ```
 
 #### Create Caddyfile
