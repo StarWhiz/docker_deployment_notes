@@ -1,3 +1,17 @@
+> [!NOTE]
+> ever since docker compose v2 some of the commands in this guide are outdated
+> For example we no longer do `docker-compose up -d` we do `docker compose up -d`
+> There's no longer a need for version section required in any `docker-compose.yml`
+> the docker network `caddy_net` is defined differently now and the end of all `docker-compose.yml` files
+> ```
+>     networks:
+>      - caddy_net
+> 
+> networks:
+> caddy_net:
+> external: true
+> ```
+
 # Introduction
 Caddy v2 is the easiest reverse proxy ever! You'll be able to host multiple dockerized applications with one VM and one domain name! I learned from [DoTheEvo](https://github.com/DoTheEvo/selfhosted-apps-docker/tree/master/caddy_v2), but their guide assumes you already installed docker and docker-compose. From my [A-Z guide](https://github.com/StarWhiz/docker_deployment_notes/tree/master/initial%20ubuntu%20setup)... you be handheld from the beginning. In addition to the app specific guides on DoTheEvo's page I also added some of my own!
 
