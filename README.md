@@ -1,8 +1,11 @@
 > [!NOTE]
 > ever since docker compose v2 some of the commands in this guide are outdated
+>
 > For example we no longer do `docker-compose up -d` we do `docker compose up -d`
+>
 > There's no longer a need for version section required in any `docker-compose.yml`
-> the docker network `caddy_net` is defined differently now and the end of all `docker-compose.yml` files
+>
+> The docker network `caddy_net` is defined differently now and the end of all `docker-compose.yml` files
 > ```
 >     networks:
 >      - caddy_net
