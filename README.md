@@ -11,8 +11,8 @@
 >      - caddy_net
 > 
 > networks:
-> caddy_net:
-> external: true
+>   caddy_net:
+>     external: true
 > ```
 
 # Introduction
