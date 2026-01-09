@@ -1,5 +1,7 @@
 This is a great alternative that's more similar to discord, and is self-hostable. Matrix is difficult and stoat / revolt is not exactly what I wanted.
 
+It's to prepare for the discord IPO enshittification!
+
 ### Minimum File Structure
 ```
 /home/

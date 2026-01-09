@@ -35,6 +35,7 @@ After you finish the A-Z guide. You can then follow application specific guides 
 * [borg_backup](https://github.com/DoTheEvo/selfhosted-apps-docker) - backup utility
 * [ddclient](https://github.com/DoTheEvo/selfhosted-apps-docker) - automatic DNS update
 * [dnsmasq](https://github.com/DoTheEvo/selfhosted-apps-docker) - DNS and DHCP server
+* [dcts](https://github.com/StarWhiz/docker_deployment_notes/tree/master/dcts) - Discord alternative
 * [gotify / ntfy / signal](https://github.com/DoTheEvo/selfhosted-apps-docker) - instant notifications apps
 * [frigate](https://github.com/DoTheEvo/selfhosted-apps-docker) - managing security cameras
 * [jellyfin](https://github.com/DoTheEvo/selfhosted-apps-docker) - video and music streaming
