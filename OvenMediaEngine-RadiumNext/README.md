@@ -18,7 +18,6 @@ A tip for this guide replace anything in the examples that says "stream.example.
                 ├── Server.xml
             ├── docker-compose.yml
         └── radium-next/
-
             ├── docker-compose.yml     
 ```
 
@@ -39,7 +38,7 @@ stream.example.com {
 version: '3.3'
 services:
   ovenmediaengine:
-    image: 'airensoft/ovenmediaengine:0.14.14'
+    image: 'airensoft/ovenmediaengine:0.20.0'
     container_name: ovenmediaengine
     ports:
       - '1935:1935'
@@ -49,12 +48,21 @@ services:
       - '3478:3478'
       - '9000:9000'
       - '9999:9999/udp'
+      - '10000:10004/udp'
     volumes:
       - ./config:/opt/ovenmediaengine/bin/origin_conf
     command: /opt/ovenmediaengine/bin/OvenMediaEngine -c origin_conf
+    networks:
+      - caddy_net
+
+networks:
+  caddy_net:
+    external: true
 ```
 
 ### docker-compose.yml inside radium-next folder
+Notice that in the url that after `:3334/app/` is an example stream key of `stream`. This is what you will be setting arbitrarily in OBS as a stream key.
+
 ```
 version: "3.3"
 services:
@@ -67,11 +75,12 @@ services:
       - INITIAL_SOURCE_TYPE=webrtc
       - INITIAL_SOURCE_URL=wss://stream.example.com:3334/app/stream
     image: ghcr.io/zibbp/radium:next
+    networks:
+      - caddy_net
 
 networks:
-  default:
-    external:
-      name: caddy_net
+  caddy_net:
+    external: true
 ```
 
 ### Copy your stream.example.com Caddy crts and keys to ovenmediaengine/config
@@ -182,7 +191,7 @@ There are a couple of things you need to change in the default example Server.xm
 				</Signalling>
 				<IceCandidates>
 					<TcpRelay>${env:OME_WEBRTC_TCP_RELAY_ADDRESS:*:3478}</TcpRelay>
-					<TcpForce>true</TcpForce>
+					<TcpForce>false</TcpForce>
 					<TcpRelayWorkerCount>1</TcpRelayWorkerCount>
 					<IceCandidate>*:10006/udp</IceCandidate>
 				</IceCandidates>
@@ -212,9 +221,9 @@ There are a couple of things you need to change in the default example Server.xm
 					<WorkerCount>1</WorkerCount>
 				</Signalling>
 				<IceCandidates>
-					<IceCandidate>*:10000-10005/udp</IceCandidate>
+					<IceCandidate>*:10000-10004/udp</IceCandidate>
 					<TcpRelay>${env:OME_WEBRTC_TCP_RELAY_ADDRESS:*:3478}</TcpRelay>
-					<TcpForce>true</TcpForce>
+					<TcpForce>false</TcpForce>
 					<TcpRelayWorkerCount>1</TcpRelayWorkerCount>
 				</IceCandidates>
 			</WebRTC>
@@ -447,6 +456,8 @@ Server: rtmp://stream.example.com:1935/app
 Stream Key: stream
 
 ```
+Notice how `stream` is the stream key inside the radium-next docker-compose earlier `- INITIAL_SOURCE_URL=wss://stream.example.com:3334/app/stream`
+If you want to use a different stream key that is okay but make sure the URL matches in radium-next
 
 Under the output tab of OBS change Output Mode to "Advanced" then select the "Streaming" tab.
 
@@ -483,3 +494,8 @@ x264 Options (separated by space): bframes=0 threads=8
 Congrats, now you should be able to stream from OBS to stream.example.com
 
 If you can figure out how to change the stream key let me know I want to know!
+
+# Optimizations
+In my latest commit I changed Server.xml in the Providers and Publishers section from true to false. `<TcpForce>false</TcpForce>`
+
+This allows UDP streams to happen
